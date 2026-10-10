@@ -37,6 +37,9 @@ export default function ResearcherCockpitCaseStudy() {
 
         <section className="space-y-4">
           <h2 className="text-2xl font-semibold text-zinc-900">2. The Architecture</h2>
+          <div className="bg-white border border-zinc-200 rounded-xl p-4 my-6 shadow-sm overflow-x-auto flex justify-center">
+            <img src="/researcher-cockpit-architecture.svg" alt="Researcher Cockpit Architecture Diagram" className="min-w-max h-auto" />
+          </div>
           <p className="text-zinc-700 leading-relaxed">
             This project employed a Client-Server architecture bridging two entirely different environments:
           </p>
