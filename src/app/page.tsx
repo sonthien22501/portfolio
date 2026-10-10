@@ -1,69 +1,88 @@
-import Image from "next/image";
+import React from 'react';
+import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <main className="min-h-screen bg-zinc-50 p-8 md:p-24">
+      <div className="max-w-4xl mx-auto space-y-16">
+        
+        {/* Header Section */}
+        <header className="space-y-4">
+          <h1 className="text-5xl font-bold tracking-tight text-zinc-900">
+            Hi, I'm Son Thien Nguyen
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-xl text-zinc-600 max-w-2xl">
+            A Master's student in Software Engineering based in Germany. 
+            I specialize in full-stack development, modern microservices architecture, and open-source contributions.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+          <div className="flex gap-4 pt-4">
+            <a href="https://github.com/sonthien22501" target="_blank" rel="noreferrer" className="bg-zinc-900 text-white px-6 py-2 rounded-full hover:bg-zinc-800 transition-colors">
+              GitHub Profile
+            </a>
+            <a href="#projects" className="bg-zinc-200 text-zinc-900 px-6 py-2 rounded-full hover:bg-zinc-300 transition-colors">
+              View My Work
+            </a>
+          </div>
+        </header>
+
+        {/* Projects Section */}
+        <section id="projects" className="space-y-8">
+          <h2 className="text-3xl font-semibold text-zinc-900">Featured Projects</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Ticket Booking System */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-zinc-100 hover:shadow-md transition-shadow">
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="text-xl font-semibold text-zinc-900">Event Ticket Booking System</h3>
+                <a href="https://github.com/sonthien22501/ticket_booking_system" target="_blank" rel="noreferrer" className="text-xs font-medium text-blue-700 bg-blue-100 px-2 py-1 rounded-full hover:bg-blue-200">GitHub Repo</a>
+              </div>
+              <p className="text-zinc-600 mb-4">
+                A highly concurrent microservices architecture built with Go, PostgreSQL row-level locks, and an NGINX API Gateway to guarantee zero overselling during massive traffic spikes.
+              </p>
+              <div className="flex gap-2 text-sm text-zinc-500 mb-6">
+                <span className="bg-zinc-100 px-3 py-1 rounded-full">Go</span>
+                <span className="bg-zinc-100 px-3 py-1 rounded-full">React</span>
+                <span className="bg-zinc-100 px-3 py-1 rounded-full">PostgreSQL</span>
+              </div>
+              <Link href="/projects/ticket-booking" className="text-zinc-900 font-medium hover:underline inline-flex items-center gap-1">Read Case Study <span aria-hidden="true">→</span></Link>
+            </div>
+
+            {/* JabRef Researcher Cockpit */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-zinc-100 hover:shadow-md transition-shadow">
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="text-xl font-semibold text-zinc-900">Researcher Cockpit (JabRef)</h3>
+                <a href="https://github.com/JabRef/jabref/pull/14963" target="_blank" rel="noreferrer" className="text-xs font-medium text-green-700 bg-green-100 px-2 py-1 rounded-full hover:bg-green-200">Open Source PR #14963</a>
+              </div>
+              <p className="text-zinc-600 mb-4">
+                A WebExtension client-server architecture communicating with a local Java backend. Features custom DOM-manipulation web scrapers for IEEE, Arxiv, and Google Scholar to automate literature discovery.
+              </p>
+              <div className="flex gap-2 text-sm text-zinc-500 mb-6">
+                <span className="bg-zinc-100 px-3 py-1 rounded-full">JavaScript</span>
+                <span className="bg-zinc-100 px-3 py-1 rounded-full">Java (JDK 25)</span>
+              </div>
+              <Link href="/projects/researcher-cockpit" className="text-zinc-900 font-medium hover:underline inline-flex items-center gap-1">Read Case Study <span aria-hidden="true">→</span></Link>
+            </div>
+
+            {/* Advanced Web Development */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-zinc-100 hover:shadow-md transition-shadow">
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="text-xl font-semibold text-zinc-900">Advanced Web Development</h3>
+                <a href="https://github.com/Avnish-Raut/AWD_Project" target="_blank" rel="noreferrer" className="text-xs font-medium text-blue-700 bg-blue-100 px-2 py-1 rounded-full hover:bg-blue-200">GitHub Repo</a>
+              </div>
+              <p className="text-zinc-600 mb-4">
+                A full-stack web application co-developed in a 3-member agile team, utilizing strict architectural separation between the client interface and backend services.
+              </p>
+              <div className="flex gap-2 text-sm text-zinc-500 mb-6">
+                <span className="bg-zinc-100 px-3 py-1 rounded-full">TypeScript</span>
+                <span className="bg-zinc-100 px-3 py-1 rounded-full">Node.js</span>
+              </div>
+              <Link href="/projects/awd-project" className="text-zinc-900 font-medium hover:underline inline-flex items-center gap-1">Read Case Study <span aria-hidden="true">→</span></Link>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+    </main>
   );
 }
