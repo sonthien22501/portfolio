@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Github, Linkedin, Mail, MapPin, Download, ChevronRight } from 'lucide-react';
+import { Code2, Mail, MapPin, Download, ChevronRight } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -28,7 +28,7 @@ export default function Home() {
 
           <div className="flex flex-wrap gap-4 pt-2">
             <a href="https://github.com/sonthien22501" target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-zinc-900 text-white px-5 py-2.5 rounded-lg hover:bg-zinc-800 transition-colors text-sm font-medium">
-              <Github size={18} />
+              <Code2 size={18} />
               GitHub
             </a>
             <a href="mailto:sonthien225@gmail.com" className="flex items-center gap-2 bg-white border border-zinc-200 text-zinc-900 px-5 py-2.5 rounded-lg hover:bg-zinc-50 transition-colors text-sm font-medium shadow-sm">
