@@ -13,11 +13,12 @@ export default function TicketBookingCaseStudy() {
           <h1 className="text-4xl font-bold tracking-tight text-zinc-900">
             Event Ticket Booking System
           </h1>
-          <div className="flex gap-2 text-sm text-zinc-600">
+          <div className="flex flex-wrap gap-2 text-sm text-zinc-600">
             <span className="bg-zinc-200 px-3 py-1 rounded-full">Go</span>
             <span className="bg-zinc-200 px-3 py-1 rounded-full">React</span>
             <span className="bg-zinc-200 px-3 py-1 rounded-full">PostgreSQL</span>
             <span className="bg-zinc-200 px-3 py-1 rounded-full">Docker</span>
+            <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full font-medium border border-purple-200">AI-Orchestrated</span>
           </div>
           <a href="https://github.com/sonthien22501/ticket_booking_system" target="_blank" rel="noreferrer" className="inline-block mt-4 text-blue-600 hover:underline">
             View Source Code on GitHub ↗
@@ -58,6 +59,17 @@ export default function TicketBookingCaseStudy() {
           <p className="text-zinc-700 leading-relaxed">
             Rigorous load testing was conducted to simulate 50 concurrent requests for the exact same seat. The system successfully resolved exactly 1 booking and 49 conflicts, strictly enforcing the zero-overselling guarantee without degrading overall performance.
           </p>
+        </section>
+        <section className="space-y-4">
+          <h2 className="text-2xl font-semibold text-zinc-900">4. Development Methodology: AI-Orchestrated</h2>
+          <p className="text-zinc-700 leading-relaxed">
+            This project was developed using advanced Agentic AI workflows. As the Lead Architect, I defined the strict system requirements, microservice boundaries, and concurrency constraints. I then utilized AI to accelerate the implementation.
+          </p>
+          <ul className="list-disc list-inside text-zinc-700 space-y-2 ml-4">
+            <li><strong>Prompt Engineering:</strong> Crafted detailed architectural instructions ensuring strict adherence to Go best practices and PostgreSQL locking mechanisms.</li>
+            <li><strong>Subagent Delegation:</strong> Orchestrated independent AI agents to construct specific microservices, acting as the human-in-the-loop code reviewer to integrate their outputs.</li>
+            <li><strong>AI Loop Engineering:</strong> Iteratively refined the generated codebase through continuous feedback loops and automated testing.</li>
+          </ul>
         </section>
       </div>
     </main>

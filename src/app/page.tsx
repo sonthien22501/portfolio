@@ -98,6 +98,7 @@ export default function Home() {
                 <span className="bg-zinc-50 border border-zinc-200 px-2.5 py-1 rounded-md">React</span>
                 <span className="bg-zinc-50 border border-zinc-200 px-2.5 py-1 rounded-md">PostgreSQL</span>
                 <span className="bg-zinc-50 border border-zinc-200 px-2.5 py-1 rounded-md">Docker</span>
+                <span className="bg-purple-50 text-purple-700 border border-purple-200 px-2.5 py-1 rounded-md">AI-Orchestrated</span>
               </div>
               <Link href="/projects/ticket-booking" className="inline-flex items-center text-sm font-bold text-blue-600 hover:text-blue-700 group-hover:translate-x-1 transition-transform">
                 Read Case Study <ChevronRight size={16} className="ml-1" />
