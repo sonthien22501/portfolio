@@ -144,6 +144,38 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Academic Research Section */}
+        <section className="space-y-8">
+          <h2 className="text-2xl font-bold tracking-tight text-zinc-900 flex items-center gap-2">
+            Academic Research
+          </h2>
+          
+          <div className="space-y-8">
+            <div className="relative pl-6 border-l-2 border-zinc-200">
+              <div className="absolute w-3 h-3 bg-zinc-300 rounded-full -left-[7px] top-1.5 ring-4 ring-[#fafafa]"></div>
+              <div className="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
+                <h3 className="text-lg font-bold text-zinc-900">Program Slicing in Automated Program Repair</h3>
+                <span className="text-sm text-zinc-500 font-medium">R&D Group Project</span>
+              </div>
+              <ul className="list-disc list-outside ml-4 text-zinc-600 space-y-2 text-sm leading-relaxed mt-3">
+                <li>Orchestrated an empirical evaluation pipeline integrating Slicer4J, Soot, and JUnit to extract minimal, fault-relevant execution traces from legacy Java codebases.</li>
+                <li>Designed methodology to optimize token-context limits for Large Language Models (LLMs), feeding dynamic program slices into LLMs to reduce the overhead of automated bug fixing.</li>
+              </ul>
+            </div>
+
+            <div className="relative pl-6 border-l-2 border-zinc-200">
+              <div className="absolute w-3 h-3 bg-zinc-300 rounded-full -left-[7px] top-1.5 ring-4 ring-[#fafafa]"></div>
+              <div className="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
+                <h3 className="text-lg font-bold text-zinc-900">LLMs in Requirements Elicitation</h3>
+                <span className="text-sm text-zinc-500 font-medium">Seminar Paper</span>
+              </div>
+              <ul className="list-disc list-outside ml-4 text-zinc-600 space-y-2 text-sm leading-relaxed mt-3">
+                <li>Conducted a rigorous critical assessment of the capabilities and limitations of Large Language Models (LLMs) when applied to software requirements elicitation and systems analysis.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
         {/* Education Section */}
         <section className="space-y-8">
           <h2 className="text-2xl font-bold tracking-tight text-zinc-900">Education</h2>
