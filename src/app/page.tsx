@@ -31,6 +31,10 @@ export default function Home() {
               <Code2 size={18} />
               GitHub
             </a>
+            <a href="https://www.linkedin.com/in/sonthien225/" target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-[#0A66C2] text-white px-5 py-2.5 rounded-lg hover:bg-[#004182] transition-colors text-sm font-medium">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              LinkedIn
+            </a>
             <a href="mailto:sonthien225@gmail.com" className="flex items-center gap-2 bg-white border border-zinc-200 text-zinc-900 px-5 py-2.5 rounded-lg hover:bg-zinc-50 transition-colors text-sm font-medium shadow-sm">
               <Mail size={18} />
               Contact
