@@ -29,7 +29,7 @@ export default function UsagiBuddyCaseStudy() {
                 DESKTOP SYSTEMS ARCHITECTURE // ELECTRON &amp; TYPESCRIPT
               </div>
               <h1 className="font-display font-black text-3xl sm:text-4xl md:text-5xl tracking-tight text-[var(--ink)] leading-tight">
-                Usagi Buddy (Usagi Float v0.5)
+                Usagi Buddy
               </h1>
               <div className="font-sans text-sm md:text-base text-[var(--cobalt)] font-semibold">
                 Multi-Window Desktop Companion · 60 FPS HTML5 Canvas Physics · Alpha Hit-Testing
@@ -46,6 +46,14 @@ export default function UsagiBuddyCaseStudy() {
                 <Code2 size={16} />
                 <span>GitHub Repository ↗</span>
               </a>
+              <a
+                href="https://github.com/sonthien22501/usagi-buddy/releases"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 bg-white text-[var(--ink)] hover:border-[var(--cobalt)] hover:text-[var(--cobalt)] font-sans text-sm font-semibold transition-colors border border-[var(--rule-strong)]"
+              >
+                <span>Releases &amp; Downloads ↗</span>
+              </a>
             </div>
           </div>
 
@@ -55,8 +63,9 @@ export default function UsagiBuddyCaseStudy() {
             <span className="px-3 py-1 bg-white border border-[var(--rule-strong)] text-[var(--ink)]">TypeScript 5</span>
             <span className="px-3 py-1 bg-white border border-[var(--rule-strong)] text-[var(--ink)]">HTML5 Canvas 2D</span>
             <span className="px-3 py-1 bg-white border border-[var(--rule-strong)] text-[var(--ink)]">Node.js</span>
-            <span className="px-3 py-1 bg-white border border-[var(--rule-strong)] text-[var(--ink)]">esbuild</span>
-            <span className="px-3 py-1 bg-emerald-50 text-emerald-800 border border-emerald-300 font-semibold font-mono">14 Vitest Suites Passed</span>
+            <span className="px-3 py-1 bg-white border border-[var(--rule-strong)] text-[var(--ink)]">i18n (8 Locales)</span>
+            <span className="px-3 py-1 bg-white border border-[var(--rule-strong)] text-[var(--ink)]">macOS &amp; Windows</span>
+            <span className="px-3 py-1 bg-emerald-50 text-emerald-800 border border-emerald-300 font-semibold font-mono">17 Vitest Suites Passed</span>
           </div>
         </header>
 
@@ -91,10 +100,10 @@ export default function UsagiBuddyCaseStudy() {
               UNIT TEST SUITES
             </div>
             <div className="font-mono text-3xl sm:text-4xl font-black text-emerald-700 tabular-nums">
-              14 SUITES
+              17 SUITES
             </div>
             <div className="text-xs text-[var(--ink-muted)] leading-relaxed pt-1">
-              Deterministic Vitest suites covering physics equations, store persistence, and alpha hit-testing.
+              Deterministic Vitest suites covering physics equations, store persistence, i18n localization, and alpha hit-testing.
             </div>
           </div>
         </div>
@@ -346,6 +355,16 @@ export default function UsagiBuddyCaseStudy() {
                     <td className="p-3 text-right font-mono font-bold text-emerald-700">100% PASS</td>
                   </tr>
                   <tr>
+                    <td className="p-3 font-mono font-bold text-[var(--cobalt)]">i18n.test.ts</td>
+                    <td className="p-3 text-[var(--ink-muted)]">Zero-dependency 8-locale i18n engine, system locale detection, and live IPC sync</td>
+                    <td className="p-3 text-right font-mono font-bold text-emerald-700">100% PASS</td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 font-mono font-bold text-[var(--cobalt)]">deadlineScheduler.test.ts</td>
+                    <td className="p-3 text-[var(--ink-muted)]">Cozy date-only deadlines (YYYY-MM-DD), natural shorthand parsing, and morning/evening digests</td>
+                    <td className="p-3 text-right font-mono font-bold text-emerald-700">100% PASS</td>
+                  </tr>
+                  <tr>
                     <td className="p-3 font-mono font-bold text-[var(--cobalt)]">calendarStore.test.ts</td>
                     <td className="p-3 text-[var(--ink-muted)]">Desktop quest persistence, recurring reminder calculation, and schema validation</td>
                     <td className="p-3 text-right font-mono font-bold text-emerald-700">100% PASS</td>
@@ -357,7 +376,7 @@ export default function UsagiBuddyCaseStudy() {
             <div className="hatch-zone p-4 border border-[var(--rule-strong)] flex items-center gap-3">
               <CheckCircle2 size={18} className="text-emerald-700 shrink-0" />
               <div className="text-xs sm:text-sm text-[var(--ink)] font-sans">
-                <strong className="text-[var(--ink)]">Factual Proof:</strong> Full open-source repository published at <a href="https://github.com/sonthien22501/usagi-buddy" target="_blank" rel="noreferrer" className="text-[var(--cobalt)] font-semibold hover:underline">github.com/sonthien22501/usagi-buddy</a> with complete TypeScript source code, Vitest suites, and GitHub Actions CI.
+                <strong className="text-[var(--ink)]">Factual Proof:</strong> Full open-source repository published at <a href="https://github.com/sonthien22501/usagi-buddy" target="_blank" rel="noreferrer" className="text-[var(--cobalt)] font-semibold hover:underline">github.com/sonthien22501/usagi-buddy</a> with complete TypeScript source code, 17 Vitest suites, and GitHub Actions CI.
               </div>
             </div>
           </section>
@@ -373,14 +392,25 @@ export default function UsagiBuddyCaseStudy() {
             <ArrowLeft size={16} />
             <span>← Back to Portfolio</span>
           </Link>
-          <a
-            href="https://github.com/sonthien22501/usagi-buddy"
-            target="_blank"
-            rel="noreferrer"
-            className="text-[var(--cobalt)] font-semibold hover:underline flex items-center gap-1.5"
-          >
-            <span>View Source Code on GitHub ↗</span>
-          </a>
+          <div className="flex items-center gap-4">
+            <a
+              href="https://github.com/sonthien22501/usagi-buddy"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[var(--cobalt)] font-semibold hover:underline flex items-center gap-1.5"
+            >
+              <span>GitHub Repository ↗</span>
+            </a>
+            <span className="text-[var(--rule-strong)]">|</span>
+            <a
+              href="https://github.com/sonthien22501/usagi-buddy/releases"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[var(--cobalt)] font-semibold hover:underline flex items-center gap-1.5"
+            >
+              <span>Download Releases ↗</span>
+            </a>
+          </div>
         </footer>
 
       </div>
