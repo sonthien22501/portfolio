@@ -19,11 +19,14 @@
 - `src/app/page.tsx` — Main DIN Technical Blueprint Sheet portfolio surface with interactive system stage, curving SVG request trajectories, translucent slide-over specification sheet drawer, and full below-the-fold blueprint sheets (`[A1] SYSTEMS`, `[B2] EXPERIENCE`, `[C3] SE RESEARCH`, `[D4] ARCHITECTURE`).
 - `src/app/projects/ticket-booking/page.tsx` — Standalone DIN specification sheet for Event Ticket Booking System (`SELECT ... FOR UPDATE` concurrency proof).
 - `src/app/projects/researcher-cockpit/page.tsx` — Standalone DIN specification sheet for Researcher Cockpit (JabRef JDK 25 + WebExtension, PR `#14963`).
-- `src/app/projects/awd-project/page.tsx` — Standalone DIN specification sheet for Advanced Web Development (TypeScript/Node.js decoupled architecture).
+- `src/app/projects/usagi-buddy/page.tsx` — Standalone DIN specification sheet for Usagi Buddy Desktop Companion (Electron, 60 FPS Canvas Physics, Alpha Hit-Testing, 14 Vitest suites).
+- `src/app/projects/awd-project/page.tsx` — Standalone DIN specification sheet for Advanced Web Development (TypeScript/Node.js decoupled architecture · Core Team Member 3-Person Team).
 - `public/cv.pdf` — Downloadable Resume PDF.
 
 ## 4. Milestone Progress Checklist
 - [x] Initial Next.js portfolio & case study pages
 - [x] `PRODUCT.md` and `.impeccable/surfaces/src-app-page-tsx.md` initialized
-- [ ] DIN 6771 / ISO 5457 Technical Blueprint Sheet redesign (`src/app/globals.css`, `src/app/layout.tsx`, `src/app/page.tsx`, case study routes)
-- [ ] Finish review & `DESIGN.md` documentation
+- [x] DIN 6771 / ISO 5457 Technical Blueprint Sheet design (`src/app/globals.css`, `src/app/layout.tsx`, `src/app/page.tsx`, case study routes)
+- [x] Usagi-Buddy desktop companion & AWD agile team case studies added
+- [x] Button overflow and font readability fixes implemented
+- [x] Finish review & `DESIGN.md` documentation

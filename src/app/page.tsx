@@ -10,7 +10,13 @@ import {
   Play, 
   GitPullRequest,
   CheckCircle2,
-  FileText
+  FileText,
+  Mail,
+  ShieldCheck,
+  Sparkles,
+  Users,
+  Layers,
+  Monitor
 } from 'lucide-react';
 
 interface SheetData {
@@ -101,9 +107,73 @@ const SHEETS: Record<string, SheetData> = {
     solution:
       'Constructed a client-server bridge injecting WebExtension DOM scrapers into academic publishers, communicating via local IPC with JabRef desktop. Successfully contributed to upstream JabRef codebase via PR #14963.',
   },
+  'usagi-buddy': {
+    id: 'usagi-buddy',
+    sheetCode: 'SHEET 03 // MULTI-WINDOW IPC & CANVAS PHYSICS',
+    title: 'Usagi Buddy (Usagi Float v0.5)',
+    headline: 'Multi-Window Transparent Desktop Companion & 60 FPS Physics Engine',
+    subtitle: 'Electron · TypeScript · HTML5 2D Canvas · Multi-Window IPC · 14 Vitest Suites',
+    primaryMetric: {
+      value: '60 FPS',
+      label: 'PHYSICS ANIMATION',
+      desc: 'Real-time kick-and-glide swimming and cursor attraction physics loop.',
+    },
+    secondaryMetric: {
+      value: '14 SUITES',
+      label: 'TEST COVERAGE',
+      desc: '14 Vitest unit test suites validating physics, stores, and ghost mode hit-testing.',
+    },
+    route: '/projects/usagi-buddy',
+    githubUrl: 'https://github.com/sonthien22501/usagi-buddy',
+    githubLabel: 'GitHub Repo ↗',
+    badge: 'Desktop App · Electron',
+    stack: ['Electron 33', 'TypeScript 5', 'HTML5 Canvas 2D', 'Node.js', 'esbuild', 'Vitest'],
+    concurrencySpecs: {
+      protocol: 'Asynchronous Electron IPC Bridge',
+      lockModel: 'Event-Driven Main/Renderer State Synchronization',
+      isolation: 'Context-Isolated Preload Scripts with Per-Pixel Alpha Hit-Testing',
+      latency: '< 16.6ms per-frame render deadline (60 FPS)',
+    },
+    summary:
+      'Transparent desktop companions frequently cause severe usability degradation: full-screen overlays intercept clicks meant for underlying productivity apps, while multi-window synchronization (settings, timers, sticky notes) leads to stale window state and high CPU load.',
+    solution:
+      'Engineered an event-driven Electron architecture with dynamic per-pixel click-through hit-testing (setIgnoreMouseEvents forward mode via ghostModeController.ts), an HTML5 Canvas 2D physics engine running at 60 FPS, and a synchronized 4-window IPC topology verified across 14 Vitest test suites.',
+  },
+  'awd-project': {
+    id: 'awd-project',
+    sheetCode: 'SHEET 04 // DECOUPLED FULL-STACK ARCHITECTURE',
+    title: 'Advanced Web Development (AWD)',
+    headline: 'Decoupled Full-Stack Architecture with End-to-End TypeScript Contracts',
+    subtitle: 'Core Team Member (3-Person Agile Engineering Team) · Node.js · Express · React · TypeScript',
+    primaryMetric: {
+      value: '3-PERSON',
+      label: 'AGILE ENGINEERING TEAM',
+      desc: 'Core team member delivering sprint milestones and full-stack architecture.',
+    },
+    secondaryMetric: {
+      value: '100% TYPE',
+      label: 'CONTRACT INTEGRITY',
+      desc: 'End-to-end TypeScript interfaces eliminating API boundary integration drift.',
+    },
+    route: '/projects/awd-project',
+    githubUrl: 'https://github.com/Avnish-Raut/AWD_Project',
+    githubLabel: 'GitHub Repo (Avnish-Raut/AWD_Project) ↗',
+    badge: 'Full-Stack · Team Member',
+    stack: ['TypeScript', 'Node.js', 'Express', 'React', 'RESTful APIs', 'Agile Scrum'],
+    concurrencySpecs: {
+      protocol: 'Decoupled RESTful HTTP/JSON',
+      lockModel: 'Stateless Service Architecture with Data Validation',
+      isolation: 'Layered Architectural Boundary (Presentation vs Business Logic)',
+      latency: 'Sub-50ms endpoint response across sprint integration tests',
+    },
+    summary:
+      'Collaborative agile projects often stall due to API drift, loose typing, and conflicting sprint code commits across frontend and backend boundaries.',
+    solution:
+      'Co-architected a decoupled full-stack platform as a core team member in a 3-person agile team. Enforced strict TypeScript contracts across presentation and service layers, paired with structured peer reviews and sprint milestone deliveries.',
+  },
   'slicer4j-research': {
     id: 'slicer4j-research',
-    sheetCode: 'SHEET 03 // EMPIRICAL SE PIPELINE',
+    sheetCode: 'SHEET 05 // EMPIRICAL SE PIPELINE',
     title: 'Program Slicing in Automated Program Repair',
     headline: 'Dynamic Bytecode Slicing for LLM Token Context Optimization',
     subtitle: 'Slicer4J · Soot Intermediate Representation · JUnit · Token Pruning',
@@ -140,6 +210,7 @@ export default function Home() {
   const [isSimulating, setIsSimulating] = useState<boolean>(false);
   const [committedCount, setCommittedCount] = useState<number>(1);
   const [rejectedCount, setRejectedCount] = useState<number>(49);
+  const [isGhostActive, setIsGhostActive] = useState<boolean>(false);
   const [drawerSheet, setDrawerSheet] = useState<SheetData | null>(null);
 
   const activeSheet = SHEETS[activeSheetKey] || SHEETS['ticket-booking'];
@@ -167,6 +238,10 @@ export default function Home() {
     }, 900);
   };
 
+  const toggleGhostMode = () => {
+    setIsGhostActive((prev) => !prev);
+  };
+
   return (
     <div className="blueprint-grid min-h-screen text-[var(--ink)] p-2 sm:p-4 md:p-6 lg:p-8 selection:bg-[var(--cobalt)] selection:text-[var(--paper)]">
       {/* Outer Technical Frame (DIN 6771 / ISO 5457 Layout) */}
@@ -188,106 +263,109 @@ export default function Home() {
                 <div className="font-display text-2xl font-black tracking-tight text-[var(--ink)] mt-1">
                   ST. NGUYEN
                 </div>
-                <div className="flex items-center gap-1.5 font-mono text-xs text-[var(--ink-muted)] mt-1">
-                  <MapPin size={13} className="text-[var(--cobalt)]" />
+                <div className="flex items-center gap-1.5 font-sans text-xs text-[var(--ink-muted)] mt-1">
+                  <MapPin size={13} className="text-[var(--cobalt)] shrink-0" />
                   <span>Hildesheim, Germany</span>
                 </div>
               </div>
 
               {/* Coordinate Navigation Links */}
-              <nav className="space-y-1.5" aria-label="Blueprint Coordinates">
+              <nav className="space-y-1.5 font-sans" aria-label="Blueprint Coordinates">
                 <a
                   href="#systems"
-                  className="flex items-center justify-between p-2.5 rounded-none font-mono text-xs font-semibold hover:bg-[var(--paper)] hover:text-[var(--cobalt)] border border-transparent hover:border-[var(--ink)] transition-colors group"
+                  className="flex items-center justify-between p-2.5 rounded-none text-sm font-medium hover:bg-[var(--paper)] hover:text-[var(--cobalt)] border border-transparent hover:border-[var(--ink)] transition-colors group"
                 >
                   <span className="flex items-center gap-2">
-                    <span className="text-[var(--cobalt)] font-bold">[A1]</span>
-                    <span>SYSTEMS</span>
+                    <span className="text-[var(--cobalt)] font-mono font-bold text-xs">[A1]</span>
+                    <span className="font-semibold text-[var(--ink)]">SYSTEMS</span>
                   </span>
-                  <span className="tabular-nums text-[var(--ink-muted)] group-hover:text-[var(--ink)]">03</span>
+                  <span className="font-mono text-xs tabular-nums text-[var(--ink-muted)] group-hover:text-[var(--ink)]">04</span>
                 </a>
                 <a
                   href="#experience"
-                  className="flex items-center justify-between p-2.5 rounded-none font-mono text-xs font-semibold hover:bg-[var(--paper)] hover:text-[var(--cobalt)] border border-transparent hover:border-[var(--ink)] transition-colors group"
+                  className="flex items-center justify-between p-2.5 rounded-none text-sm font-medium hover:bg-[var(--paper)] hover:text-[var(--cobalt)] border border-transparent hover:border-[var(--ink)] transition-colors group"
                 >
                   <span className="flex items-center gap-2">
-                    <span className="text-[var(--cobalt)] font-bold">[B2]</span>
-                    <span>EXPERIENCE</span>
+                    <span className="text-[var(--cobalt)] font-mono font-bold text-xs">[B2]</span>
+                    <span className="font-semibold text-[var(--ink)]">EXPERIENCE</span>
                   </span>
-                  <span className="tabular-nums text-[var(--ink-muted)] group-hover:text-[var(--ink)]">02</span>
+                  <span className="font-mono text-xs tabular-nums text-[var(--ink-muted)] group-hover:text-[var(--ink)]">02</span>
                 </a>
                 <a
                   href="#research"
-                  className="flex items-center justify-between p-2.5 rounded-none font-mono text-xs font-semibold hover:bg-[var(--paper)] hover:text-[var(--cobalt)] border border-transparent hover:border-[var(--ink)] transition-colors group"
+                  className="flex items-center justify-between p-2.5 rounded-none text-sm font-medium hover:bg-[var(--paper)] hover:text-[var(--cobalt)] border border-transparent hover:border-[var(--ink)] transition-colors group"
                 >
                   <span className="flex items-center gap-2">
-                    <span className="text-[var(--cobalt)] font-bold">[C3]</span>
-                    <span>SE RESEARCH</span>
+                    <span className="text-[var(--cobalt)] font-mono font-bold text-xs">[C3]</span>
+                    <span className="font-semibold text-[var(--ink)]">SE RESEARCH</span>
                   </span>
-                  <span className="tabular-nums text-[var(--ink-muted)] group-hover:text-[var(--ink)]">02</span>
+                  <span className="font-mono text-xs tabular-nums text-[var(--ink-muted)] group-hover:text-[var(--ink)]">02</span>
                 </a>
                 <a
                   href="#architecture"
-                  className="flex items-center justify-between p-2.5 rounded-none font-mono text-xs font-semibold hover:bg-[var(--paper)] hover:text-[var(--cobalt)] border border-transparent hover:border-[var(--ink)] transition-colors group"
+                  className="flex items-center justify-between p-2.5 rounded-none text-sm font-medium hover:bg-[var(--paper)] hover:text-[var(--cobalt)] border border-transparent hover:border-[var(--ink)] transition-colors group"
                 >
                   <span className="flex items-center gap-2">
-                    <span className="text-[var(--cobalt)] font-bold">[D4]</span>
-                    <span>ARCHITECTURE</span>
+                    <span className="text-[var(--cobalt)] font-mono font-bold text-xs">[D4]</span>
+                    <span className="font-semibold text-[var(--ink)]">ARCHITECTURE</span>
                   </span>
                   <span className="text-[var(--ink-muted)]">↗</span>
                 </a>
               </nav>
 
               {/* Status Indicator */}
-              <div className="p-3 bg-[var(--paper)] border border-[var(--rule-strong)] font-mono text-xs space-y-1">
+              <div className="p-3 bg-[var(--paper)] border border-[var(--rule-strong)] space-y-1 font-sans">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-600" />
-                  <span className="font-bold text-[var(--ink)]">AVAILABLE H2 2025</span>
+                  <span className="w-2 h-2 rounded-full bg-emerald-600 shrink-0" />
+                  <span className="font-mono text-xs font-bold text-[var(--ink)] tracking-wider">AVAILABLE H2 2025</span>
                 </div>
-                <div className="text-[var(--ink-muted)] text-xs leading-tight">
+                <div className="text-[var(--ink-muted)] text-xs leading-normal">
                   Backend / Systems Engineering in Germany &amp; EU
                 </div>
               </div>
             </div>
 
             {/* CTAs and External Verification Links */}
-            <div className="pt-6 space-y-3">
+            <div className="pt-6 space-y-2.5 font-sans">
               <a
                 href="/cv.pdf"
                 download
-                className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-[var(--vermilion)] text-white font-mono text-xs font-bold tracking-wider uppercase hover:bg-[#b82e18] transition-colors border border-[var(--ink)]"
+                className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-[var(--vermilion)] text-white text-sm font-semibold tracking-wide hover:bg-[#b82e18] transition-colors border border-[var(--ink)] shadow-xs"
               >
-                <Download size={14} />
+                <Download size={15} />
                 <span>Download CV.pdf ↗</span>
               </a>
 
-              <div className="grid grid-cols-3 gap-1 pt-1 font-mono text-xs text-center">
+              <div className="grid grid-cols-2 gap-2 text-sm font-semibold">
                 <a
                   href="https://github.com/sonthien22501"
                   target="_blank"
                   rel="noreferrer"
-                  className="p-2 border border-[var(--rule-strong)] bg-white hover:bg-[var(--paper)] hover:text-[var(--cobalt)] transition-colors"
+                  className="flex items-center justify-center gap-1.5 py-2.5 px-3 border border-[var(--rule-strong)] bg-white hover:bg-[var(--paper)] hover:text-[var(--cobalt)] transition-colors text-[var(--ink)]"
                   title="GitHub Profile"
                 >
-                  GitHub
+                  <Code2 size={14} className="shrink-0" />
+                  <span>GitHub ↗</span>
                 </a>
                 <a
                   href="https://www.linkedin.com/in/sonthien225/"
                   target="_blank"
                   rel="noreferrer"
-                  className="p-2 border border-[var(--rule-strong)] bg-white hover:bg-[var(--paper)] hover:text-[var(--cobalt)] transition-colors"
+                  className="flex items-center justify-center gap-1.5 py-2.5 px-3 border border-[var(--rule-strong)] bg-white hover:bg-[var(--paper)] hover:text-[var(--cobalt)] transition-colors text-[var(--ink)]"
                   title="LinkedIn Profile"
                 >
-                  LinkedIn
-                </a>
-                <a
-                  href="mailto:sonthien225@gmail.com"
-                  className="p-2 border border-[var(--rule-strong)] bg-white hover:bg-[var(--paper)] hover:text-[var(--cobalt)] transition-colors"
-                  title="Email Direct"
-                >
-                  Email
+                  <span>LinkedIn ↗</span>
                 </a>
               </div>
+
+              <a
+                href="mailto:sonthien225@gmail.com"
+                className="w-full flex items-center justify-center gap-2 py-2.5 px-3 border border-[var(--rule-strong)] bg-white hover:bg-[var(--paper)] hover:text-[var(--cobalt)] transition-colors text-sm font-semibold text-[var(--ink)]"
+                title="Email Direct"
+              >
+                <Mail size={14} className="shrink-0 text-[var(--cobalt)]" />
+                <span className="truncate">sonthien225@gmail.com ↗</span>
+              </a>
             </div>
           </aside>
 
@@ -302,15 +380,15 @@ export default function Home() {
                 </h1>
               </div>
 
-              {/* Technical Stack Ledger - Placed beside/right of heading */}
-              <div className="font-mono text-xs md:text-right space-y-1 shrink-0">
-                <div className="font-bold text-[var(--ink)] tracking-wider">
+              {/* Technical Stack Ledger */}
+              <div className="md:text-right space-y-1 shrink-0 font-sans">
+                <div className="font-mono text-xs font-bold text-[var(--ink)] tracking-wider">
                   BACKEND &amp; DISTRIBUTED SYSTEMS ENGINEER
                 </div>
-                <div className="text-[var(--cobalt)] font-semibold">
+                <div className="text-[var(--cobalt)] text-sm font-semibold">
                   JAVA SPRING BOOT · GO · KAFKA · POSTGRESQL · K8S
                 </div>
-                <div className="text-[var(--ink-muted)] text-xs flex md:justify-end items-center gap-2">
+                <div className="text-[var(--ink-muted)] text-xs flex md:justify-end items-center gap-2 font-mono">
                   <span>ISO 5457 // TECHNICAL DRAWING SPECIFICATION</span>
                   <span className="w-2 h-2 bg-[var(--cobalt)] inline-block" />
                 </div>
@@ -325,40 +403,60 @@ export default function Home() {
                 <div className="space-y-4">
                   
                   {/* Sheet Switcher Tabs */}
-                  <div className="flex flex-wrap items-center gap-2 border-b border-[var(--rule-strong)] pb-4">
+                  <div className="flex flex-wrap items-center gap-2 border-b border-[var(--rule-strong)] pb-4 font-sans">
                     <button
-                      className={`whitespace-nowrap shrink-0 px-3 py-1.5 font-mono text-xs font-semibold border transition-all ${
+                      className={`whitespace-nowrap shrink-0 px-3 py-1.5 text-xs sm:text-sm font-semibold border transition-all ${
                         activeSheetKey === 'ticket-booking'
                           ? 'border-[var(--ink)] bg-[var(--cobalt)] text-white shadow-xs'
                           : 'border-[var(--rule-strong)] bg-white text-[var(--ink-muted)] hover:border-[var(--ink)] hover:text-[var(--ink)]'
                       }`}
                       onClick={() => setActiveSheetKey('ticket-booking')}
                     >
-                      [01] TICKET BOOKING (GO)
+                      <span className="font-mono font-bold mr-1">[01]</span> TICKET BOOKING (GO)
                     </button>
                     <button
-                      className={`whitespace-nowrap shrink-0 px-3 py-1.5 font-mono text-xs font-semibold border transition-all ${
+                      className={`whitespace-nowrap shrink-0 px-3 py-1.5 text-xs sm:text-sm font-semibold border transition-all ${
                         activeSheetKey === 'researcher-cockpit'
                           ? 'border-[var(--ink)] bg-[var(--cobalt)] text-white shadow-xs'
                           : 'border-[var(--rule-strong)] bg-white text-[var(--ink-muted)] hover:border-[var(--ink)] hover:text-[var(--ink)]'
                       }`}
                       onClick={() => setActiveSheetKey('researcher-cockpit')}
                     >
-                      [02] JABREF JDK 25 PR
+                      <span className="font-mono font-bold mr-1">[02]</span> JABREF JDK 25 PR
                     </button>
                     <button
-                      className={`whitespace-nowrap shrink-0 px-3 py-1.5 font-mono text-xs font-semibold border transition-all ${
+                      className={`whitespace-nowrap shrink-0 px-3 py-1.5 text-xs sm:text-sm font-semibold border transition-all ${
+                        activeSheetKey === 'usagi-buddy'
+                          ? 'border-[var(--ink)] bg-[var(--cobalt)] text-white shadow-xs'
+                          : 'border-[var(--rule-strong)] bg-white text-[var(--ink-muted)] hover:border-[var(--ink)] hover:text-[var(--ink)]'
+                      }`}
+                      onClick={() => setActiveSheetKey('usagi-buddy')}
+                    >
+                      <span className="font-mono font-bold mr-1">[03]</span> USAGI BUDDY (ELECTRON)
+                    </button>
+                    <button
+                      className={`whitespace-nowrap shrink-0 px-3 py-1.5 text-xs sm:text-sm font-semibold border transition-all ${
+                        activeSheetKey === 'awd-project'
+                          ? 'border-[var(--ink)] bg-[var(--cobalt)] text-white shadow-xs'
+                          : 'border-[var(--rule-strong)] bg-white text-[var(--ink-muted)] hover:border-[var(--ink)] hover:text-[var(--ink)]'
+                      }`}
+                      onClick={() => setActiveSheetKey('awd-project')}
+                    >
+                      <span className="font-mono font-bold mr-1">[04]</span> AWD FULL-STACK (TEAM)
+                    </button>
+                    <button
+                      className={`whitespace-nowrap shrink-0 px-3 py-1.5 text-xs sm:text-sm font-semibold border transition-all ${
                         activeSheetKey === 'slicer4j-research'
                           ? 'border-[var(--ink)] bg-[var(--cobalt)] text-white shadow-xs'
                           : 'border-[var(--rule-strong)] bg-white text-[var(--ink-muted)] hover:border-[var(--ink)] hover:text-[var(--ink)]'
                       }`}
                       onClick={() => setActiveSheetKey('slicer4j-research')}
                     >
-                      [03] SLICER4J APR PIPELINE
+                      <span className="font-mono font-bold mr-1">[05]</span> SLICER4J APR PIPELINE
                     </button>
                   </div>
 
-                  {/* Stage Headline (Heading leads; metadata is placed below) */}
+                  {/* Stage Headline */}
                   <div>
                     <h2 className="font-display text-xl sm:text-2xl font-bold text-[var(--ink)] tracking-tight text-balance">
                       {activeSheet.headline}
@@ -368,7 +466,7 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* Curving SVG Trajectory Architecture Stage */}
+                  {/* Interactive Architecture Stage Visualizations */}
                   <div className="relative border-1.5 border-[var(--ink)] bg-white p-4 sm:p-6 overflow-hidden">
                     {/* Background grid watermark */}
                     <div className="absolute inset-0 pointer-events-none opacity-20 blueprint-grid" />
@@ -450,7 +548,7 @@ export default function Home() {
                               <text x="57" y="24" textAnchor="middle" fontSize="12" fontFamily="var(--font-fira-code)" fontWeight="bold" fill="var(--ink)">
                                 NGINX
                               </text>
-                              <text x="57" y="42" textAnchor="middle" fontSize="12" fontFamily="var(--font-fira-code)" fill="var(--ink-muted)">
+                              <text x="57" y="42" textAnchor="middle" fontSize="12" fontFamily="var(--font-public-sans)" fill="var(--ink-muted)">
                                 Reverse Proxy
                               </text>
                             </g>
@@ -467,7 +565,7 @@ export default function Home() {
                               <text x="70" y="27" textAnchor="middle" fontSize="12" fontFamily="var(--font-fira-code)" fontWeight="bold" fill="var(--cobalt)">
                                 Go Booking Svc
                               </text>
-                              <text x="70" y="47" textAnchor="middle" fontSize="12" fontFamily="var(--font-fira-code)" fill="var(--ink-muted)">
+                              <text x="70" y="47" textAnchor="middle" fontSize="12" fontFamily="var(--font-public-sans)" fill="var(--ink-muted)">
                                 Saga Coordinator
                               </text>
                             </g>
@@ -513,9 +611,9 @@ export default function Home() {
                           <button
                             onClick={triggerSpikeSimulation}
                             disabled={isSimulating}
-                            className="whitespace-nowrap shrink-0 px-4 py-2 bg-[var(--ink)] text-white hover:bg-[var(--cobalt)] font-mono text-xs font-bold transition-all flex items-center gap-2 border border-[var(--ink)] disabled:opacity-60"
+                            className="whitespace-nowrap shrink-0 px-4 py-2 bg-[var(--ink)] text-white hover:bg-[var(--cobalt)] font-sans text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 border border-[var(--ink)] disabled:opacity-60"
                           >
-                            <Play size={13} className={isSimulating ? 'animate-spin' : ''} />
+                            <Play size={14} className={isSimulating ? 'animate-spin' : ''} />
                             <span>{isSimulating ? 'DISPATCHING 50 REQS...' : 'Simulate 50x Contention Spike'}</span>
                           </button>
 
@@ -532,71 +630,166 @@ export default function Home() {
 
                     {activeSheetKey === 'researcher-cockpit' && (
                       <div className="space-y-4">
-                        <div className="p-4 bg-[var(--paper)] border border-[var(--rule-strong)] space-y-3 font-mono text-xs">
-                          <div className="flex items-center justify-between border-b border-[var(--rule)] pb-2">
+                        <div className="p-4 bg-[var(--paper)] border border-[var(--rule-strong)] space-y-3 font-sans text-xs sm:text-sm">
+                          <div className="flex items-center justify-between border-b border-[var(--rule)] pb-2 font-mono">
                             <span className="font-bold text-[var(--cobalt)]">CROSS-ORIGIN CLIENT/SERVER ARCHITECTURE</span>
                             <span className="text-emerald-700 bg-emerald-50 px-2 py-0.5 border border-emerald-300">
                               PR #14963 MERGED
                             </span>
                           </div>
                           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                            <div className="p-3 bg-white border border-[var(--ink)]">
-                              <div className="font-bold text-[var(--ink)]">[1] WebExtension</div>
-                              <div className="text-[var(--ink-muted)] text-xs mt-1">
+                            <div className="p-3 bg-white border border-[var(--ink)] space-y-1">
+                              <div className="font-bold text-[var(--ink)] font-mono text-xs">[1] WebExtension</div>
+                              <div className="text-[var(--ink-muted)] leading-relaxed">
                                 Content scripts on IEEE Xplore, arXiv, and Google Scholar parsing live DOM nodes.
                               </div>
                             </div>
-                            <div className="p-3 bg-white border border-[var(--cobalt)]">
-                              <div className="font-bold text-[var(--cobalt)]">[2] Loopback REST IPC</div>
-                              <div className="text-[var(--ink-muted)] text-xs mt-1">
+                            <div className="p-3 bg-white border border-[var(--cobalt)] space-y-1">
+                              <div className="font-bold text-[var(--cobalt)] font-mono text-xs">[2] Loopback REST IPC</div>
+                              <div className="text-[var(--ink-muted)] leading-relaxed">
                                 Secure cross-origin payload transmission to local desktop port with token auth.
                               </div>
                             </div>
-                            <div className="p-3 bg-white border border-[var(--ink)]">
-                              <div className="font-bold text-[var(--ink)]">[3] JabRef JDK 25</div>
-                              <div className="text-[var(--ink-muted)] text-xs mt-1">
+                            <div className="p-3 bg-white border border-[var(--ink)] space-y-1">
+                              <div className="font-bold text-[var(--ink)] font-mono text-xs">[3] JabRef JDK 25</div>
+                              <div className="text-[var(--ink-muted)] leading-relaxed">
                                 Java desktop daemon parses BibTeX entries, deduplicates, and links downloaded PDFs.
                               </div>
                             </div>
                           </div>
                         </div>
-                        <div className="font-mono text-xs text-[var(--ink-muted)] flex items-center gap-2">
-                          <CheckCircle2 size={14} className="text-emerald-600" />
+                        <div className="font-sans text-xs text-[var(--ink-muted)] flex items-center gap-2">
+                          <CheckCircle2 size={15} className="text-emerald-600 shrink-0" />
                           <span>Factual Proof: Contributed directly to JabRef upstream open-source codebase (JDK 25 WebExtension API).</span>
+                        </div>
+                      </div>
+                    )}
+
+                    {activeSheetKey === 'usagi-buddy' && (
+                      <div className="space-y-4">
+                        {/* Interactive Multi-Window IPC Topology Diagram */}
+                        <div className="p-4 bg-[var(--paper)] border border-[var(--rule-strong)] space-y-3 font-sans">
+                          <div className="flex items-center justify-between border-b border-[var(--rule)] pb-2 font-mono text-xs">
+                            <span className="font-bold text-[var(--cobalt)]">4-WINDOW ELECTRON IPC &amp; CANVAS HIT-TESTING</span>
+                            <span className="text-emerald-700 bg-emerald-50 px-2 py-0.5 border border-emerald-300">
+                              60 FPS CANVAS ENGINE
+                            </span>
+                          </div>
+
+                          <div className="grid grid-cols-1 sm:grid-cols-4 gap-2.5 text-xs">
+                            <div className="p-3 bg-white border border-[var(--ink)] space-y-1">
+                              <div className="font-mono font-bold text-[var(--ink)]">[1] Overlay Window</div>
+                              <div className="text-[var(--ink-muted)] leading-snug">
+                                Transparent Canvas 2D at 60 FPS. Swimming &amp; cursor-hug attraction vectors.
+                              </div>
+                            </div>
+                            <div className="p-3 bg-white border border-[var(--cobalt)] space-y-1">
+                              <div className="font-mono font-bold text-[var(--cobalt)]">[2] Main Process</div>
+                              <div className="text-[var(--ink-muted)] leading-snug">
+                                ghostModeController.ts handles click-through setIgnoreMouseEvents forwarding.
+                              </div>
+                            </div>
+                            <div className="p-3 bg-white border border-[var(--ink)] space-y-1">
+                              <div className="font-mono font-bold text-[var(--ink)]">[3] Dashboard GUI</div>
+                              <div className="text-[var(--ink-muted)] leading-snug">
+                                Character skins, Pomodoro timers, and physics drag coefficient settings.
+                              </div>
+                            </div>
+                            <div className="p-3 bg-white border border-[var(--ink)] space-y-1">
+                              <div className="font-mono font-bold text-[var(--ink)]">[4] Sticky &amp; Tray</div>
+                              <div className="text-[var(--ink-muted)] leading-snug">
+                                Desktop-pinned quests, calendarStore.ts, and multi-monitor trayPositioner.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Interactive Ghost Mode Simulation */}
+                        <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-[var(--rule)]">
+                          <button
+                            className="whitespace-nowrap shrink-0 px-4 py-2 bg-[var(--ink)] text-white hover:bg-[var(--cobalt)] font-sans text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 border border-[var(--ink)]"
+                            onClick={toggleGhostMode}
+                          >
+                            <Sparkles size={14} />
+                            <span>Toggle Hit-Test Simulator ({isGhostActive ? 'Cursor on Sprite' : 'Cursor on Transparency'})</span>
+                          </button>
+
+                          <div className="font-mono text-xs font-bold flex items-center gap-2 bg-[var(--paper)] px-3 py-1.5 border border-[var(--rule-strong)]">
+                            {isGhostActive ? (
+                              <span className="text-emerald-700">SPRITE OPAQUE (Alpha &gt; 20) → INTERACTIVE CLICK ENGAGED</span>
+                            ) : (
+                              <span className="text-[var(--cobalt)]">GHOST MODE → setIgnoreMouseEvents(true, forward: true)</span>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {activeSheetKey === 'awd-project' && (
+                      <div className="space-y-4">
+                        <div className="p-4 bg-[var(--paper)] border border-[var(--rule-strong)] space-y-3 font-sans">
+                          <div className="flex items-center justify-between border-b border-[var(--rule)] pb-2 font-mono text-xs">
+                            <span className="font-bold text-[var(--cobalt)]">DECOUPLED 3-TIER FULL-STACK ARCHITECTURE</span>
+                            <span className="text-[var(--cobalt)] font-bold">CORE TEAM MEMBER · 3-PERSON TEAM</span>
+                          </div>
+                          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs sm:text-sm">
+                            <div className="p-3 bg-white border border-[var(--ink)] space-y-1">
+                              <div className="font-mono font-bold text-[var(--ink)]">[1] Presentation Tier</div>
+                              <div className="text-[var(--ink-muted)] leading-relaxed">
+                                React &amp; TypeScript client components consuming strict DTO schemas.
+                              </div>
+                            </div>
+                            <div className="p-3 bg-white border border-[var(--cobalt)] space-y-1">
+                              <div className="font-mono font-bold text-[var(--cobalt)]">[2] Shared Type Contracts</div>
+                              <div className="text-[var(--ink-muted)] leading-relaxed">
+                                End-to-end TypeScript interfaces eliminating API schema integration drift.
+                              </div>
+                            </div>
+                            <div className="p-3 bg-white border border-[var(--ink)] space-y-1">
+                              <div className="font-mono font-bold text-[var(--ink)]">[3] Node.js Service Layer</div>
+                              <div className="text-[var(--ink-muted)] leading-relaxed">
+                                Express RESTful endpoints with input validation and relational persistence.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="font-sans text-xs text-[var(--ink-muted)] flex items-center gap-2">
+                          <Users size={15} className="text-[var(--cobalt)] shrink-0" />
+                          <span>Agile Engineering: Delivered in a 3-member team with Avnish Raut via structured GitHub PR reviews and sprint milestones.</span>
                         </div>
                       </div>
                     )}
 
                     {activeSheetKey === 'slicer4j-research' && (
                       <div className="space-y-4">
-                        <div className="p-4 bg-[var(--paper)] border border-[var(--rule-strong)] space-y-3 font-mono text-xs">
-                          <div className="flex items-center justify-between border-b border-[var(--rule)] pb-2">
+                        <div className="p-4 bg-[var(--paper)] border border-[var(--rule-strong)] space-y-3 font-sans">
+                          <div className="flex items-center justify-between border-b border-[var(--rule)] pb-2 font-mono text-xs">
                             <span className="font-bold text-[var(--cobalt)]">DYNAMIC PROGRAM SLICING FOR APR PIPELINE</span>
                             <span className="text-[var(--cobalt)] font-bold">R&amp;D GROUP PROJECT</span>
                           </div>
-                          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                            <div className="p-3 bg-white border border-[var(--ink)]">
-                              <div className="font-bold text-[var(--ink)]">[1] Slicer4J &amp; Soot</div>
-                              <div className="text-[var(--ink-muted)] text-xs mt-1">
+                          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs sm:text-sm">
+                            <div className="p-3 bg-white border border-[var(--ink)] space-y-1">
+                              <div className="font-mono font-bold text-[var(--ink)]">[1] Slicer4J &amp; Soot</div>
+                              <div className="text-[var(--ink-muted)] leading-relaxed">
                                 Dynamic bytecode instrumentation tracking variable flow during failing test executions.
                               </div>
                             </div>
-                            <div className="p-3 bg-white border border-[var(--cobalt)]">
-                              <div className="font-bold text-[var(--cobalt)]">[2] Backward Slicing</div>
-                              <div className="text-[var(--ink-muted)] text-xs mt-1">
+                            <div className="p-3 bg-white border border-[var(--cobalt)] space-y-1">
+                              <div className="font-mono font-bold text-[var(--cobalt)]">[2] Backward Slicing</div>
+                              <div className="text-[var(--ink-muted)] leading-relaxed">
                                 Extracts minimal fault-relevant statements, discarding non-causal production logic.
                               </div>
                             </div>
-                            <div className="p-3 bg-white border border-[var(--vermilion)]">
-                              <div className="font-bold text-[var(--vermilion)]">[3] LLM Context Gate</div>
-                              <div className="text-[var(--ink-muted)] text-xs mt-1">
+                            <div className="p-3 bg-white border border-[var(--vermilion)] space-y-1">
+                              <div className="font-mono font-bold text-[var(--vermilion)]">[3] LLM Context Gate</div>
+                              <div className="text-[var(--ink-muted)] leading-relaxed">
                                 Feeds focused slices into LLMs for automated program repair; prunes 68.4% of raw tokens.
                               </div>
                             </div>
                           </div>
                         </div>
-                        <div className="font-mono text-xs text-[var(--ink-muted)] flex items-center gap-2">
-                          <CheckCircle2 size={14} className="text-emerald-600" />
+                        <div className="font-sans text-xs text-[var(--ink-muted)] flex items-center gap-2">
+                          <CheckCircle2 size={15} className="text-emerald-600 shrink-0" />
                           <span>Evaluated on Defects4J Java benchmark suite under rigorous empirical SE methodology.</span>
                         </div>
                       </div>
@@ -605,16 +798,16 @@ export default function Home() {
                 </div>
 
                 {/* Stage Bottom Verified Stamp */}
-                <div className="mt-4 pt-3 border-t border-[var(--rule)] font-mono text-xs flex flex-wrap items-center justify-between text-[var(--ink-muted)]">
-                  <span>VERIFIED: 1 COMMITTED · 49 CONFLICT REJECTED · 0 OVERSOLD · PR #14963</span>
-                  <span className="text-[var(--cobalt)] font-semibold">ISO 5457 SPEC 2025</span>
+                <div className="mt-4 pt-3 border-t border-[var(--rule)] font-sans text-xs flex flex-wrap items-center justify-between text-[var(--ink-muted)]">
+                  <span>VERIFIED: 1 COMMITTED · 49 CONFLICT REJECTED · 0 OVERSOLD · PR #14963 · 60 FPS CANVAS</span>
+                  <span className="text-[var(--cobalt)] font-mono font-semibold">ISO 5457 SPEC 2025</span>
                 </div>
               </section>
 
               {/* RIGHT STRESS TELEMETRY & BATCH PROOF COLUMN */}
-              <aside className="p-5 md:p-8 flex flex-col justify-between bg-[var(--paper-elevated)] space-y-6">
+              <aside className="p-5 md:p-8 flex flex-col justify-between bg-[var(--paper-elevated)] space-y-6 font-sans">
                 <div className="space-y-4">
-                  {/* Proof Header in table cell container, NOT above heading */}
+                  {/* Proof Header */}
                   <div className="pb-3 border-b border-[var(--rule-strong)] flex items-center justify-between">
                     <span className="font-mono text-xs font-bold text-[var(--ink)] tracking-wider">
                       STRESS TELEMETRY &amp; PROOF
@@ -622,7 +815,7 @@ export default function Home() {
                     <span className="font-mono text-xs text-[var(--cobalt)] font-semibold">[A1-METRICS]</span>
                   </div>
 
-                  {/* Metric Card 1: Concurrency Invariant */}
+                  {/* Metric Card 1 */}
                   <div className="p-4 bg-transparent border border-[var(--ink)] space-y-1">
                     <div className="font-mono text-xs font-bold text-[var(--cobalt)] tracking-wider">
                       {activeSheet.primaryMetric.label}
@@ -630,12 +823,12 @@ export default function Home() {
                     <div className="font-mono text-4xl font-black text-[var(--cobalt)] tabular-nums">
                       {activeSheet.primaryMetric.value}
                     </div>
-                    <div className="text-xs text-[var(--ink-muted)] leading-relaxed pt-1">
+                    <div className="text-sm text-[var(--ink-muted)] leading-relaxed pt-1">
                       {activeSheet.primaryMetric.desc}
                     </div>
                   </div>
 
-                  {/* Metric Card 2: Open Source & Research */}
+                  {/* Metric Card 2 */}
                   <div className="p-4 bg-transparent border border-[var(--ink)] space-y-1">
                     <div className="font-mono text-xs font-bold text-[var(--ink)] tracking-wider">
                       {activeSheet.secondaryMetric.label}
@@ -643,27 +836,27 @@ export default function Home() {
                     <div className="font-mono text-4xl font-black text-[var(--ink)] tabular-nums">
                       {activeSheet.secondaryMetric.value}
                     </div>
-                    <div className="text-xs text-[var(--ink-muted)] leading-relaxed pt-1">
+                    <div className="text-sm text-[var(--ink-muted)] leading-relaxed pt-1">
                       {activeSheet.secondaryMetric.desc}
                     </div>
                   </div>
 
-                  {/* Metric Card 3: Batch Recipe Parameters */}
-                  <div className="p-4 bg-[var(--paper)] border border-[var(--rule-strong)] font-mono text-xs space-y-1.5">
-                    <div className="font-bold text-[var(--ink)] pb-1 border-b border-[var(--rule)]">
-                      RECIPE // CONCURRENCY PARAMS
+                  {/* Metric Card 3: Architecture Spec Parameters */}
+                  <div className="p-4 bg-[var(--paper)] border border-[var(--rule-strong)] space-y-1.5 text-xs">
+                    <div className="font-mono font-bold text-[var(--ink)] pb-1 border-b border-[var(--rule)]">
+                      SPECIFICATION AUDIT // PARAMETERS
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-[var(--ink-muted)]">Max Conn:</span>
-                      <span className="font-bold text-[var(--ink)]">100 Pool</span>
+                      <span className="text-[var(--ink-muted)]">Protocol:</span>
+                      <span className="font-mono font-bold text-[var(--ink)] truncate max-w-[190px]">{activeSheet.concurrencySpecs.protocol}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-[var(--ink-muted)]">Lock Strategy:</span>
-                      <span className="font-bold text-[var(--cobalt)]">FOR UPDATE</span>
+                      <span className="text-[var(--ink-muted)]">Lock Model:</span>
+                      <span className="font-mono font-bold text-[var(--cobalt)] truncate max-w-[190px]">{activeSheet.concurrencySpecs.lockModel}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-[var(--ink-muted)]">Conflict Status:</span>
-                      <span className="font-bold text-[var(--vermilion)]">HTTP 409</span>
+                      <span className="text-[var(--ink-muted)]">Latency:</span>
+                      <span className="font-mono font-bold text-[var(--vermilion)]">{activeSheet.concurrencySpecs.latency}</span>
                     </div>
                   </div>
                 </div>
@@ -671,16 +864,16 @@ export default function Home() {
                 {/* Inspect Drawer and Route Actions */}
                 <div className="space-y-2 pt-2">
                   <button
-                    className="w-full whitespace-nowrap shrink-0 py-3 px-4 bg-white hover:bg-[var(--paper)] text-[var(--ink)] font-mono text-xs font-bold border border-[var(--ink)] hover:border-[var(--cobalt)] hover:text-[var(--cobalt)] transition-colors flex items-center justify-center gap-2"
+                    className="w-full whitespace-nowrap shrink-0 py-3 px-4 bg-white hover:bg-[var(--paper)] text-[var(--ink)] text-sm font-semibold border border-[var(--ink)] hover:border-[var(--cobalt)] hover:text-[var(--cobalt)] transition-colors flex items-center justify-center gap-2"
                     onClick={() => setDrawerSheet(activeSheet)}
                   >
-                    <FileText size={14} />
+                    <FileText size={16} />
                     <span>Inspect Spec Sheet [A1] ↗</span>
                   </button>
 
                   <Link
                     href={activeSheet.route}
-                    className="w-full py-3 px-4 bg-[var(--ink)] hover:bg-[var(--cobalt)] text-white font-mono text-xs font-bold transition-colors flex items-center justify-center gap-2"
+                    className="w-full py-3 px-4 bg-[var(--ink)] hover:bg-[var(--cobalt)] text-white text-sm font-semibold transition-colors flex items-center justify-center gap-2"
                   >
                     <span>Full Case Study Route ↗</span>
                   </Link>
@@ -689,7 +882,7 @@ export default function Home() {
             </div>
 
             {/* BOTTOM DIN TITLE-BLOCK LEDGER (3-COLUMN SUMMARY ROW) */}
-            <footer className="grid grid-cols-1 md:grid-cols-3 border-t-2 border-[var(--ink)] bg-[var(--paper)]">
+            <footer className="grid grid-cols-1 md:grid-cols-3 border-t-2 border-[var(--ink)] bg-[var(--paper)] font-sans">
               {/* Cell 1: Netcompany */}
               <div className="p-4 md:p-5 border-b md:border-b-0 md:border-r border-[var(--ink)] flex flex-col justify-between space-y-2">
                 <div className="font-mono text-xs font-bold text-[var(--cobalt)]">
@@ -699,7 +892,7 @@ export default function Home() {
                   <div className="font-display font-bold text-sm text-[var(--ink)]">
                     IT Consultant — Spring Boot, Kafka, K8s
                   </div>
-                  <div className="font-mono text-xs text-[var(--ink-muted)] mt-0.5">
+                  <div className="text-xs text-[var(--ink-muted)] mt-0.5">
                     Dec 2024 – Jan 2025 · Hanoi, Vietnam
                   </div>
                 </div>
@@ -714,7 +907,7 @@ export default function Home() {
                   <div className="font-display font-bold text-sm text-[var(--ink)]">
                     Backend Intern — REST APIs &amp; Microservices
                   </div>
-                  <div className="font-mono text-xs text-[var(--ink-muted)] mt-0.5">
+                  <div className="text-xs text-[var(--ink-muted)] mt-0.5">
                     Oct 2023 – Jan 2024 · Ho Chi Minh City, Vietnam
                   </div>
                 </div>
@@ -729,7 +922,7 @@ export default function Home() {
                   <div className="font-display font-bold text-sm text-white">
                     University of Hildesheim, Germany
                   </div>
-                  <div className="font-mono text-xs text-slate-300 mt-0.5">
+                  <div className="text-xs text-slate-300 mt-0.5">
                     Expected 2027 · Software Product Lines &amp; Systems
                   </div>
                 </div>
@@ -744,13 +937,13 @@ export default function Home() {
         <div className="p-5 sm:p-8 md:p-12 space-y-16 md:space-y-24 bg-[var(--paper)]">
 
           {/* SECTION [A1]: SYSTEMS ENGINEERING SPECIFICATIONS */}
-          <section id="systems" className="scroll-mt-8 space-y-8">
+          <section id="systems" className="scroll-mt-8 space-y-8 font-sans">
             <div className="flex flex-col md:flex-row md:items-baseline md:justify-between border-b-2 border-[var(--ink)] pb-3">
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[var(--ink)]">
                 Systems Engineering &amp; Distributed Architecture
               </h2>
               <span className="font-mono text-xs font-bold text-[var(--cobalt)] tracking-wider mt-1 md:mt-0">
-                [A1] SPECIFICATIONS · 03 ACTIVE PRODUCTION &amp; R&amp;D SYSTEMS
+                [A1] SPECIFICATIONS · 04 ACTIVE PRODUCTION &amp; R&amp;D SYSTEMS
               </span>
             </div>
 
@@ -768,14 +961,14 @@ export default function Home() {
                   </div>
                   <div className="flex flex-wrap items-center gap-2">
                     <button
-                      className="whitespace-nowrap shrink-0 px-3 py-1.5 font-mono text-xs font-bold border border-[var(--ink)] bg-[var(--paper)] hover:bg-[var(--ink)] hover:text-white transition-colors"
+                      className="whitespace-nowrap shrink-0 px-3 py-2 text-sm font-semibold border border-[var(--ink)] bg-[var(--paper)] hover:bg-[var(--ink)] hover:text-white transition-colors"
                       onClick={() => setDrawerSheet(SHEETS['ticket-booking'])}
                     >
                       Inspect Spec Sheet ↗
                     </button>
                     <Link
                       href="/projects/ticket-booking"
-                      className="px-3 py-1.5 font-mono text-xs font-bold bg-[var(--cobalt)] text-white hover:bg-[#0c3c66] transition-colors"
+                      className="px-3 py-2 text-sm font-semibold bg-[var(--cobalt)] text-white hover:bg-[#0c3c66] transition-colors"
                     >
                       Full Case Study ↗
                     </Link>
@@ -783,9 +976,9 @@ export default function Home() {
                       href="https://github.com/sonthien22501/ticket_booking_system"
                       target="_blank"
                       rel="noreferrer"
-                      className="px-3 py-1.5 font-mono text-xs font-bold border border-[var(--rule-strong)] hover:border-[var(--ink)] text-[var(--ink)] transition-colors inline-flex items-center gap-1.5"
+                      className="px-3 py-2 text-sm font-semibold border border-[var(--rule-strong)] hover:border-[var(--ink)] text-[var(--ink)] transition-colors inline-flex items-center gap-1.5"
                     >
-                      <Code2 size={13} />
+                      <Code2 size={15} />
                       <span>GitHub ↗</span>
                     </a>
                   </div>
@@ -796,23 +989,23 @@ export default function Home() {
                     <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed max-w-prose text-pretty">
                       Engineered a decoupled microservices platform specifically designed to prevent race conditions during high-volume ticket drops. Utilizes PostgreSQL row-level locking via <code className="font-mono font-bold text-[var(--ink)] bg-[var(--paper)] px-1.5 py-0.5 border border-[var(--rule-strong)]">SELECT ... FOR UPDATE</code> within a strict ACID transaction boundary, guaranteeing zero oversold seats under simultaneous multi-user contention.
                     </p>
-                    <div className="hatch-zone p-4 border border-[var(--rule-strong)] font-mono text-xs space-y-1">
-                      <div className="font-bold text-[var(--vermilion)]">LOAD TEST RESOLUTION: 50 SIMULTANEOUS REQUESTS</div>
-                      <div className="text-[var(--ink)] max-w-prose text-pretty">
+                    <div className="hatch-zone p-4 border border-[var(--rule-strong)] space-y-1">
+                      <div className="font-mono text-xs font-bold text-[var(--vermilion)]">LOAD TEST RESOLUTION: 50 SIMULTANEOUS REQUESTS</div>
+                      <div className="text-sm text-[var(--ink)] max-w-prose text-pretty">
                         Under simulated load of 50 concurrent seat reservation attempts for Seat #A1: exactly 1 booking succeeded (200 OK) and 49 received conflict rejections (HTTP 409). Zero duplicate tickets generated.
                       </div>
                     </div>
                   </div>
 
-                  <div className="border-t lg:border-t-0 lg:border-l border-[var(--rule-strong)] pt-4 lg:pt-0 lg:pl-6 font-mono text-xs space-y-2">
-                    <div className="font-bold text-[var(--ink)] pb-1 border-b border-[var(--rule)]">
+                  <div className="border-t lg:border-t-0 lg:border-l border-[var(--rule-strong)] pt-4 lg:pt-0 lg:pl-6 space-y-2 text-sm">
+                    <div className="font-mono text-xs font-bold text-[var(--ink)] pb-1 border-b border-[var(--rule)]">
                       SPECIFICATION SHEET [A1-01]
                     </div>
-                    <div><span className="text-[var(--ink-muted)]">Core Service:</span> <span className="font-bold">Go 1.22 / Gin</span></div>
-                    <div><span className="text-[var(--ink-muted)]">Database:</span> <span className="font-bold">PostgreSQL 16 (Row Lock)</span></div>
-                    <div><span className="text-[var(--ink-muted)]">Gateway:</span> <span className="font-bold">NGINX Reverse Proxy</span></div>
-                    <div><span className="text-[var(--ink-muted)]">Orchestration:</span> <span className="font-bold">Docker Compose</span></div>
-                    <div><span className="text-[var(--ink-muted)]">Methodology:</span> <span className="font-bold text-[var(--cobalt)]">Agentic AI Pair-Engineered</span></div>
+                    <div><span className="text-[var(--ink-muted)] text-xs">Core Service:</span> <span className="font-bold">Go 1.22 / Gin</span></div>
+                    <div><span className="text-[var(--ink-muted)] text-xs">Database:</span> <span className="font-bold">PostgreSQL 16 (Row Lock)</span></div>
+                    <div><span className="text-[var(--ink-muted)] text-xs">Gateway:</span> <span className="font-bold">NGINX Reverse Proxy</span></div>
+                    <div><span className="text-[var(--ink-muted)] text-xs">Orchestration:</span> <span className="font-bold">Docker Compose</span></div>
+                    <div><span className="text-[var(--ink-muted)] text-xs">Methodology:</span> <span className="font-bold text-[var(--cobalt)]">Agentic AI Pair-Engineered</span></div>
                   </div>
                 </div>
               </div>
@@ -830,14 +1023,14 @@ export default function Home() {
                   </div>
                   <div className="flex flex-wrap items-center gap-2">
                     <button
-                      className="whitespace-nowrap shrink-0 px-3 py-1.5 font-mono text-xs font-bold border border-[var(--ink)] bg-[var(--paper)] hover:bg-[var(--ink)] hover:text-white transition-colors"
+                      className="whitespace-nowrap shrink-0 px-3 py-2 text-sm font-semibold border border-[var(--ink)] bg-[var(--paper)] hover:bg-[var(--ink)] hover:text-white transition-colors"
                       onClick={() => setDrawerSheet(SHEETS['researcher-cockpit'])}
                     >
                       Inspect Spec Sheet ↗
                     </button>
                     <Link
                       href="/projects/researcher-cockpit"
-                      className="px-3 py-1.5 font-mono text-xs font-bold bg-[var(--cobalt)] text-white hover:bg-[#0c3c66] transition-colors"
+                      className="px-3 py-2 text-sm font-semibold bg-[var(--cobalt)] text-white hover:bg-[#0c3c66] transition-colors"
                     >
                       Full Case Study ↗
                     </Link>
@@ -845,10 +1038,10 @@ export default function Home() {
                       href="https://github.com/JabRef/jabref/pull/14963"
                       target="_blank"
                       rel="noreferrer"
-                      className="px-3 py-1.5 font-mono text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-300 hover:bg-emerald-100 transition-colors inline-flex items-center gap-1.5"
+                      className="px-3 py-2 text-sm font-semibold bg-emerald-50 text-emerald-800 border border-emerald-300 hover:bg-emerald-100 transition-colors inline-flex items-center gap-1.5"
                     >
-                      <GitPullRequest size={13} />
-                      <span>PR #14963 ↗</span>
+                      <GitPullRequest size={15} />
+                      <span className="font-mono font-bold text-xs">PR #14963 ↗</span>
                     </a>
                   </div>
                 </div>
@@ -860,43 +1053,49 @@ export default function Home() {
                     </p>
                   </div>
 
-                  <div className="border-t lg:border-t-0 lg:border-l border-[var(--rule-strong)] pt-4 lg:pt-0 lg:pl-6 font-mono text-xs space-y-2">
-                    <div className="font-bold text-[var(--ink)] pb-1 border-b border-[var(--rule)]">
+                  <div className="border-t lg:border-t-0 lg:border-l border-[var(--rule-strong)] pt-4 lg:pt-0 lg:pl-6 space-y-2 text-sm">
+                    <div className="font-mono text-xs font-bold text-[var(--ink)] pb-1 border-b border-[var(--rule)]">
                       SPECIFICATION SHEET [A1-02]
                     </div>
-                    <div><span className="text-[var(--ink-muted)]">Client Sandbox:</span> <span className="font-bold">JavaScript / WebExtensions</span></div>
-                    <div><span className="text-[var(--ink-muted)]">Backend Daemon:</span> <span className="font-bold">Java (JDK 25 / JabRef)</span></div>
-                    <div><span className="text-[var(--ink-muted)]">Scraper Targets:</span> <span className="font-bold">IEEE, arXiv, Scholar</span></div>
-                    <div><span className="text-[var(--ink-muted)]">Upstream Status:</span> <span className="font-bold text-emerald-700">PR #14963</span></div>
+                    <div><span className="text-[var(--ink-muted)] text-xs">Client Sandbox:</span> <span className="font-bold">JavaScript / WebExtensions</span></div>
+                    <div><span className="text-[var(--ink-muted)] text-xs">Backend Daemon:</span> <span className="font-bold">Java (JDK 25 / JabRef)</span></div>
+                    <div><span className="text-[var(--ink-muted)] text-xs">Scraper Targets:</span> <span className="font-bold">IEEE, arXiv, Scholar</span></div>
+                    <div><span className="text-[var(--ink-muted)] text-xs">Upstream Status:</span> <span className="font-bold font-mono text-emerald-700">PR #14963</span></div>
                   </div>
                 </div>
               </div>
 
-              {/* SYSTEM 03: Advanced Web Development */}
+              {/* SYSTEM 03: Usagi Buddy (Usagi Float v0.5) */}
               <div className="border border-[var(--ink)] bg-white p-6 md:p-8">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[var(--rule-strong)] pb-4">
                   <div>
                     <h3 className="font-display text-xl sm:text-2xl font-bold text-[var(--ink)] text-balance">
-                      Advanced Web Development (AWD)
+                      Usagi Buddy (Usagi Float v0.5)
                     </h3>
                     <div className="font-mono text-xs text-[var(--cobalt)] font-semibold mt-1">
-                      FULL-STACK TYPESCRIPT ARCHITECTURE · NODE.JS · DECOUPLED CLIENT-SERVER
+                      MULTI-WINDOW DESKTOP COMPANION · ELECTRON · TYPESCRIPT · HTML5 CANVAS 2D
                     </div>
                   </div>
                   <div className="flex flex-wrap items-center gap-2">
+                    <button
+                      className="whitespace-nowrap shrink-0 px-3 py-2 text-sm font-semibold border border-[var(--ink)] bg-[var(--paper)] hover:bg-[var(--ink)] hover:text-white transition-colors"
+                      onClick={() => setDrawerSheet(SHEETS['usagi-buddy'])}
+                    >
+                      Inspect Spec Sheet ↗
+                    </button>
                     <Link
-                      href="/projects/awd-project"
-                      className="px-3 py-1.5 font-mono text-xs font-bold bg-[var(--cobalt)] text-white hover:bg-[#0c3c66] transition-colors"
+                      href="/projects/usagi-buddy"
+                      className="px-3 py-2 text-sm font-semibold bg-[var(--cobalt)] text-white hover:bg-[#0c3c66] transition-colors"
                     >
                       Full Case Study ↗
                     </Link>
                     <a
-                      href="https://github.com/Avnish-Raut/AWD_Project"
+                      href="https://github.com/sonthien22501/usagi-buddy"
                       target="_blank"
                       rel="noreferrer"
-                      className="px-3 py-1.5 font-mono text-xs font-bold border border-[var(--rule-strong)] hover:border-[var(--ink)] text-[var(--ink)] transition-colors inline-flex items-center gap-1.5"
+                      className="px-3 py-2 text-sm font-semibold border border-[var(--rule-strong)] hover:border-[var(--ink)] text-[var(--ink)] transition-colors inline-flex items-center gap-1.5"
                     >
-                      <Code2 size={13} />
+                      <Code2 size={15} />
                       <span>GitHub ↗</span>
                     </a>
                   </div>
@@ -905,18 +1104,79 @@ export default function Home() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-6">
                   <div className="lg:col-span-2 space-y-4">
                     <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed max-w-prose text-pretty">
-                      Co-architected a full-stack web application within a 3-member agile engineering team. Enforced strict architectural separation between the client presentation layer and backend Node.js business services using end-to-end TypeScript interfaces, preventing integration regressions during parallel agile sprints.
+                      Architected a cross-platform (macOS &amp; Windows) desktop companion featuring a 60 FPS HTML5 Canvas 2D physics engine (kick-and-glide swimming, cursor attraction, multi-monitor boundary clamping). Engineered zero-latency per-pixel alpha hit-testing via <code className="font-mono font-bold text-[var(--ink)] bg-[var(--paper)] px-1.5 py-0.5 border border-[var(--rule-strong)]">setIgnoreMouseEvents(true, &#123; forward: true &#125;)</code>, ensuring transparent overlay pixels never capture IDE or browser mouse clicks. Synchronizes 4 independent windows over an Electron IPC topology, fully verified by 14 Vitest unit test suites.
                     </p>
                   </div>
 
-                  <div className="border-t lg:border-t-0 lg:border-l border-[var(--rule-strong)] pt-4 lg:pt-0 lg:pl-6 font-mono text-xs space-y-2">
-                    <div className="font-bold text-[var(--ink)] pb-1 border-b border-[var(--rule)]">
+                  <div className="border-t lg:border-t-0 lg:border-l border-[var(--rule-strong)] pt-4 lg:pt-0 lg:pl-6 space-y-2 text-sm">
+                    <div className="font-mono text-xs font-bold text-[var(--ink)] pb-1 border-b border-[var(--rule)]">
                       SPECIFICATION SHEET [A1-03]
                     </div>
-                    <div><span className="text-[var(--ink-muted)]">Architecture:</span> <span className="font-bold">Decoupled REST</span></div>
-                    <div><span className="text-[var(--ink-muted)]">Language:</span> <span className="font-bold">End-to-End TypeScript</span></div>
-                    <div><span className="text-[var(--ink-muted)]">Backend:</span> <span className="font-bold">Node.js / Express</span></div>
-                    <div><span className="text-[var(--ink-muted)]">Team Workflow:</span> <span className="font-bold">3-Member Agile Scrum</span></div>
+                    <div><span className="text-[var(--ink-muted)] text-xs">Framework:</span> <span className="font-bold">Electron 33 / TypeScript 5</span></div>
+                    <div><span className="text-[var(--ink-muted)] text-xs">Physics Engine:</span> <span className="font-bold">HTML5 Canvas 2D (60 FPS)</span></div>
+                    <div><span className="text-[var(--ink-muted)] text-xs">Hit-Testing:</span> <span className="font-bold">Per-Pixel Alpha Forwarding</span></div>
+                    <div><span className="text-[var(--ink-muted)] text-xs">Test Coverage:</span> <span className="font-bold font-mono text-emerald-700">14 Vitest Suites</span></div>
+                  </div>
+                </div>
+              </div>
+
+              {/* SYSTEM 04: Advanced Web Development (AWD) */}
+              <div className="border border-[var(--ink)] bg-white p-6 md:p-8">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[var(--rule-strong)] pb-4">
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h3 className="font-display text-xl sm:text-2xl font-bold text-[var(--ink)] text-balance">
+                        Advanced Web Development (AWD)
+                      </h3>
+                      <span className="px-2 py-0.5 bg-[var(--cobalt)] text-white text-xs font-bold">
+                        Core Team Member · 3-Person Agile Team
+                      </span>
+                    </div>
+                    <div className="font-mono text-xs text-[var(--cobalt)] font-semibold mt-1">
+                      FULL-STACK TYPESCRIPT ARCHITECTURE · NODE.JS · DECOUPLED CLIENT-SERVER
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <button
+                      className="whitespace-nowrap shrink-0 px-3 py-2 text-sm font-semibold border border-[var(--ink)] bg-[var(--paper)] hover:bg-[var(--ink)] hover:text-white transition-colors"
+                      onClick={() => setDrawerSheet(SHEETS['awd-project'])}
+                    >
+                      Inspect Spec Sheet ↗
+                    </button>
+                    <Link
+                      href="/projects/awd-project"
+                      className="px-3 py-2 text-sm font-semibold bg-[var(--cobalt)] text-white hover:bg-[#0c3c66] transition-colors"
+                    >
+                      Full Case Study ↗
+                    </Link>
+                    <a
+                      href="https://github.com/Avnish-Raut/AWD_Project"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="px-3 py-2 text-sm font-semibold border border-[var(--rule-strong)] hover:border-[var(--ink)] text-[var(--ink)] transition-colors inline-flex items-center gap-1.5"
+                    >
+                      <Code2 size={15} />
+                      <span>GitHub Repo (Avnish-Raut/AWD_Project) ↗</span>
+                    </a>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-6">
+                  <div className="lg:col-span-2 space-y-4">
+                    <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed max-w-prose text-pretty">
+                      Co-architected a full-stack web application within a 3-member agile engineering team alongside Avnish Raut and peers at University of Hildesheim. Enforced strict architectural separation between the client presentation layer and backend Node.js business services using end-to-end TypeScript interfaces, preventing integration regressions during parallel agile sprints.
+                    </p>
+                  </div>
+
+                  <div className="border-t lg:border-t-0 lg:border-l border-[var(--rule-strong)] pt-4 lg:pt-0 lg:pl-6 space-y-2 text-sm">
+                    <div className="font-mono text-xs font-bold text-[var(--ink)] pb-1 border-b border-[var(--rule)]">
+                      SPECIFICATION SHEET [A1-04]
+                    </div>
+                    <div><span className="text-[var(--ink-muted)] text-xs">Role:</span> <span className="font-bold text-[var(--cobalt)]">Core Team Member</span></div>
+                    <div><span className="text-[var(--ink-muted)] text-xs">Architecture:</span> <span className="font-bold">Decoupled REST</span></div>
+                    <div><span className="text-[var(--ink-muted)] text-xs">Language:</span> <span className="font-bold">End-to-End TypeScript</span></div>
+                    <div><span className="text-[var(--ink-muted)] text-xs">Backend:</span> <span className="font-bold">Node.js / Express</span></div>
+                    <div><span className="text-[var(--ink-muted)] text-xs">Team Workflow:</span> <span className="font-bold">3-Member Agile Scrum</span></div>
                   </div>
                 </div>
               </div>
@@ -924,7 +1184,7 @@ export default function Home() {
           </section>
 
           {/* SECTION [B2]: PROFESSIONAL EXPERIENCE */}
-          <section id="experience" className="scroll-mt-8 space-y-8">
+          <section id="experience" className="scroll-mt-8 space-y-8 font-sans">
             <div className="flex flex-col md:flex-row md:items-baseline md:justify-between border-b-2 border-[var(--ink)] pb-3">
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[var(--ink)]">
                 Professional Engineering Ledger
@@ -939,17 +1199,17 @@ export default function Home() {
                 <tbody>
                   {/* Role 1: Netcompany */}
                   <tr className="border-b border-[var(--ink)] flex flex-col md:table-row">
-                    <td className="p-5 md:p-6 md:w-1/4 bg-[var(--paper-elevated)] border-b md:border-b-0 md:border-r border-[var(--ink)] align-top font-mono">
-                      <div className="font-bold text-sm text-[var(--cobalt)]">NETCOMPANY</div>
+                    <td className="p-5 md:p-6 md:w-1/4 bg-[var(--paper-elevated)] border-b md:border-b-0 md:border-r border-[var(--ink)] align-top font-sans">
+                      <div className="font-display font-bold text-base text-[var(--cobalt)]">NETCOMPANY</div>
                       <div className="text-xs text-[var(--ink-muted)] mt-1">Hanoi, Vietnam</div>
                       <div className="text-xs font-semibold text-[var(--ink)] mt-2">Dec 2024 – Jan 2025</div>
-                      <div className="text-xs text-[var(--vermilion)] font-bold mt-1">IT CONSULTANT</div>
+                      <div className="text-xs text-[var(--vermilion)] font-mono font-bold mt-1">IT CONSULTANT</div>
                     </td>
                     <td className="p-5 md:p-6 md:w-3/4 space-y-3 align-top">
                       <h3 className="font-display font-bold text-lg text-[var(--ink)] text-balance">
                         Enterprise Java Spring Boot, Kafka Event Streaming &amp; Cloud Deployments
                       </h3>
-                      <ul className="space-y-2 text-sm text-[var(--ink-muted)] leading-relaxed list-disc list-inside">
+                      <ul className="space-y-2 text-sm md:text-base text-[var(--ink-muted)] leading-relaxed list-disc list-inside">
                         <li>
                           Architected and implemented enterprise-grade solutions utilizing <strong className="text-[var(--ink)]">Java Spring Boot</strong>, integrating <strong className="text-[var(--ink)]">Apache Kafka</strong> for resilient event-driven message queuing.
                         </li>
@@ -960,29 +1220,29 @@ export default function Home() {
                           Containerized distributed microservices with <strong className="text-[var(--ink)]">Docker</strong> and configured orchestration manifests for deployment onto <strong className="text-[var(--ink)]">Kubernetes</strong> clusters.
                         </li>
                       </ul>
-                      <div className="flex flex-wrap gap-1.5 pt-2 font-mono text-xs">
-                        <span className="px-2 py-0.5 bg-[var(--paper)] border border-[var(--rule-strong)] font-semibold">Java Spring Boot</span>
-                        <span className="px-2 py-0.5 bg-[var(--paper)] border border-[var(--rule-strong)] font-semibold">Apache Kafka</span>
-                        <span className="px-2 py-0.5 bg-[var(--paper)] border border-[var(--rule-strong)] font-semibold">Liquibase</span>
-                        <span className="px-2 py-0.5 bg-[var(--paper)] border border-[var(--rule-strong)] font-semibold">Docker</span>
-                        <span className="px-2 py-0.5 bg-[var(--paper)] border border-[var(--rule-strong)] font-semibold">Kubernetes</span>
+                      <div className="flex flex-wrap gap-1.5 pt-2 text-xs font-medium">
+                        <span className="px-2.5 py-1 bg-[var(--paper)] border border-[var(--rule-strong)]">Java Spring Boot</span>
+                        <span className="px-2.5 py-1 bg-[var(--paper)] border border-[var(--rule-strong)]">Apache Kafka</span>
+                        <span className="px-2.5 py-1 bg-[var(--paper)] border border-[var(--rule-strong)]">Liquibase</span>
+                        <span className="px-2.5 py-1 bg-[var(--paper)] border border-[var(--rule-strong)]">Docker</span>
+                        <span className="px-2.5 py-1 bg-[var(--paper)] border border-[var(--rule-strong)]">Kubernetes</span>
                       </div>
                     </td>
                   </tr>
 
                   {/* Role 2: TMA Solutions */}
                   <tr className="flex flex-col md:table-row">
-                    <td className="p-5 md:p-6 md:w-1/4 bg-[var(--paper-elevated)] border-b md:border-b-0 md:border-r border-[var(--ink)] align-top font-mono">
-                      <div className="font-bold text-sm text-[var(--cobalt)]">TMA SOLUTIONS</div>
+                    <td className="p-5 md:p-6 md:w-1/4 bg-[var(--paper-elevated)] border-b md:border-b-0 md:border-r border-[var(--ink)] align-top font-sans">
+                      <div className="font-display font-bold text-base text-[var(--cobalt)]">TMA SOLUTIONS</div>
                       <div className="text-xs text-[var(--ink-muted)] mt-1">Ho Chi Minh City, Vietnam</div>
                       <div className="text-xs font-semibold text-[var(--ink)] mt-2">Oct 2023 – Jan 2024</div>
-                      <div className="text-xs text-[var(--ink-muted)] font-bold mt-1">SOFTWARE DEV INTERN</div>
+                      <div className="text-xs text-[var(--ink-muted)] font-mono font-bold mt-1">SOFTWARE DEV INTERN</div>
                     </td>
                     <td className="p-5 md:p-6 md:w-3/4 space-y-3 align-top">
                       <h3 className="font-display font-bold text-lg text-[var(--ink)] text-balance">
                         Backend RESTful Services &amp; Agile Enterprise Development
                       </h3>
-                      <ul className="space-y-2 text-sm text-[var(--ink-muted)] leading-relaxed list-disc list-inside">
+                      <ul className="space-y-2 text-sm md:text-base text-[var(--ink-muted)] leading-relaxed list-disc list-inside">
                         <li>
                           Engineered backend services by defining and building scalable CRUD and custom RESTful APIs utilizing <strong className="text-[var(--ink)]">Java Spring Boot</strong> and <strong className="text-[var(--ink)]">PHP</strong>.
                         </li>
@@ -990,11 +1250,11 @@ export default function Home() {
                           Collaborated in an Agile (Scrum) sprint lifecycle, participating in daily standups, code reviews, and cross-functional integration testing.
                         </li>
                       </ul>
-                      <div className="flex flex-wrap gap-1.5 pt-2 font-mono text-xs">
-                        <span className="px-2 py-0.5 bg-[var(--paper)] border border-[var(--rule-strong)] font-semibold">Java Spring Boot</span>
-                        <span className="px-2 py-0.5 bg-[var(--paper)] border border-[var(--rule-strong)] font-semibold">PHP</span>
-                        <span className="px-2 py-0.5 bg-[var(--paper)] border border-[var(--rule-strong)] font-semibold">RESTful APIs</span>
-                        <span className="px-2 py-0.5 bg-[var(--paper)] border border-[var(--rule-strong)] font-semibold">Agile Scrum</span>
+                      <div className="flex flex-wrap gap-1.5 pt-2 text-xs font-medium">
+                        <span className="px-2.5 py-1 bg-[var(--paper)] border border-[var(--rule-strong)]">Java Spring Boot</span>
+                        <span className="px-2.5 py-1 bg-[var(--paper)] border border-[var(--rule-strong)]">PHP</span>
+                        <span className="px-2.5 py-1 bg-[var(--paper)] border border-[var(--rule-strong)]">RESTful APIs</span>
+                        <span className="px-2.5 py-1 bg-[var(--paper)] border border-[var(--rule-strong)]">Agile Scrum</span>
                       </div>
                     </td>
                   </tr>
@@ -1004,7 +1264,7 @@ export default function Home() {
           </section>
 
           {/* SECTION [C3]: EMPIRICAL SE RESEARCH & EDUCATION */}
-          <section id="research" className="scroll-mt-8 space-y-8">
+          <section id="research" className="scroll-mt-8 space-y-8 font-sans">
             <div className="flex flex-col md:flex-row md:items-baseline md:justify-between border-b-2 border-[var(--ink)] pb-3">
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[var(--ink)] text-balance">
                 Empirical Software Engineering &amp; Research
@@ -1023,13 +1283,13 @@ export default function Home() {
                   </h3>
                   <span className="font-mono text-xs font-bold text-[var(--cobalt)]">R&amp;D PROJECT</span>
                 </div>
-                <p className="text-sm text-[var(--ink-muted)] leading-relaxed max-w-[70ch] text-pretty">
+                <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed max-w-[70ch] text-pretty">
                   Orchestrated an empirical evaluation pipeline combining <strong className="text-[var(--ink)]">Slicer4J</strong>, <strong className="text-[var(--ink)]">Soot</strong>, and <strong className="text-[var(--ink)]">JUnit</strong> to extract minimal, fault-relevant execution traces from legacy Java codebases.
                 </p>
-                <p className="text-sm text-[var(--ink-muted)] leading-relaxed max-w-[70ch] text-pretty">
+                <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed max-w-[70ch] text-pretty">
                   Designed a token-optimization methodology feeding dynamic program slices into Large Language Models (LLMs), reducing prompt context consumption by 68.4% and eliminating hallucinated edits in automated patch generation.
                 </p>
-                <div className="font-mono text-xs text-[var(--cobalt)] pt-2 border-t border-[var(--rule)]">
+                <div className="text-xs font-semibold text-[var(--cobalt)] pt-2 border-t border-[var(--rule)]">
                   Stack: Java · Slicer4J · Soot IR · JUnit 5 · Defects4J
                 </div>
               </div>
@@ -1042,13 +1302,13 @@ export default function Home() {
                   </h3>
                   <span className="font-mono text-xs font-bold text-[var(--cobalt)]">SEMINAR PAPER</span>
                 </div>
-                <p className="text-sm text-[var(--ink-muted)] leading-relaxed max-w-[70ch] text-pretty">
+                <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed max-w-[70ch] text-pretty">
                   Conducted a rigorous empirical assessment analyzing the reasoning boundaries and hallucination modes of Large Language Models when applied to natural-language software requirements engineering.
                 </p>
-                <p className="text-sm text-[var(--ink-muted)] leading-relaxed max-w-[70ch] text-pretty">
+                <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed max-w-[70ch] text-pretty">
                   Established criteria for validating machine-generated software specifications against ISO/IEC/IEEE 29148 standards, proposing deterministic prompt constraints for ambiguity reduction.
                 </p>
-                <div className="font-mono text-xs text-[var(--cobalt)] pt-2 border-t border-[var(--rule)]">
+                <div className="text-xs font-semibold text-[var(--cobalt)] pt-2 border-t border-[var(--rule)]">
                   Focus: Requirements Engineering · Ambiguity Analysis · Prompt Constraints
                 </div>
               </div>
@@ -1060,24 +1320,24 @@ export default function Home() {
                 <h3 className="font-display font-bold text-xl text-[var(--ink)]">
                   M.Sc. in Software Engineering
                 </h3>
-                <div className="font-mono text-sm text-[var(--cobalt)] font-semibold mt-1">
+                <div className="font-sans text-sm text-[var(--cobalt)] font-semibold mt-1">
                   University of Hildesheim · Lower Saxony, Germany
                 </div>
-                <div className="text-sm text-[var(--ink-muted)] mt-2 max-w-2xl leading-relaxed">
+                <div className="text-sm md:text-base text-[var(--ink-muted)] mt-2 max-w-2xl leading-relaxed">
                   Specialization: Distributed Systems, Advanced Web Development, Software Product Lines (SPL), and Empirical Software Engineering Research.
                 </div>
               </div>
 
-              <div className="font-mono text-xs font-bold text-right shrink-0 bg-white p-4 border border-[var(--ink)] space-y-1">
-                <div className="text-[var(--ink-muted)]">STATUS // DEGREE</div>
-                <div className="text-lg text-[var(--ink)]">EXPECTED 2027</div>
-                <div className="text-emerald-700">ACTIVE ENROLLMENT</div>
+              <div className="font-sans text-right shrink-0 bg-white p-4 border border-[var(--ink)] space-y-1">
+                <div className="text-[var(--ink-muted)] text-xs font-mono">STATUS // DEGREE</div>
+                <div className="text-lg font-black font-mono text-[var(--ink)]">EXPECTED 2027</div>
+                <div className="text-emerald-700 text-xs font-bold font-mono">ACTIVE ENROLLMENT</div>
               </div>
             </div>
           </section>
 
           {/* SECTION [D4]: ASYMMETRIC AI-ORCHESTRATED ARCHITECTURE */}
-          <section id="architecture" className="scroll-mt-8 space-y-8">
+          <section id="architecture" className="scroll-mt-8 space-y-8 font-sans">
             <div className="flex flex-col md:flex-row md:items-baseline md:justify-between border-b-2 border-[var(--ink)] pb-3">
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[var(--ink)] text-balance">
                 AI-Orchestrated Engineering Pipeline
@@ -1092,47 +1352,47 @@ export default function Home() {
                 Modern software engineering with AI requires moving beyond prompt chat into deterministic, multi-tier autonomous pipelines. As the Lead Architect, Son Thien Nguyen operates a 4-stage contract-driven methodology:
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono text-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {/* Gate 1 */}
                 <div className="p-4 bg-[var(--paper)] border border-[var(--ink)] space-y-2">
-                  <div className="font-bold text-[var(--cobalt)] pb-1 border-b border-[var(--rule)]">
+                  <div className="font-mono text-xs font-bold text-[var(--cobalt)] pb-1 border-b border-[var(--rule)]">
                     [1] CONTRACT GATE
                   </div>
-                  <div className="font-bold text-[var(--ink)]">Tech Lead Architecture</div>
-                  <div className="text-xs text-[var(--ink-muted)]">
+                  <div className="font-bold text-sm text-[var(--ink)]">Tech Lead Architecture</div>
+                  <div className="text-xs text-[var(--ink-muted)] leading-relaxed">
                     Establishes strict API contracts, data models, and failing RED unit tests before implementation.
                   </div>
                 </div>
 
                 {/* Gate 2 */}
                 <div className="p-4 bg-[var(--paper)] border border-[var(--ink)] space-y-2">
-                  <div className="font-bold text-[var(--cobalt)] pb-1 border-b border-[var(--rule)]">
+                  <div className="font-mono text-xs font-bold text-[var(--cobalt)] pb-1 border-b border-[var(--rule)]">
                     [2] WORKER ROUTING
                   </div>
-                  <div className="font-bold text-[var(--ink)]">Multi-Tier Subagents</div>
-                  <div className="text-xs text-[var(--ink-muted)]">
+                  <div className="font-bold text-sm text-[var(--ink)]">Multi-Tier Subagents</div>
+                  <div className="text-xs text-[var(--ink-muted)] leading-relaxed">
                     Dispatches headless worker engines (Flash, OpenCode, DeepSeek) for TDD code generation.
                   </div>
                 </div>
 
                 {/* Gate 3 */}
                 <div className="p-4 bg-[var(--paper)] border border-[var(--ink)] space-y-2">
-                  <div className="font-bold text-[var(--cobalt)] pb-1 border-b border-[var(--rule)]">
+                  <div className="font-mono text-xs font-bold text-[var(--cobalt)] pb-1 border-b border-[var(--rule)]">
                     [3] ANTI-CHEAT QA
                   </div>
-                  <div className="font-bold text-[var(--ink)]">Concurrency &amp; Invariants</div>
-                  <div className="text-xs text-[var(--ink-muted)]">
+                  <div className="font-bold text-sm text-[var(--ink)]">Concurrency &amp; Invariants</div>
+                  <div className="text-xs text-[var(--ink-muted)] leading-relaxed">
                     Audits diffs for weakened assertions, mocked SUTs, and executes 50x race condition stress tests.
                   </div>
                 </div>
 
                 {/* Gate 4 */}
                 <div className="p-4 bg-[var(--paper)] border border-[var(--ink)] space-y-2">
-                  <div className="font-bold text-[var(--vermilion)] pb-1 border-b border-[var(--rule)]">
+                  <div className="font-mono text-xs font-bold text-[var(--vermilion)] pb-1 border-b border-[var(--rule)]">
                     [4] DOD SIGN-OFF
                   </div>
-                  <div className="font-bold text-[var(--ink)]">Clean Release PR</div>
-                  <div className="text-xs text-[var(--ink-muted)]">
+                  <div className="font-bold text-sm text-[var(--ink)]">Clean Release PR</div>
+                  <div className="text-xs text-[var(--ink-muted)] leading-relaxed">
                     Runs static typecheck, visual craft detector, unit tests, and packages surgical local commits.
                   </div>
                 </div>
@@ -1145,20 +1405,20 @@ export default function Home() {
         {/* ========================================================================= */}
         {/* FOOTER TITLE BLOCK (DIN 6771 COMPLIANT)                                  */}
         {/* ========================================================================= */}
-        <footer className="border-t-2 border-[var(--ink)] p-6 bg-[var(--paper-elevated)] flex flex-col md:flex-row justify-between items-center gap-4 font-mono text-xs text-[var(--ink-muted)]">
+        <footer className="border-t-2 border-[var(--ink)] p-6 bg-[var(--paper-elevated)] flex flex-col md:flex-row justify-between items-center gap-4 font-sans text-xs text-[var(--ink-muted)]">
           <div className="flex flex-wrap items-center gap-3">
             <span className="font-bold text-[var(--ink)]">SON THIEN NGUYEN</span>
             <span>·</span>
-            <span>DIN 6771 / ISO 5457 SHEET SPECIFICATION</span>
+            <span className="font-mono">DIN 6771 / ISO 5457 SHEET SPECIFICATION</span>
             <span>·</span>
-            <span className="text-[var(--cobalt)]">HILDESHEIM, GERMANY</span>
+            <span className="text-[var(--cobalt)] font-semibold">HILDESHEIM, GERMANY</span>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 text-sm font-semibold">
             <a href="#systems" className="hover:text-[var(--ink)] transition-colors">
               ↑ Back to Sheet [A1]
             </a>
-            <a href="/cv.pdf" download className="text-[var(--vermilion)] font-bold hover:underline">
+            <a href="/cv.pdf" download className="text-[var(--vermilion)] hover:underline">
               Download CV.pdf ↗
             </a>
           </div>
@@ -1180,7 +1440,7 @@ export default function Home() {
 
           {/* Specification Sheet Panel */}
           <div
-            className="relative w-full max-w-2xl h-full bg-[var(--paper-elevated)] border-l-2 border-[var(--ink)] drawer-elevation p-6 sm:p-8 flex flex-col justify-between overflow-y-auto z-10 transition-transform duration-300 ease-out"
+            className="relative w-full max-w-2xl h-full bg-[var(--paper-elevated)] border-l-2 border-[var(--ink)] drawer-elevation p-6 sm:p-8 flex flex-col justify-between overflow-y-auto z-10 transition-transform duration-300 ease-out font-sans"
             role="dialog"
             aria-modal="true"
             aria-labelledby="drawer-title"
@@ -1197,12 +1457,12 @@ export default function Home() {
                   </h2>
                 </div>
                 <button
-                  className="whitespace-nowrap shrink-0 p-2 border border-[var(--ink)] hover:bg-[var(--ink)] hover:text-white transition-colors font-mono text-xs flex items-center gap-1"
+                  className="whitespace-nowrap shrink-0 p-2 border border-[var(--ink)] hover:bg-[var(--ink)] hover:text-white transition-colors text-xs font-semibold flex items-center gap-1"
                   onClick={() => setDrawerSheet(null)}
                   aria-label="Close Specification Sheet"
                 >
                   <X size={16} />
-                  <span className="hidden sm:inline">ESC</span>
+                  <span className="hidden sm:inline font-mono">ESC</span>
                 </button>
               </div>
 
@@ -1211,7 +1471,7 @@ export default function Home() {
                 <div className="font-mono text-xs font-bold text-[var(--ink)] tracking-wider">
                   ARCHITECTURAL PROBLEM &amp; REQUIREMENT
                 </div>
-                <p className="text-sm text-[var(--ink-muted)] leading-relaxed">
+                <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed">
                   {drawerSheet.summary}
                 </p>
               </div>
@@ -1220,32 +1480,32 @@ export default function Home() {
                 <div className="font-mono text-xs font-bold text-[var(--cobalt)] tracking-wider">
                   ENGINEERED SOLUTION &amp; CONCURRENCY INVARIANT
                 </div>
-                <p className="text-sm text-[var(--ink-muted)] leading-relaxed">
+                <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed">
                   {drawerSheet.solution}
                 </p>
               </div>
 
               {/* Cross-Hatch Contention Zone Callout */}
-              <div className="hatch-zone p-4 border border-[var(--rule-strong)] font-mono text-xs space-y-2">
-                <div className="font-bold text-[var(--vermilion)]">
+              <div className="hatch-zone p-4 border border-[var(--rule-strong)] space-y-2">
+                <div className="font-mono text-xs font-bold text-[var(--vermilion)]">
                   CONCURRENCY SPECIFICATION AUDIT
                 </div>
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   <div>
                     <span className="text-[var(--ink-muted)]">Lock Strategy:</span>
-                    <div className="font-bold text-[var(--ink)]">{drawerSheet.concurrencySpecs.lockModel}</div>
+                    <div className="font-mono font-bold text-[var(--ink)]">{drawerSheet.concurrencySpecs.lockModel}</div>
                   </div>
                   <div>
                     <span className="text-[var(--ink-muted)]">Isolation Level:</span>
-                    <div className="font-bold text-[var(--ink)]">{drawerSheet.concurrencySpecs.isolation}</div>
+                    <div className="font-mono font-bold text-[var(--ink)]">{drawerSheet.concurrencySpecs.isolation}</div>
                   </div>
                   <div>
                     <span className="text-[var(--ink-muted)]">Protocol:</span>
-                    <div className="font-bold text-[var(--ink)]">{drawerSheet.concurrencySpecs.protocol}</div>
+                    <div className="font-mono font-bold text-[var(--ink)]">{drawerSheet.concurrencySpecs.protocol}</div>
                   </div>
                   <div>
                     <span className="text-[var(--ink-muted)]">Observed Latency:</span>
-                    <div className="font-bold text-[var(--cobalt)]">{drawerSheet.concurrencySpecs.latency}</div>
+                    <div className="font-mono font-bold text-[var(--cobalt)]">{drawerSheet.concurrencySpecs.latency}</div>
                   </div>
                 </div>
               </div>
@@ -1255,7 +1515,7 @@ export default function Home() {
                 <div className="font-mono text-xs font-bold text-[var(--ink)]">
                   VERIFIED RUNTIME STACK
                 </div>
-                <div className="flex flex-wrap gap-1.5 font-mono text-xs">
+                <div className="flex flex-wrap gap-1.5 text-xs font-medium">
                   {drawerSheet.stack.map((item) => (
                     <span
                       key={item}
@@ -1273,7 +1533,7 @@ export default function Home() {
               <Link
                 href={drawerSheet.route}
                 onClick={() => setDrawerSheet(null)}
-                className="w-full sm:w-1/2 py-3 px-4 bg-[var(--cobalt)] text-white text-center font-mono text-xs font-bold hover:bg-[#0c3c66] transition-colors"
+                className="w-full sm:w-1/2 py-3 px-4 bg-[var(--cobalt)] text-white text-center text-sm font-semibold hover:bg-[#0c3c66] transition-colors"
               >
                 Open Full Case Study Route ↗
               </Link>
@@ -1281,7 +1541,7 @@ export default function Home() {
                 href={drawerSheet.githubUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="w-full sm:w-1/2 py-3 px-4 bg-white text-[var(--ink)] text-center font-mono text-xs font-bold border border-[var(--ink)] hover:bg-[var(--paper)] transition-colors flex items-center justify-center gap-1.5"
+                className="w-full sm:w-1/2 py-3 px-4 bg-white text-[var(--ink)] text-center text-sm font-semibold border border-[var(--ink)] hover:bg-[var(--paper)] transition-colors flex items-center justify-center gap-1.5"
               >
                 <span>{drawerSheet.githubLabel}</span>
               </a>

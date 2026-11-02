@@ -23,7 +23,7 @@ A **Backend & Distributed Systems Engineer** who combines enterprise-grade backe
 ## Operating Context
 
 - **Framework & Runtime:** Next.js 16.4 (App Router), React 19.3, TypeScript 5, Tailwind CSS v4 (`@tailwindcss/turbopack`), Lucide icons.
-- **Evaluation Flow:** Visitors land on `/` (Hero, Experience, Featured Projects, Academic Research, Education) and drill into project case studies (`/projects/ticket-booking`, `/projects/researcher-cockpit`, `/projects/awd-project`), inspect architecture diagrams, check GitHub/PR links, or download `public/cv.pdf`.
+- **Evaluation Flow:** Visitors land on `/` (Hero, Experience, Featured Projects, Academic Research, Education) and drill into project case studies (`/projects/ticket-booking`, `/projects/researcher-cockpit`, `/projects/usagi-buddy`, `/projects/awd-project`), inspect architecture diagrams, check GitHub/PR links, or download `public/cv.pdf`.
 
 ## Capabilities and Constraints
 
@@ -31,7 +31,8 @@ A **Backend & Distributed Systems Engineer** who combines enterprise-grade backe
   - `/` — Main portfolio index and showcase
   - `/projects/ticket-booking` — Concurrent Go/PostgreSQL/NGINX Ticket Booking System case study
   - `/projects/researcher-cockpit` — JabRef WebExtension + Java JDK 25 client-server integration case study (PR #14963)
-  - `/projects/awd-project` — Full-stack TypeScript/Node.js agile architecture case study
+  - `/projects/usagi-buddy` — Multi-Window Desktop Companion (Electron, Canvas 2D 60 FPS physics, per-pixel alpha hit-testing, 14 Vitest suites)
+  - `/projects/awd-project` — Full-stack TypeScript/Node.js agile architecture case study (Core Team Member · 3-Person Agile Team)
 - **Technical Constraints:** Fast static/SSR rendering via Next.js App Router, zero broken links (wire `/cv.pdf` to Resume CTA), responsive across mobile and desktop viewports.
 
 ## Brand Commitments
@@ -51,7 +52,8 @@ A **Backend & Distributed Systems Engineer** who combines enterprise-grade backe
 - **Systems & Open-Source Case Studies:**
   - **Event Ticket Booking System:** Go microservices (Event Catalog, Seat Inventory, Booking Service), NGINX API Gateway, PostgreSQL `SELECT ... FOR UPDATE` row-level locking validated under 50 concurrent requests for the same seat (1 booking, 49 conflicts, zero overselling). Diagram: `public/ticket-architecture.svg`.
   - **Researcher Cockpit (JabRef):** WebExtensions API client + local Java (JDK 25) desktop server, DOM scrapers for IEEE/arXiv/Google Scholar, upstream contribution [JabRef PR #14963](https://github.com/JabRef/jabref/pull/14963). Diagram: `public/researcher-cockpit-architecture.svg`.
-  - **Advanced Web Development (AWD):** End-to-end TypeScript & Node.js decoupled frontend/backend architecture built in a 3-person agile team.
+  - **Usagi Buddy (Usagi Float v0.5):** Cross-platform desktop companion built with Electron 33, TypeScript, and HTML5 2D Canvas. 60 FPS physics engine (`physicsEngine.ts`), zero-latency per-pixel click-through hit-testing (`setIgnoreMouseEvents` forward mode via `ghostModeController.ts`), 4-window IPC synchronization (Overlay, Dashboard GUI, Sticky Quests & Calendar, Tray Popover), verified by 14 Vitest test suites. GitHub: `https://github.com/sonthien22501/usagi-buddy`.
+  - **Advanced Web Development (AWD):** End-to-end TypeScript & Node.js decoupled frontend/backend architecture built in a 3-person agile team (Core Team Member alongside Avnish Raut and peers). GitHub: `https://github.com/Avnish-Raut/AWD_Project`.
 - **Academic Research:**
   - **Program Slicing in Automated Program Repair (R&D Group Project):** Empirical evaluation pipeline integrating Slicer4J, Soot, and JUnit to extract minimal fault-relevant execution traces from legacy Java codebases for LLM token-context optimization.
   - **LLMs in Requirements Elicitation (Seminar Paper):** Critical assessment of LLM capabilities and limitations in software requirements elicitation and systems analysis.
