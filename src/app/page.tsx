@@ -45,7 +45,7 @@ interface SheetData {
 const SHEETS: Record<string, SheetData> = {
   'ticket-booking': {
     id: 'ticket-booking',
-    sheetCode: 'SHEET 01 // ACID TRANSACTION BOUNDARY',
+    sheetCode: 'PROJECT 1 // ACID TRANSACTION BOUNDARY',
     title: 'Event Ticket Booking System',
     headline: 'Zero-Overselling Microservices under 50x Row-Lock Contention',
     subtitle: 'High-Concurrency Microservices · Go · PostgreSQL Row Locks · NGINX Gateway',
@@ -77,7 +77,7 @@ const SHEETS: Record<string, SheetData> = {
   },
   'researcher-cockpit': {
     id: 'researcher-cockpit',
-    sheetCode: 'SHEET 02 // CROSS-ENVIRONMENT IPC BRIDGE',
+    sheetCode: 'PROJECT 2 // CROSS-ENVIRONMENT IPC BRIDGE',
     title: 'Researcher Cockpit (JabRef Integration)',
     headline: 'WebExtension to Local JDK 25 Reference Management Bridge',
     subtitle: 'Browser Extension Sandbox · Local Java Backend · Real-Time DOM Scrapers',
@@ -109,7 +109,7 @@ const SHEETS: Record<string, SheetData> = {
   },
   'usagi-buddy': {
     id: 'usagi-buddy',
-    sheetCode: 'SHEET 03 // MULTI-WINDOW IPC & CANVAS PHYSICS',
+    sheetCode: 'PROJECT 3 // MULTI-WINDOW IPC & CANVAS PHYSICS',
     title: 'Usagi Buddy (Usagi Float v0.5)',
     headline: 'Multi-Window Transparent Desktop Companion & 60 FPS Physics Engine',
     subtitle: 'Electron · TypeScript · HTML5 2D Canvas · Multi-Window IPC · 14 Vitest Suites',
@@ -141,7 +141,7 @@ const SHEETS: Record<string, SheetData> = {
   },
   'awd-project': {
     id: 'awd-project',
-    sheetCode: 'SHEET 04 // DECOUPLED FULL-STACK ARCHITECTURE',
+    sheetCode: 'PROJECT 4 // DECOUPLED FULL-STACK ARCHITECTURE',
     title: 'Advanced Web Development (AWD)',
     headline: 'Decoupled Full-Stack Architecture with End-to-End TypeScript Contracts',
     subtitle: 'Core Team Member (3-Person Agile Engineering Team) · Node.js · Express · React · TypeScript',
@@ -173,7 +173,7 @@ const SHEETS: Record<string, SheetData> = {
   },
   'slicer4j-research': {
     id: 'slicer4j-research',
-    sheetCode: 'SHEET 05 // EMPIRICAL SE PIPELINE',
+    sheetCode: 'RESEARCH 1 // EMPIRICAL SE PIPELINE',
     title: 'Program Slicing in Automated Program Repair',
     headline: 'Dynamic Bytecode Slicing for LLM Token Context Optimization',
     subtitle: 'Slicer4J · Soot Intermediate Representation · JUnit · Token Pruning',
@@ -244,7 +244,7 @@ export default function Home() {
 
   return (
     <div className="blueprint-grid min-h-screen text-[var(--ink)] p-2 sm:p-4 md:p-6 lg:p-8 selection:bg-[var(--cobalt)] selection:text-[var(--paper)]">
-      {/* Outer Technical Frame (DIN 6771 / ISO 5457 Layout) */}
+      {/* Outer Technical Frame */}
       <div className="max-w-[1480px] mx-auto border-2 border-[var(--ink)] bg-[var(--paper)]/95">
         
         {/* ========================================================================= */}
@@ -258,7 +258,7 @@ export default function Home() {
               {/* Identity & Sheet Identification */}
               <div className="pb-5 border-b border-[var(--rule-strong)]">
                 <div className="font-mono text-xs font-bold text-[var(--vermilion)] tracking-wider">
-                  DIN 6771 // SYS-ENG
+                  PORTFOLIO // SYS-ENG
                 </div>
                 <div className="font-display text-2xl font-black tracking-tight text-[var(--ink)] mt-1">
                   ST. NGUYEN
@@ -270,14 +270,14 @@ export default function Home() {
               </div>
 
               {/* Coordinate Navigation Links */}
-              <nav className="space-y-1.5 font-sans" aria-label="Blueprint Coordinates">
+              <nav className="space-y-1.5 font-sans" aria-label="Portfolio Navigation">
                 <a
                   href="#systems"
                   className="flex items-center justify-between p-2.5 rounded-none text-sm font-medium hover:bg-[var(--paper)] hover:text-[var(--cobalt)] border border-transparent hover:border-[var(--ink)] transition-colors group"
                 >
                   <span className="flex items-center gap-2">
-                    <span className="text-[var(--cobalt)] font-mono font-bold text-xs">[A1]</span>
-                    <span className="font-semibold text-[var(--ink)]">SYSTEMS</span>
+                    <span className="text-[var(--cobalt)] font-mono font-bold text-xs">1.</span>
+                    <span className="font-semibold text-[var(--ink)]">Projects &amp; Systems</span>
                   </span>
                   <span className="font-mono text-xs tabular-nums text-[var(--ink-muted)] group-hover:text-[var(--ink)]">04</span>
                 </a>
@@ -286,8 +286,8 @@ export default function Home() {
                   className="flex items-center justify-between p-2.5 rounded-none text-sm font-medium hover:bg-[var(--paper)] hover:text-[var(--cobalt)] border border-transparent hover:border-[var(--ink)] transition-colors group"
                 >
                   <span className="flex items-center gap-2">
-                    <span className="text-[var(--cobalt)] font-mono font-bold text-xs">[B2]</span>
-                    <span className="font-semibold text-[var(--ink)]">EXPERIENCE</span>
+                    <span className="text-[var(--cobalt)] font-mono font-bold text-xs">2.</span>
+                    <span className="font-semibold text-[var(--ink)]">Experience</span>
                   </span>
                   <span className="font-mono text-xs tabular-nums text-[var(--ink-muted)] group-hover:text-[var(--ink)]">02</span>
                 </a>
@@ -296,8 +296,8 @@ export default function Home() {
                   className="flex items-center justify-between p-2.5 rounded-none text-sm font-medium hover:bg-[var(--paper)] hover:text-[var(--cobalt)] border border-transparent hover:border-[var(--ink)] transition-colors group"
                 >
                   <span className="flex items-center gap-2">
-                    <span className="text-[var(--cobalt)] font-mono font-bold text-xs">[C3]</span>
-                    <span className="font-semibold text-[var(--ink)]">SE RESEARCH</span>
+                    <span className="text-[var(--cobalt)] font-mono font-bold text-xs">3.</span>
+                    <span className="font-semibold text-[var(--ink)]">SE Research</span>
                   </span>
                   <span className="font-mono text-xs tabular-nums text-[var(--ink-muted)] group-hover:text-[var(--ink)]">02</span>
                 </a>
@@ -306,8 +306,8 @@ export default function Home() {
                   className="flex items-center justify-between p-2.5 rounded-none text-sm font-medium hover:bg-[var(--paper)] hover:text-[var(--cobalt)] border border-transparent hover:border-[var(--ink)] transition-colors group"
                 >
                   <span className="flex items-center gap-2">
-                    <span className="text-[var(--cobalt)] font-mono font-bold text-xs">[D4]</span>
-                    <span className="font-semibold text-[var(--ink)]">ARCHITECTURE</span>
+                    <span className="text-[var(--cobalt)] font-mono font-bold text-xs">4.</span>
+                    <span className="font-semibold text-[var(--ink)]">AI Workflow</span>
                   </span>
                   <span className="text-[var(--ink-muted)]">↗</span>
                 </a>
@@ -372,7 +372,7 @@ export default function Home() {
           {/* MAIN COLUMN: TOP HEADER + STAGE & TELEMETRY + BOTTOM TITLE BLOCK */}
           <div className="flex flex-col min-w-0">
             
-            {/* TOP DIN HEADER BLOCK */}
+            {/* TOP HEADER BLOCK */}
             <header className="border-b-2 border-[var(--ink)] p-5 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-[var(--paper)]">
               <div>
                 <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-[var(--ink)] leading-none">
@@ -389,7 +389,7 @@ export default function Home() {
                   JAVA SPRING BOOT · GO · KAFKA · POSTGRESQL · K8S
                 </div>
                 <div className="text-[var(--ink-muted)] text-xs flex md:justify-end items-center gap-2 font-mono">
-                  <span>ISO 5457 // TECHNICAL DRAWING SPECIFICATION</span>
+                  <span>M.SC. SOFTWARE ENGINEERING · PORTFOLIO</span>
                   <span className="w-2 h-2 bg-[var(--cobalt)] inline-block" />
                 </div>
               </div>
@@ -412,7 +412,7 @@ export default function Home() {
                       }`}
                       onClick={() => setActiveSheetKey('ticket-booking')}
                     >
-                      <span className="font-mono font-bold mr-1">[01]</span> TICKET BOOKING (GO)
+                      <span className="font-mono font-bold mr-1">1.</span> TICKET BOOKING (GO)
                     </button>
                     <button
                       className={`whitespace-nowrap shrink-0 px-3 py-1.5 text-xs sm:text-sm font-semibold border transition-all ${
@@ -422,7 +422,7 @@ export default function Home() {
                       }`}
                       onClick={() => setActiveSheetKey('researcher-cockpit')}
                     >
-                      <span className="font-mono font-bold mr-1">[02]</span> JABREF JDK 25 PR
+                      <span className="font-mono font-bold mr-1">2.</span> JABREF JDK 25 PR
                     </button>
                     <button
                       className={`whitespace-nowrap shrink-0 px-3 py-1.5 text-xs sm:text-sm font-semibold border transition-all ${
@@ -432,7 +432,7 @@ export default function Home() {
                       }`}
                       onClick={() => setActiveSheetKey('usagi-buddy')}
                     >
-                      <span className="font-mono font-bold mr-1">[03]</span> USAGI BUDDY (ELECTRON)
+                      <span className="font-mono font-bold mr-1">3.</span> USAGI BUDDY (ELECTRON)
                     </button>
                     <button
                       className={`whitespace-nowrap shrink-0 px-3 py-1.5 text-xs sm:text-sm font-semibold border transition-all ${
@@ -442,7 +442,7 @@ export default function Home() {
                       }`}
                       onClick={() => setActiveSheetKey('awd-project')}
                     >
-                      <span className="font-mono font-bold mr-1">[04]</span> AWD FULL-STACK (TEAM)
+                      <span className="font-mono font-bold mr-1">4.</span> AWD FULL-STACK (TEAM)
                     </button>
                     <button
                       className={`whitespace-nowrap shrink-0 px-3 py-1.5 text-xs sm:text-sm font-semibold border transition-all ${
@@ -452,7 +452,7 @@ export default function Home() {
                       }`}
                       onClick={() => setActiveSheetKey('slicer4j-research')}
                     >
-                      <span className="font-mono font-bold mr-1">[05]</span> SLICER4J APR PIPELINE
+                      <span className="font-mono font-bold mr-1">5.</span> SLICER4J APR PIPELINE
                     </button>
                   </div>
 
@@ -800,7 +800,7 @@ export default function Home() {
                 {/* Stage Bottom Verified Stamp */}
                 <div className="mt-4 pt-3 border-t border-[var(--rule)] font-sans text-xs flex flex-wrap items-center justify-between text-[var(--ink-muted)]">
                   <span>VERIFIED: 1 COMMITTED · 49 CONFLICT REJECTED · 0 OVERSOLD · PR #14963 · 60 FPS CANVAS</span>
-                  <span className="text-[var(--cobalt)] font-mono font-semibold">ISO 5457 SPEC 2025</span>
+                  <span className="text-[var(--cobalt)] font-mono font-semibold">VERIFIED ARCHITECTURE</span>
                 </div>
               </section>
 
@@ -812,7 +812,7 @@ export default function Home() {
                     <span className="font-mono text-xs font-bold text-[var(--ink)] tracking-wider">
                       STRESS TELEMETRY &amp; PROOF
                     </span>
-                    <span className="font-mono text-xs text-[var(--cobalt)] font-semibold">[A1-METRICS]</span>
+                    <span className="font-mono text-xs text-[var(--cobalt)] font-semibold">KEY METRICS</span>
                   </div>
 
                   {/* Metric Card 1 */}
@@ -868,7 +868,7 @@ export default function Home() {
                     onClick={() => setDrawerSheet(activeSheet)}
                   >
                     <FileText size={16} />
-                    <span>Inspect Spec Sheet [A1] ↗</span>
+                    <span>Quick Architecture Preview ↗</span>
                   </button>
 
                   <Link
@@ -932,18 +932,18 @@ export default function Home() {
         </div>
 
         {/* ========================================================================= */}
-        {/* BELOW-THE-FOLD BLUEPRINT SECTIONS: [A1]..[D4]                            */}
+        {/* BELOW-THE-FOLD SECTIONS: 1..4                                             */}
         {/* ========================================================================= */}
         <div className="p-5 sm:p-8 md:p-12 space-y-16 md:space-y-24 bg-[var(--paper)]">
 
-          {/* SECTION [A1]: SYSTEMS ENGINEERING SPECIFICATIONS */}
+          {/* SECTION 1: SYSTEMS ENGINEERING SPECIFICATIONS */}
           <section id="systems" className="scroll-mt-8 space-y-8 font-sans">
             <div className="flex flex-col md:flex-row md:items-baseline md:justify-between border-b-2 border-[var(--ink)] pb-3">
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[var(--ink)]">
                 Systems Engineering &amp; Distributed Architecture
               </h2>
               <span className="font-mono text-xs font-bold text-[var(--cobalt)] tracking-wider mt-1 md:mt-0">
-                [A1] SPECIFICATIONS · 04 ACTIVE PRODUCTION &amp; R&amp;D SYSTEMS
+                1. PROJECTS &amp; SYSTEMS · 4 FEATURED WORKS
               </span>
             </div>
 
@@ -964,7 +964,7 @@ export default function Home() {
                       className="whitespace-nowrap shrink-0 px-3 py-2 text-sm font-semibold border border-[var(--ink)] bg-[var(--paper)] hover:bg-[var(--ink)] hover:text-white transition-colors"
                       onClick={() => setDrawerSheet(SHEETS['ticket-booking'])}
                     >
-                      Inspect Spec Sheet ↗
+                      Quick Preview ↗
                     </button>
                     <Link
                       href="/projects/ticket-booking"
@@ -999,7 +999,7 @@ export default function Home() {
 
                   <div className="border-t lg:border-t-0 lg:border-l border-[var(--rule-strong)] pt-4 lg:pt-0 lg:pl-6 space-y-2 text-sm">
                     <div className="font-mono text-xs font-bold text-[var(--ink)] pb-1 border-b border-[var(--rule)]">
-                      SPECIFICATION SHEET [A1-01]
+                      PROJECT 1 // TECH SPECS
                     </div>
                     <div><span className="text-[var(--ink-muted)] text-xs">Core Service:</span> <span className="font-bold">Go 1.22 / Gin</span></div>
                     <div><span className="text-[var(--ink-muted)] text-xs">Database:</span> <span className="font-bold">PostgreSQL 16 (Row Lock)</span></div>
@@ -1026,7 +1026,7 @@ export default function Home() {
                       className="whitespace-nowrap shrink-0 px-3 py-2 text-sm font-semibold border border-[var(--ink)] bg-[var(--paper)] hover:bg-[var(--ink)] hover:text-white transition-colors"
                       onClick={() => setDrawerSheet(SHEETS['researcher-cockpit'])}
                     >
-                      Inspect Spec Sheet ↗
+                      Quick Preview ↗
                     </button>
                     <Link
                       href="/projects/researcher-cockpit"
@@ -1055,7 +1055,7 @@ export default function Home() {
 
                   <div className="border-t lg:border-t-0 lg:border-l border-[var(--rule-strong)] pt-4 lg:pt-0 lg:pl-6 space-y-2 text-sm">
                     <div className="font-mono text-xs font-bold text-[var(--ink)] pb-1 border-b border-[var(--rule)]">
-                      SPECIFICATION SHEET [A1-02]
+                      PROJECT 2 // TECH SPECS
                     </div>
                     <div><span className="text-[var(--ink-muted)] text-xs">Client Sandbox:</span> <span className="font-bold">JavaScript / WebExtensions</span></div>
                     <div><span className="text-[var(--ink-muted)] text-xs">Backend Daemon:</span> <span className="font-bold">Java (JDK 25 / JabRef)</span></div>
@@ -1081,7 +1081,7 @@ export default function Home() {
                       className="whitespace-nowrap shrink-0 px-3 py-2 text-sm font-semibold border border-[var(--ink)] bg-[var(--paper)] hover:bg-[var(--ink)] hover:text-white transition-colors"
                       onClick={() => setDrawerSheet(SHEETS['usagi-buddy'])}
                     >
-                      Inspect Spec Sheet ↗
+                      Quick Preview ↗
                     </button>
                     <Link
                       href="/projects/usagi-buddy"
@@ -1110,7 +1110,7 @@ export default function Home() {
 
                   <div className="border-t lg:border-t-0 lg:border-l border-[var(--rule-strong)] pt-4 lg:pt-0 lg:pl-6 space-y-2 text-sm">
                     <div className="font-mono text-xs font-bold text-[var(--ink)] pb-1 border-b border-[var(--rule)]">
-                      SPECIFICATION SHEET [A1-03]
+                      PROJECT 3 // TECH SPECS
                     </div>
                     <div><span className="text-[var(--ink-muted)] text-xs">Framework:</span> <span className="font-bold">Electron 33 / TypeScript 5</span></div>
                     <div><span className="text-[var(--ink-muted)] text-xs">Physics Engine:</span> <span className="font-bold">HTML5 Canvas 2D (60 FPS)</span></div>
@@ -1141,7 +1141,7 @@ export default function Home() {
                       className="whitespace-nowrap shrink-0 px-3 py-2 text-sm font-semibold border border-[var(--ink)] bg-[var(--paper)] hover:bg-[var(--ink)] hover:text-white transition-colors"
                       onClick={() => setDrawerSheet(SHEETS['awd-project'])}
                     >
-                      Inspect Spec Sheet ↗
+                      Quick Preview ↗
                     </button>
                     <Link
                       href="/projects/awd-project"
@@ -1170,7 +1170,7 @@ export default function Home() {
 
                   <div className="border-t lg:border-t-0 lg:border-l border-[var(--rule-strong)] pt-4 lg:pt-0 lg:pl-6 space-y-2 text-sm">
                     <div className="font-mono text-xs font-bold text-[var(--ink)] pb-1 border-b border-[var(--rule)]">
-                      SPECIFICATION SHEET [A1-04]
+                      PROJECT 4 // TECH SPECS
                     </div>
                     <div><span className="text-[var(--ink-muted)] text-xs">Role:</span> <span className="font-bold text-[var(--cobalt)]">Core Team Member</span></div>
                     <div><span className="text-[var(--ink-muted)] text-xs">Architecture:</span> <span className="font-bold">Decoupled REST</span></div>
@@ -1183,14 +1183,14 @@ export default function Home() {
             </div>
           </section>
 
-          {/* SECTION [B2]: PROFESSIONAL EXPERIENCE */}
+          {/* SECTION 2: PROFESSIONAL EXPERIENCE */}
           <section id="experience" className="scroll-mt-8 space-y-8 font-sans">
             <div className="flex flex-col md:flex-row md:items-baseline md:justify-between border-b-2 border-[var(--ink)] pb-3">
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[var(--ink)]">
                 Professional Engineering Ledger
               </h2>
               <span className="font-mono text-xs font-bold text-[var(--cobalt)] tracking-wider mt-1 md:mt-0">
-                [B2] EXPERIENCE · ENTERPRISE DISTRIBUTED SYSTEMS &amp; BACKEND
+                2. EXPERIENCE · ENTERPRISE BACKEND &amp; SYSTEMS
               </span>
             </div>
 
@@ -1263,14 +1263,14 @@ export default function Home() {
             </div>
           </section>
 
-          {/* SECTION [C3]: EMPIRICAL SE RESEARCH & EDUCATION */}
+          {/* SECTION 3: EMPIRICAL SE RESEARCH & EDUCATION */}
           <section id="research" className="scroll-mt-8 space-y-8 font-sans">
             <div className="flex flex-col md:flex-row md:items-baseline md:justify-between border-b-2 border-[var(--ink)] pb-3">
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[var(--ink)] text-balance">
                 Empirical Software Engineering &amp; Research
               </h2>
               <span className="font-mono text-xs font-bold text-[var(--cobalt)] tracking-wider mt-1 md:mt-0">
-                [C3] SE RESEARCH · STATIC &amp; DYNAMIC ANALYSIS · LLM VERIFICATION
+                3. ACADEMIC RESEARCH · EMPIRICAL SOFTWARE ENGINEERING
               </span>
             </div>
 
@@ -1336,14 +1336,14 @@ export default function Home() {
             </div>
           </section>
 
-          {/* SECTION [D4]: ASYMMETRIC AI-ORCHESTRATED ARCHITECTURE */}
+          {/* SECTION 4: ASYMMETRIC AI-ORCHESTRATED ARCHITECTURE */}
           <section id="architecture" className="scroll-mt-8 space-y-8 font-sans">
             <div className="flex flex-col md:flex-row md:items-baseline md:justify-between border-b-2 border-[var(--ink)] pb-3">
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[var(--ink)] text-balance">
                 AI-Orchestrated Engineering Pipeline
               </h2>
               <span className="font-mono text-xs font-bold text-[var(--cobalt)] tracking-wider mt-1 md:mt-0">
-                [D4] METHODOLOGY · CONTRACT-DRIVEN AUTONOMOUS AGENT ORCHESTRATION
+                4. AI ENGINEERING WORKFLOW · MULTI-AGENT TDD PIPELINE
               </span>
             </div>
 
@@ -1356,7 +1356,7 @@ export default function Home() {
                 {/* Gate 1 */}
                 <div className="p-4 bg-[var(--paper)] border border-[var(--ink)] space-y-2">
                   <div className="font-mono text-xs font-bold text-[var(--cobalt)] pb-1 border-b border-[var(--rule)]">
-                    [1] CONTRACT GATE
+                    1. CONTRACT GATE
                   </div>
                   <div className="font-bold text-sm text-[var(--ink)]">Tech Lead Architecture</div>
                   <div className="text-xs text-[var(--ink-muted)] leading-relaxed">
@@ -1367,7 +1367,7 @@ export default function Home() {
                 {/* Gate 2 */}
                 <div className="p-4 bg-[var(--paper)] border border-[var(--ink)] space-y-2">
                   <div className="font-mono text-xs font-bold text-[var(--cobalt)] pb-1 border-b border-[var(--rule)]">
-                    [2] WORKER ROUTING
+                    2. WORKER ROUTING
                   </div>
                   <div className="font-bold text-sm text-[var(--ink)]">Multi-Tier Subagents</div>
                   <div className="text-xs text-[var(--ink-muted)] leading-relaxed">
@@ -1378,7 +1378,7 @@ export default function Home() {
                 {/* Gate 3 */}
                 <div className="p-4 bg-[var(--paper)] border border-[var(--ink)] space-y-2">
                   <div className="font-mono text-xs font-bold text-[var(--cobalt)] pb-1 border-b border-[var(--rule)]">
-                    [3] ANTI-CHEAT QA
+                    3. ANTI-CHEAT QA
                   </div>
                   <div className="font-bold text-sm text-[var(--ink)]">Concurrency &amp; Invariants</div>
                   <div className="text-xs text-[var(--ink-muted)] leading-relaxed">
@@ -1389,7 +1389,7 @@ export default function Home() {
                 {/* Gate 4 */}
                 <div className="p-4 bg-[var(--paper)] border border-[var(--ink)] space-y-2">
                   <div className="font-mono text-xs font-bold text-[var(--vermilion)] pb-1 border-b border-[var(--rule)]">
-                    [4] DOD SIGN-OFF
+                    4. DOD SIGN-OFF
                   </div>
                   <div className="font-bold text-sm text-[var(--ink)]">Clean Release PR</div>
                   <div className="text-xs text-[var(--ink-muted)] leading-relaxed">
@@ -1403,20 +1403,20 @@ export default function Home() {
         </div>
 
         {/* ========================================================================= */}
-        {/* FOOTER TITLE BLOCK (DIN 6771 COMPLIANT)                                  */}
+        {/* FOOTER TITLE BLOCK                                                       */}
         {/* ========================================================================= */}
         <footer className="border-t-2 border-[var(--ink)] p-6 bg-[var(--paper-elevated)] flex flex-col md:flex-row justify-between items-center gap-4 font-sans text-xs text-[var(--ink-muted)]">
           <div className="flex flex-wrap items-center gap-3">
             <span className="font-bold text-[var(--ink)]">SON THIEN NGUYEN</span>
             <span>·</span>
-            <span className="font-mono">DIN 6771 / ISO 5457 SHEET SPECIFICATION</span>
+            <span className="font-mono">SOFTWARE ENGINEER PORTFOLIO</span>
             <span>·</span>
             <span className="text-[var(--cobalt)] font-semibold">HILDESHEIM, GERMANY</span>
           </div>
 
           <div className="flex items-center gap-4 text-sm font-semibold">
             <a href="#systems" className="hover:text-[var(--ink)] transition-colors">
-              ↑ Back to Sheet [A1]
+              ↑ Back to Top
             </a>
             <a href="/cv.pdf" download className="text-[var(--vermilion)] hover:underline">
               Download CV.pdf ↗
@@ -1446,7 +1446,7 @@ export default function Home() {
             aria-labelledby="drawer-title"
           >
             <div className="space-y-6">
-              {/* Drawer DIN Header */}
+              {/* Drawer Header */}
               <div className="flex items-start justify-between border-b-2 border-[var(--ink)] pb-4">
                 <div>
                   <div className="font-mono text-xs font-bold text-[var(--cobalt)]">

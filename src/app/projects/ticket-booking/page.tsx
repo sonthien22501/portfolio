@@ -14,14 +14,14 @@ export default function TicketBookingCaseStudy() {
             className="flex items-center gap-2 font-semibold text-[var(--ink)] hover:text-[var(--cobalt)] transition-colors"
           >
             <ArrowLeft size={16} />
-            <span>← <span className="font-mono font-bold">[A1]</span> Return to Blueprint Index</span>
+            <span>← Back to Portfolio</span>
           </Link>
           <span className="font-mono text-xs text-[var(--cobalt)] font-semibold hidden sm:inline">
-            SPEC-DIN-01 // ACID TRANSACTION BOUNDARY
+            PROJECT 1 // ACID TRANSACTION BOUNDARY
           </span>
         </div>
 
-        {/* DIN TITLE BLOCK HEADER */}
+        {/* HEADER */}
         <header className="p-6 md:p-8 border-b-2 border-[var(--ink)] bg-[var(--paper)] space-y-4">
           <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
             <div className="space-y-2">
@@ -270,7 +270,7 @@ COMMIT;`}
             className="font-semibold text-[var(--ink)] hover:text-[var(--cobalt)] transition-colors flex items-center gap-1.5"
           >
             <ArrowLeft size={16} />
-            <span>Return to Blueprint Index [A1]</span>
+            <span>← Back to Portfolio</span>
           </Link>
           <a
             href="https://github.com/sonthien22501/ticket_booking_system"
