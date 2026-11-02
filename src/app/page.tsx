@@ -109,18 +109,18 @@ const SHEETS: Record<string, SheetData> = {
   'usagi-buddy': {
     id: 'usagi-buddy',
     sheetCode: 'PROJECT 3 // MULTI-WINDOW IPC & CANVAS PHYSICS',
-    title: 'Usagi Buddy (Usagi Float v0.5)',
+    title: 'Usagi Buddy',
     headline: 'Multi-Window Transparent Desktop Companion & 60 FPS Physics Engine',
-    subtitle: 'Electron · TypeScript · HTML5 2D Canvas · Multi-Window IPC · 14 Vitest Suites',
+    subtitle: 'Electron · TypeScript · HTML5 2D Canvas · Multi-Window IPC · 17 Vitest Suites',
     primaryMetric: {
       value: '60 FPS',
       label: 'PHYSICS ANIMATION',
       desc: 'Real-time kick-and-glide swimming and cursor attraction physics loop.',
     },
     secondaryMetric: {
-      value: '14 SUITES',
+      value: '17 SUITES',
       label: 'TEST COVERAGE',
-      desc: '14 Vitest unit test suites validating physics, stores, and ghost mode hit-testing.',
+      desc: '17 Vitest unit test suites validating physics, stores, i18n localization, and hit-testing.',
     },
     route: '/projects/usagi-buddy',
     githubUrl: 'https://github.com/sonthien22501/usagi-buddy',
@@ -136,7 +136,7 @@ const SHEETS: Record<string, SheetData> = {
     summary:
       'Transparent desktop companions frequently cause severe usability degradation: full-screen overlays intercept clicks meant for underlying productivity apps, while multi-window synchronization (settings, timers, sticky notes) leads to stale window state and high CPU load.',
     solution:
-      'Engineered an event-driven Electron architecture with dynamic per-pixel click-through hit-testing (setIgnoreMouseEvents forward mode via ghostModeController.ts), an HTML5 Canvas 2D physics engine running at 60 FPS, and a synchronized 4-window IPC topology verified across 14 Vitest test suites.',
+      'Engineered an event-driven Electron architecture with dynamic per-pixel click-through hit-testing (setIgnoreMouseEvents forward mode via ghostModeController.ts), an HTML5 Canvas 2D physics engine running at 60 FPS, and a synchronized 4-window IPC topology with 8-locale i18n verified across 17 Vitest test suites.',
   },
   'awd-project': {
     id: 'awd-project',
@@ -1044,12 +1044,12 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* SYSTEM 03: Usagi Buddy (Usagi Float v0.5) */}
+              {/* SYSTEM 03: Usagi Buddy */}
               <div className="border border-[var(--ink)] bg-white p-6 md:p-8">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[var(--rule-strong)] pb-4">
                   <div>
                     <h3 className="font-display text-xl sm:text-2xl font-bold text-[var(--ink)] text-balance">
-                      Usagi Buddy (Usagi Float v0.5)
+                      Usagi Buddy
                     </h3>
                     <div className="font-mono text-xs text-[var(--cobalt)] font-semibold mt-1">
                       MULTI-WINDOW DESKTOP COMPANION · ELECTRON · TYPESCRIPT · HTML5 CANVAS 2D
@@ -1060,7 +1060,7 @@ export default function Home() {
                       className="whitespace-nowrap shrink-0 px-3 py-2 text-sm font-semibold border border-[var(--ink)] bg-[var(--paper)] hover:bg-[var(--ink)] hover:text-white transition-colors"
                       onClick={() => setDrawerSheet(SHEETS['usagi-buddy'])}
                     >
-                      Quick Preview ↗
+                      Overview ↗
                     </button>
                     <Link
                       href="/projects/usagi-buddy"
@@ -1083,7 +1083,7 @@ export default function Home() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-6">
                   <div className="lg:col-span-2 space-y-4">
                     <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed max-w-prose text-pretty">
-                      Architected a cross-platform (macOS &amp; Windows) desktop companion featuring a 60 FPS HTML5 Canvas 2D physics engine (kick-and-glide swimming, cursor attraction, multi-monitor boundary clamping). Engineered zero-latency per-pixel alpha hit-testing via <code className="font-mono font-bold text-[var(--ink)] bg-[var(--paper)] px-1.5 py-0.5 border border-[var(--rule-strong)]">setIgnoreMouseEvents(true, &#123; forward: true &#125;)</code>, ensuring transparent overlay pixels never capture IDE or browser mouse clicks. Synchronizes 4 independent windows over an Electron IPC topology, fully verified by 14 Vitest unit test suites.
+                      Architected a cross-platform (macOS &amp; Windows) desktop companion featuring a 60 FPS HTML5 Canvas 2D physics engine (kick-and-glide swimming, cursor attraction, multi-monitor boundary clamping). Engineered zero-latency per-pixel alpha hit-testing via <code className="font-mono font-bold text-[var(--ink)] bg-[var(--paper)] px-1.5 py-0.5 border border-[var(--rule-strong)]">setIgnoreMouseEvents(true, &#123; forward: true &#125;)</code>, ensuring transparent overlay pixels never capture IDE or browser mouse clicks. Synchronizes 4 independent windows over an Electron IPC topology, featuring an 8-locale zero-dependency i18n engine and fully verified by 17 Vitest unit test suites.
                     </p>
                   </div>
 
@@ -1094,7 +1094,7 @@ export default function Home() {
                     <div><span className="text-[var(--ink-muted)] text-xs">Framework:</span> <span className="font-bold">Electron 33 / TypeScript 5</span></div>
                     <div><span className="text-[var(--ink-muted)] text-xs">Physics Engine:</span> <span className="font-bold">HTML5 Canvas 2D (60 FPS)</span></div>
                     <div><span className="text-[var(--ink-muted)] text-xs">Hit-Testing:</span> <span className="font-bold">Per-Pixel Alpha Forwarding</span></div>
-                    <div><span className="text-[var(--ink-muted)] text-xs">Test Coverage:</span> <span className="font-bold font-mono text-emerald-700">14 Vitest Suites</span></div>
+                    <div><span className="text-[var(--ink-muted)] text-xs">Test Coverage:</span> <span className="font-bold font-mono text-emerald-700">17 Vitest Suites</span></div>
                   </div>
                 </div>
               </div>
