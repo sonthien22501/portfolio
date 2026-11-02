@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { 
   Code2, 
   MapPin, 
-  Download, 
   X, 
   Play, 
   GitPullRequest,
@@ -157,7 +156,7 @@ const SHEETS: Record<string, SheetData> = {
     },
     route: '/projects/awd-project',
     githubUrl: 'https://github.com/Avnish-Raut/AWD_Project',
-    githubLabel: 'GitHub Repo (Avnish-Raut/AWD_Project) ↗',
+    githubLabel: 'GitHub Repo ↗',
     badge: 'Full-Stack · Team Member',
     stack: ['TypeScript', 'Node.js', 'Express', 'React', 'RESTful APIs', 'Agile Scrum'],
     concurrencySpecs: {
@@ -312,30 +311,10 @@ export default function Home() {
                   <span className="text-[var(--ink-muted)]">↗</span>
                 </a>
               </nav>
-
-              {/* Status Indicator */}
-              <div className="p-3 bg-[var(--paper)] border border-[var(--rule-strong)] space-y-1 font-sans">
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-600 shrink-0" />
-                  <span className="font-mono text-xs font-bold text-[var(--ink)] tracking-wider">AVAILABLE H2 2025</span>
-                </div>
-                <div className="text-[var(--ink-muted)] text-xs leading-normal">
-                  Backend / Systems Engineering in Germany &amp; EU
-                </div>
-              </div>
             </div>
 
             {/* CTAs and External Verification Links */}
             <div className="pt-6 space-y-2.5 font-sans">
-              <a
-                href="/cv.pdf"
-                download
-                className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-[var(--vermilion)] text-white text-sm font-semibold tracking-wide hover:bg-[#b82e18] transition-colors border border-[var(--ink)] shadow-xs"
-              >
-                <Download size={15} />
-                <span>Download CV.pdf ↗</span>
-              </a>
-
               <div className="grid grid-cols-2 gap-2 text-sm font-semibold">
                 <a
                   href="https://github.com/sonthien22501"
@@ -359,12 +338,12 @@ export default function Home() {
               </div>
 
               <a
-                href="mailto:sonthien225@gmail.com"
-                className="w-full flex items-center justify-center gap-2 py-2.5 px-3 border border-[var(--rule-strong)] bg-white hover:bg-[var(--paper)] hover:text-[var(--cobalt)] transition-colors text-sm font-semibold text-[var(--ink)]"
-                title="Email Direct"
+                href="mailto:thien.rodannguyen@gmail.com"
+                className="w-full flex items-center justify-center gap-2 py-2.5 px-3 border border-[var(--rule-strong)] bg-white hover:bg-[var(--paper)] hover:text-[var(--cobalt)] transition-colors text-xs sm:text-sm font-medium text-[var(--ink)]"
+                title="Email Direct: thien.rodannguyen@gmail.com"
               >
                 <Mail size={14} className="shrink-0 text-[var(--cobalt)]" />
-                <span className="truncate">sonthien225@gmail.com ↗</span>
+                <span className="truncate">thien.rodannguyen@gmail.com ↗</span>
               </a>
             </div>
           </aside>
@@ -1124,16 +1103,11 @@ export default function Home() {
               <div className="border border-[var(--ink)] bg-white p-6 md:p-8">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[var(--rule-strong)] pb-4">
                   <div>
-                    <div className="flex flex-wrap items-center gap-2">
-                      <h3 className="font-display text-xl sm:text-2xl font-bold text-[var(--ink)] text-balance">
-                        Advanced Web Development (AWD)
-                      </h3>
-                      <span className="px-2 py-0.5 bg-[var(--cobalt)] text-white text-xs font-bold">
-                        Core Team Member · 3-Person Agile Team
-                      </span>
-                    </div>
+                    <h3 className="font-display text-xl sm:text-2xl font-bold text-[var(--ink)] text-balance">
+                      Advanced Web Development (AWD)
+                    </h3>
                     <div className="font-mono text-xs text-[var(--cobalt)] font-semibold mt-1">
-                      FULL-STACK TYPESCRIPT ARCHITECTURE · NODE.JS · DECOUPLED CLIENT-SERVER
+                      FULL-STACK TYPESCRIPT · NODE.JS · CORE TEAM MEMBER (3-PERSON AGILE TEAM)
                     </div>
                   </div>
                   <div className="flex flex-wrap items-center gap-2">
@@ -1156,7 +1130,7 @@ export default function Home() {
                       className="px-3 py-2 text-sm font-semibold border border-[var(--rule-strong)] hover:border-[var(--ink)] text-[var(--ink)] transition-colors inline-flex items-center gap-1.5"
                     >
                       <Code2 size={15} />
-                      <span>GitHub Repo (Avnish-Raut/AWD_Project) ↗</span>
+                      <span>GitHub ↗</span>
                     </a>
                   </div>
                 </div>
@@ -1172,7 +1146,7 @@ export default function Home() {
                     <div className="font-mono text-xs font-bold text-[var(--ink)] pb-1 border-b border-[var(--rule)]">
                       PROJECT 4 // TECH SPECS
                     </div>
-                    <div><span className="text-[var(--ink-muted)] text-xs">Role:</span> <span className="font-bold text-[var(--cobalt)]">Core Team Member</span></div>
+                    <div><span className="text-[var(--ink-muted)] text-xs">Role:</span> <span className="font-bold text-[var(--cobalt)]">Core Team Member (3-Person Agile Team)</span></div>
                     <div><span className="text-[var(--ink-muted)] text-xs">Architecture:</span> <span className="font-bold">Decoupled REST</span></div>
                     <div><span className="text-[var(--ink-muted)] text-xs">Language:</span> <span className="font-bold">End-to-End TypeScript</span></div>
                     <div><span className="text-[var(--ink-muted)] text-xs">Backend:</span> <span className="font-bold">Node.js / Express</span></div>
@@ -1417,9 +1391,6 @@ export default function Home() {
           <div className="flex items-center gap-4 text-sm font-semibold">
             <a href="#systems" className="hover:text-[var(--ink)] transition-colors">
               ↑ Back to Top
-            </a>
-            <a href="/cv.pdf" download className="text-[var(--vermilion)] hover:underline">
-              Download CV.pdf ↗
             </a>
           </div>
         </footer>

@@ -23,7 +23,7 @@ A **Backend & Distributed Systems Engineer** who combines enterprise-grade backe
 ## Operating Context
 
 - **Framework & Runtime:** Next.js 16.4 (App Router), React 19.3, TypeScript 5, Tailwind CSS v4 (`@tailwindcss/turbopack`), Lucide icons.
-- **Evaluation Flow:** Visitors land on `/` (Hero, Experience, Featured Projects, Academic Research, Education) and drill into project case studies (`/projects/ticket-booking`, `/projects/researcher-cockpit`, `/projects/usagi-buddy`, `/projects/awd-project`), inspect architecture diagrams, check GitHub/PR links, or download `public/cv.pdf`.
+- **Evaluation Flow:** Visitors land on `/` (Hero, Experience, Featured Projects, Academic Research, Education) and drill into project case studies (`/projects/ticket-booking`, `/projects/researcher-cockpit`, `/projects/usagi-buddy`, `/projects/awd-project`), inspect architecture diagrams, and check GitHub/PR links.
 
 ## Capabilities and Constraints
 
@@ -33,7 +33,7 @@ A **Backend & Distributed Systems Engineer** who combines enterprise-grade backe
   - `/projects/researcher-cockpit` — JabRef WebExtension + Java JDK 25 client-server integration case study (PR #14963)
   - `/projects/usagi-buddy` — Multi-Window Desktop Companion (Electron, Canvas 2D 60 FPS physics, per-pixel alpha hit-testing, 14 Vitest suites)
   - `/projects/awd-project` — Full-stack TypeScript/Node.js agile architecture case study (Core Team Member · 3-Person Agile Team)
-- **Technical Constraints:** Fast static/SSR rendering via Next.js App Router, zero broken links (wire `/cv.pdf` to Resume CTA), responsive across mobile and desktop viewports.
+- **Technical Constraints:** Fast static/SSR rendering via Next.js App Router, zero broken links, responsive across mobile and desktop viewports.
 
 ## Brand Commitments
 
@@ -41,8 +41,7 @@ A **Backend & Distributed Systems Engineer** who combines enterprise-grade backe
 - **Links & Contact:**
   - GitHub: `https://github.com/sonthien22501`
   - LinkedIn: `https://www.linkedin.com/in/sonthien225/`
-  - Email: `mailto:sonthien225@gmail.com`
-  - Resume PDF: `/cv.pdf`
+  - Email: `mailto:thien.rodannguyen@gmail.com`
 
 ## Evidence on Hand
 

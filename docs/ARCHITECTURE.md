@@ -21,7 +21,6 @@
 - `src/app/projects/researcher-cockpit/page.tsx` — Standalone DIN specification sheet for Researcher Cockpit (JabRef JDK 25 + WebExtension, PR `#14963`).
 - `src/app/projects/usagi-buddy/page.tsx` — Standalone DIN specification sheet for Usagi Buddy Desktop Companion (Electron, 60 FPS Canvas Physics, Alpha Hit-Testing, 14 Vitest suites).
 - `src/app/projects/awd-project/page.tsx` — Standalone DIN specification sheet for Advanced Web Development (TypeScript/Node.js decoupled architecture · Core Team Member 3-Person Team).
-- `public/cv.pdf` — Downloadable Resume PDF.
 
 ## 4. Milestone Progress Checklist
 - [x] Initial Next.js portfolio & case study pages

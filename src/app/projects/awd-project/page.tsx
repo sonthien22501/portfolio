@@ -241,7 +241,7 @@ export default function AWDProjectCaseStudy() {
             rel="noreferrer"
             className="text-[var(--cobalt)] font-semibold hover:underline flex items-center gap-1.5"
           >
-            <span>View Source Code on GitHub (Avnish-Raut/AWD_Project) ↗</span>
+            <span>View Source Code on GitHub ↗</span>
           </a>
         </footer>
 
