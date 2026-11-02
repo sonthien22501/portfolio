@@ -4,17 +4,10 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { 
   Code2, 
-  Mail, 
   MapPin, 
   Download, 
-  ExternalLink, 
-  ChevronRight, 
   X, 
   Play, 
-  RotateCcw, 
-  Layers, 
-  ShieldCheck, 
-  Cpu, 
   GitPullRequest,
   CheckCircle2,
   FileText
@@ -145,7 +138,6 @@ const SHEETS: Record<string, SheetData> = {
 export default function Home() {
   const [activeSheetKey, setActiveSheetKey] = useState<string>('ticket-booking');
   const [isSimulating, setIsSimulating] = useState<boolean>(false);
-  const [simulationCount, setSimulationCount] = useState<number>(0);
   const [committedCount, setCommittedCount] = useState<number>(1);
   const [rejectedCount, setRejectedCount] = useState<number>(49);
   const [drawerSheet, setDrawerSheet] = useState<SheetData | null>(null);
@@ -165,7 +157,6 @@ export default function Home() {
 
   const triggerSpikeSimulation = () => {
     setIsSimulating(true);
-    setSimulationCount((prev) => prev + 1);
     setCommittedCount(0);
     setRejectedCount(0);
 
@@ -179,7 +170,7 @@ export default function Home() {
   return (
     <div className="blueprint-grid min-h-screen text-[var(--ink)] p-2 sm:p-4 md:p-6 lg:p-8 selection:bg-[var(--cobalt)] selection:text-[var(--paper)]">
       {/* Outer Technical Frame (DIN 6771 / ISO 5457 Layout) */}
-      <div className="max-w-[1480px] mx-auto border-2 border-[var(--ink)] bg-[var(--paper)]/95 shadow-sm">
+      <div className="max-w-[1480px] mx-auto border-2 border-[var(--ink)] bg-[var(--paper)]/95">
         
         {/* ========================================================================= */}
         {/* FIRST VIEWPORT COMPOSITION: RAIL + HEADER + STAGE + PROOF + TITLE BLOCK */}
@@ -191,7 +182,7 @@ export default function Home() {
             <div className="space-y-6">
               {/* Identity & Sheet Identification */}
               <div className="pb-5 border-b border-[var(--rule-strong)]">
-                <div className="font-mono text-[11px] font-bold text-[var(--vermilion)] tracking-wider">
+                <div className="font-mono text-xs font-bold text-[var(--vermilion)] tracking-wider">
                   DIN 6771 // SYS-ENG
                 </div>
                 <div className="font-display text-2xl font-black tracking-tight text-[var(--ink)] mt-1">
@@ -248,12 +239,12 @@ export default function Home() {
               </nav>
 
               {/* Status Indicator */}
-              <div className="p-3 bg-[var(--paper)] border border-[var(--rule-strong)] font-mono text-[11px] space-y-1">
+              <div className="p-3 bg-[var(--paper)] border border-[var(--rule-strong)] font-mono text-xs space-y-1">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
+                  <span className="w-2 h-2 rounded-full bg-emerald-600" />
                   <span className="font-bold text-[var(--ink)]">AVAILABLE H2 2025</span>
                 </div>
-                <div className="text-[var(--ink-muted)] leading-tight">
+                <div className="text-[var(--ink-muted)] text-xs leading-tight">
                   Backend / Systems Engineering in Germany &amp; EU
                 </div>
               </div>
@@ -270,7 +261,7 @@ export default function Home() {
                 <span>Download CV.pdf ↗</span>
               </a>
 
-              <div className="grid grid-cols-3 gap-1 pt-1 font-mono text-[11px] text-center">
+              <div className="grid grid-cols-3 gap-1 pt-1 font-mono text-xs text-center">
                 <a
                   href="https://github.com/sonthien22501"
                   target="_blank"
@@ -319,7 +310,7 @@ export default function Home() {
                 <div className="text-[var(--cobalt)] font-semibold">
                   JAVA SPRING BOOT · GO · KAFKA · POSTGRESQL · K8S
                 </div>
-                <div className="text-[var(--ink-muted)] text-[11px] flex md:justify-end items-center gap-2">
+                <div className="text-[var(--ink-muted)] text-xs flex md:justify-end items-center gap-2">
                   <span>ISO 5457 // TECHNICAL DRAWING SPECIFICATION</span>
                   <span className="w-2 h-2 bg-[var(--cobalt)] inline-block" />
                 </div>
@@ -369,7 +360,7 @@ export default function Home() {
 
                   {/* Stage Headline (Heading leads; metadata is placed below) */}
                   <div>
-                    <h2 className="font-display text-xl sm:text-2xl font-bold text-[var(--ink)] tracking-tight">
+                    <h2 className="font-display text-xl sm:text-2xl font-bold text-[var(--ink)] tracking-tight text-balance">
                       {activeSheet.headline}
                     </h2>
                     <div className="font-mono text-xs text-[var(--cobalt)] font-semibold mt-1">
@@ -450,67 +441,67 @@ export default function Home() {
                             {/* Node 1: NGINX Gateway */}
                             <g transform="translate(15, 75)">
                               <rect
-                                width="105"
-                                height="50"
+                                width="115"
+                                height="54"
                                 fill="#FAF8F3"
                                 stroke="var(--ink)"
                                 strokeWidth="1.5"
                               />
-                              <text x="52" y="24" textAnchor="middle" fontSize="10" fontFamily="var(--font-fira-code)" fontWeight="bold" fill="var(--ink)">
+                              <text x="57" y="24" textAnchor="middle" fontSize="12" fontFamily="var(--font-fira-code)" fontWeight="bold" fill="var(--ink)">
                                 NGINX
                               </text>
-                              <text x="52" y="38" textAnchor="middle" fontSize="9" fontFamily="var(--font-fira-code)" fill="var(--ink-muted)">
+                              <text x="57" y="42" textAnchor="middle" fontSize="12" fontFamily="var(--font-fira-code)" fill="var(--ink-muted)">
                                 Reverse Proxy
                               </text>
                             </g>
 
                             {/* Node 2: Go Booking Svc */}
-                            <g transform="translate(240, 70)">
+                            <g transform="translate(240, 68)">
                               <rect
-                                width="130"
-                                height="60"
+                                width="140"
+                                height="64"
                                 fill="#FAF8F3"
                                 stroke="var(--cobalt)"
                                 strokeWidth="2"
                               />
-                              <text x="65" y="26" textAnchor="middle" fontSize="11" fontFamily="var(--font-fira-code)" fontWeight="bold" fill="var(--cobalt)">
+                              <text x="70" y="27" textAnchor="middle" fontSize="12" fontFamily="var(--font-fira-code)" fontWeight="bold" fill="var(--cobalt)">
                                 Go Booking Svc
                               </text>
-                              <text x="65" y="44" textAnchor="middle" fontSize="9" fontFamily="var(--font-fira-code)" fill="var(--ink-muted)">
+                              <text x="70" y="47" textAnchor="middle" fontSize="12" fontFamily="var(--font-fira-code)" fill="var(--ink-muted)">
                                 Saga Coordinator
                               </text>
                             </g>
 
                             {/* Node 3A: 1 Committed Seat */}
-                            <g transform="translate(470, 45)">
+                            <g transform="translate(460, 42)">
                               <rect
-                                width="190"
-                                height="45"
+                                width="210"
+                                height="50"
                                 fill="#ecfdf5"
                                 stroke="#059669"
                                 strokeWidth="1.5"
                               />
-                              <text x="95" y="20" textAnchor="middle" fontSize="10" fontFamily="var(--font-fira-code)" fontWeight="bold" fill="#047857">
+                              <text x="105" y="22" textAnchor="middle" fontSize="12" fontFamily="var(--font-fira-code)" fontWeight="bold" fill="#047857">
                                 1 COMMITTED SEAT (200 OK)
                               </text>
-                              <text x="95" y="34" textAnchor="middle" fontSize="9" fontFamily="var(--font-fira-code)" fill="#065f46">
+                              <text x="105" y="38" textAnchor="middle" fontSize="12" fontFamily="var(--font-fira-code)" fill="#065f46">
                                 SELECT FOR UPDATE Lock
                               </text>
                             </g>
 
                             {/* Node 3B: 49 Conflict Rejection */}
-                            <g transform="translate(470, 115)">
+                            <g transform="translate(460, 112)">
                               <rect
-                                width="190"
-                                height="45"
+                                width="210"
+                                height="50"
                                 fill="#fef2f2"
                                 stroke="var(--vermilion)"
                                 strokeWidth="1.5"
                               />
-                              <text x="95" y="20" textAnchor="middle" fontSize="10" fontFamily="var(--font-fira-code)" fontWeight="bold" fill="var(--vermilion)">
+                              <text x="105" y="22" textAnchor="middle" fontSize="12" fontFamily="var(--font-fira-code)" fontWeight="bold" fill="var(--vermilion)">
                                 49 CONFLICTS (409 / TIMEOUT)
                               </text>
-                              <text x="95" y="34" textAnchor="middle" fontSize="9" fontFamily="var(--font-fira-code)" fill="#991b1b">
+                              <text x="105" y="38" textAnchor="middle" fontSize="12" fontFamily="var(--font-fira-code)" fill="#991b1b">
                                 Zero-Overselling Guarded
                               </text>
                             </g>
@@ -551,19 +542,19 @@ export default function Home() {
                           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                             <div className="p-3 bg-white border border-[var(--ink)]">
                               <div className="font-bold text-[var(--ink)]">[1] WebExtension</div>
-                              <div className="text-[var(--ink-muted)] text-[11px] mt-1">
+                              <div className="text-[var(--ink-muted)] text-xs mt-1">
                                 Content scripts on IEEE Xplore, arXiv, and Google Scholar parsing live DOM nodes.
                               </div>
                             </div>
                             <div className="p-3 bg-white border border-[var(--cobalt)]">
                               <div className="font-bold text-[var(--cobalt)]">[2] Loopback REST IPC</div>
-                              <div className="text-[var(--ink-muted)] text-[11px] mt-1">
+                              <div className="text-[var(--ink-muted)] text-xs mt-1">
                                 Secure cross-origin payload transmission to local desktop port with token auth.
                               </div>
                             </div>
                             <div className="p-3 bg-white border border-[var(--ink)]">
                               <div className="font-bold text-[var(--ink)]">[3] JabRef JDK 25</div>
-                              <div className="text-[var(--ink-muted)] text-[11px] mt-1">
+                              <div className="text-[var(--ink-muted)] text-xs mt-1">
                                 Java desktop daemon parses BibTeX entries, deduplicates, and links downloaded PDFs.
                               </div>
                             </div>
@@ -586,19 +577,19 @@ export default function Home() {
                           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                             <div className="p-3 bg-white border border-[var(--ink)]">
                               <div className="font-bold text-[var(--ink)]">[1] Slicer4J &amp; Soot</div>
-                              <div className="text-[var(--ink-muted)] text-[11px] mt-1">
+                              <div className="text-[var(--ink-muted)] text-xs mt-1">
                                 Dynamic bytecode instrumentation tracking variable flow during failing test executions.
                               </div>
                             </div>
                             <div className="p-3 bg-white border border-[var(--cobalt)]">
                               <div className="font-bold text-[var(--cobalt)]">[2] Backward Slicing</div>
-                              <div className="text-[var(--ink-muted)] text-[11px] mt-1">
+                              <div className="text-[var(--ink-muted)] text-xs mt-1">
                                 Extracts minimal fault-relevant statements, discarding non-causal production logic.
                               </div>
                             </div>
                             <div className="p-3 bg-white border border-[var(--vermilion)]">
                               <div className="font-bold text-[var(--vermilion)]">[3] LLM Context Gate</div>
-                              <div className="text-[var(--ink-muted)] text-[11px] mt-1">
+                              <div className="text-[var(--ink-muted)] text-xs mt-1">
                                 Feeds focused slices into LLMs for automated program repair; prunes 68.4% of raw tokens.
                               </div>
                             </div>
@@ -614,7 +605,7 @@ export default function Home() {
                 </div>
 
                 {/* Stage Bottom Verified Stamp */}
-                <div className="mt-4 pt-3 border-t border-[var(--rule)] font-mono text-[11px] flex flex-wrap items-center justify-between text-[var(--ink-muted)]">
+                <div className="mt-4 pt-3 border-t border-[var(--rule)] font-mono text-xs flex flex-wrap items-center justify-between text-[var(--ink-muted)]">
                   <span>VERIFIED: 1 COMMITTED · 49 CONFLICT REJECTED · 0 OVERSOLD · PR #14963</span>
                   <span className="text-[var(--cobalt)] font-semibold">ISO 5457 SPEC 2025</span>
                 </div>
@@ -628,12 +619,12 @@ export default function Home() {
                     <span className="font-mono text-xs font-bold text-[var(--ink)] tracking-wider">
                       STRESS TELEMETRY &amp; PROOF
                     </span>
-                    <span className="font-mono text-[11px] text-[var(--cobalt)] font-semibold">[A1-METRICS]</span>
+                    <span className="font-mono text-xs text-[var(--cobalt)] font-semibold">[A1-METRICS]</span>
                   </div>
 
                   {/* Metric Card 1: Concurrency Invariant */}
-                  <div className="p-4 bg-white border border-[var(--ink)] shadow-xs space-y-1">
-                    <div className="font-mono text-[11px] font-bold text-[var(--cobalt)] tracking-wider">
+                  <div className="p-4 bg-transparent border border-[var(--ink)] space-y-1">
+                    <div className="font-mono text-xs font-bold text-[var(--cobalt)] tracking-wider">
                       {activeSheet.primaryMetric.label}
                     </div>
                     <div className="font-mono text-4xl font-black text-[var(--cobalt)] tabular-nums">
@@ -645,8 +636,8 @@ export default function Home() {
                   </div>
 
                   {/* Metric Card 2: Open Source & Research */}
-                  <div className="p-4 bg-white border border-[var(--ink)] shadow-xs space-y-1">
-                    <div className="font-mono text-[11px] font-bold text-[var(--ink)] tracking-wider">
+                  <div className="p-4 bg-transparent border border-[var(--ink)] space-y-1">
+                    <div className="font-mono text-xs font-bold text-[var(--ink)] tracking-wider">
                       {activeSheet.secondaryMetric.label}
                     </div>
                     <div className="font-mono text-4xl font-black text-[var(--ink)] tabular-nums">
@@ -658,7 +649,7 @@ export default function Home() {
                   </div>
 
                   {/* Metric Card 3: Batch Recipe Parameters */}
-                  <div className="p-4 bg-[var(--paper)] border border-[var(--rule-strong)] font-mono text-[11px] space-y-1.5">
+                  <div className="p-4 bg-[var(--paper)] border border-[var(--rule-strong)] font-mono text-xs space-y-1.5">
                     <div className="font-bold text-[var(--ink)] pb-1 border-b border-[var(--rule)]">
                       RECIPE // CONCURRENCY PARAMS
                     </div>
@@ -701,7 +692,7 @@ export default function Home() {
             <footer className="grid grid-cols-1 md:grid-cols-3 border-t-2 border-[var(--ink)] bg-[var(--paper)]">
               {/* Cell 1: Netcompany */}
               <div className="p-4 md:p-5 border-b md:border-b-0 md:border-r border-[var(--ink)] flex flex-col justify-between space-y-2">
-                <div className="font-mono text-[11px] font-bold text-[var(--cobalt)]">
+                <div className="font-mono text-xs font-bold text-[var(--cobalt)]">
                   EXPERIENCE // NETCOMPANY
                 </div>
                 <div>
@@ -716,7 +707,7 @@ export default function Home() {
 
               {/* Cell 2: TMA Solutions */}
               <div className="p-4 md:p-5 border-b md:border-b-0 md:border-r border-[var(--ink)] flex flex-col justify-between space-y-2">
-                <div className="font-mono text-[11px] font-bold text-[var(--cobalt)]">
+                <div className="font-mono text-xs font-bold text-[var(--cobalt)]">
                   EXPERIENCE // TMA SOLUTIONS
                 </div>
                 <div>
@@ -731,7 +722,7 @@ export default function Home() {
 
               {/* Cell 3: Education */}
               <div className="p-4 md:p-5 bg-[var(--ink)] text-[var(--paper)] flex flex-col justify-between space-y-2">
-                <div className="font-mono text-[11px] font-bold text-slate-300">
+                <div className="font-mono text-xs font-bold text-slate-300">
                   EDUCATION // M.SC. SOFTWARE ENGINEERING
                 </div>
                 <div>
@@ -765,10 +756,10 @@ export default function Home() {
 
             <div className="space-y-8">
               {/* SYSTEM 01: Event Ticket Booking System */}
-              <div className="border border-[var(--ink)] bg-white p-6 md:p-8 shadow-xs">
+              <div className="border border-[var(--ink)] bg-white p-6 md:p-8">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[var(--rule-strong)] pb-4">
                   <div>
-                    <h3 className="font-display text-xl sm:text-2xl font-bold text-[var(--ink)]">
+                    <h3 className="font-display text-xl sm:text-2xl font-bold text-[var(--ink)] text-balance">
                       Event Ticket Booking System
                     </h3>
                     <div className="font-mono text-xs text-[var(--cobalt)] font-semibold mt-1">
@@ -802,18 +793,18 @@ export default function Home() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-6">
                   <div className="lg:col-span-2 space-y-4">
-                    <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed">
+                    <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed max-w-prose text-pretty">
                       Engineered a decoupled microservices platform specifically designed to prevent race conditions during high-volume ticket drops. Utilizes PostgreSQL row-level locking via <code className="font-mono font-bold text-[var(--ink)] bg-[var(--paper)] px-1.5 py-0.5 border border-[var(--rule-strong)]">SELECT ... FOR UPDATE</code> within a strict ACID transaction boundary, guaranteeing zero oversold seats under simultaneous multi-user contention.
                     </p>
                     <div className="hatch-zone p-4 border border-[var(--rule-strong)] font-mono text-xs space-y-1">
                       <div className="font-bold text-[var(--vermilion)]">LOAD TEST RESOLUTION: 50 SIMULTANEOUS REQUESTS</div>
-                      <div className="text-[var(--ink)]">
+                      <div className="text-[var(--ink)] max-w-prose text-pretty">
                         Under simulated load of 50 concurrent seat reservation attempts for Seat #A1: exactly 1 booking succeeded (200 OK) and 49 received conflict rejections (HTTP 409). Zero duplicate tickets generated.
                       </div>
                     </div>
                   </div>
 
-                  <div className="p-4 bg-[var(--paper-elevated)] border border-[var(--rule-strong)] font-mono text-xs space-y-2">
+                  <div className="border-t lg:border-t-0 lg:border-l border-[var(--rule-strong)] pt-4 lg:pt-0 lg:pl-6 font-mono text-xs space-y-2">
                     <div className="font-bold text-[var(--ink)] pb-1 border-b border-[var(--rule)]">
                       SPECIFICATION SHEET [A1-01]
                     </div>
@@ -827,10 +818,10 @@ export default function Home() {
               </div>
 
               {/* SYSTEM 02: Researcher Cockpit (JabRef) */}
-              <div className="border border-[var(--ink)] bg-white p-6 md:p-8 shadow-xs">
+              <div className="border border-[var(--ink)] bg-white p-6 md:p-8">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[var(--rule-strong)] pb-4">
                   <div>
-                    <h3 className="font-display text-xl sm:text-2xl font-bold text-[var(--ink)]">
+                    <h3 className="font-display text-xl sm:text-2xl font-bold text-[var(--ink)] text-balance">
                       Researcher Cockpit (JabRef Integration)
                     </h3>
                     <div className="font-mono text-xs text-[var(--cobalt)] font-semibold mt-1">
@@ -864,12 +855,12 @@ export default function Home() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-6">
                   <div className="lg:col-span-2 space-y-4">
-                    <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed">
+                    <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed max-w-prose text-pretty">
                       Engineered a WebExtension client-server architecture communicating securely with a local Java backend inside the JabRef desktop reference manager. Built dynamic DOM scrapers for IEEE Xplore, arXiv, and Google Scholar to automate metadata extraction, PDF discovery, and citation graph generation. Contributed directly to the upstream JabRef project via Pull Request #14963.
                     </p>
                   </div>
 
-                  <div className="p-4 bg-[var(--paper-elevated)] border border-[var(--rule-strong)] font-mono text-xs space-y-2">
+                  <div className="border-t lg:border-t-0 lg:border-l border-[var(--rule-strong)] pt-4 lg:pt-0 lg:pl-6 font-mono text-xs space-y-2">
                     <div className="font-bold text-[var(--ink)] pb-1 border-b border-[var(--rule)]">
                       SPECIFICATION SHEET [A1-02]
                     </div>
@@ -882,10 +873,10 @@ export default function Home() {
               </div>
 
               {/* SYSTEM 03: Advanced Web Development */}
-              <div className="border border-[var(--ink)] bg-white p-6 md:p-8 shadow-xs">
+              <div className="border border-[var(--ink)] bg-white p-6 md:p-8">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[var(--rule-strong)] pb-4">
                   <div>
-                    <h3 className="font-display text-xl sm:text-2xl font-bold text-[var(--ink)]">
+                    <h3 className="font-display text-xl sm:text-2xl font-bold text-[var(--ink)] text-balance">
                       Advanced Web Development (AWD)
                     </h3>
                     <div className="font-mono text-xs text-[var(--cobalt)] font-semibold mt-1">
@@ -913,12 +904,12 @@ export default function Home() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-6">
                   <div className="lg:col-span-2 space-y-4">
-                    <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed">
+                    <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed max-w-prose text-pretty">
                       Co-architected a full-stack web application within a 3-member agile engineering team. Enforced strict architectural separation between the client presentation layer and backend Node.js business services using end-to-end TypeScript interfaces, preventing integration regressions during parallel agile sprints.
                     </p>
                   </div>
 
-                  <div className="p-4 bg-[var(--paper-elevated)] border border-[var(--rule-strong)] font-mono text-xs space-y-2">
+                  <div className="border-t lg:border-t-0 lg:border-l border-[var(--rule-strong)] pt-4 lg:pt-0 lg:pl-6 font-mono text-xs space-y-2">
                     <div className="font-bold text-[var(--ink)] pb-1 border-b border-[var(--rule)]">
                       SPECIFICATION SHEET [A1-03]
                     </div>
@@ -952,10 +943,10 @@ export default function Home() {
                       <div className="font-bold text-sm text-[var(--cobalt)]">NETCOMPANY</div>
                       <div className="text-xs text-[var(--ink-muted)] mt-1">Hanoi, Vietnam</div>
                       <div className="text-xs font-semibold text-[var(--ink)] mt-2">Dec 2024 – Jan 2025</div>
-                      <div className="text-[11px] text-[var(--vermilion)] font-bold mt-1">IT CONSULTANT</div>
+                      <div className="text-xs text-[var(--vermilion)] font-bold mt-1">IT CONSULTANT</div>
                     </td>
                     <td className="p-5 md:p-6 md:w-3/4 space-y-3 align-top">
-                      <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+                      <h3 className="font-display font-bold text-lg text-[var(--ink)] text-balance">
                         Enterprise Java Spring Boot, Kafka Event Streaming &amp; Cloud Deployments
                       </h3>
                       <ul className="space-y-2 text-sm text-[var(--ink-muted)] leading-relaxed list-disc list-inside">
@@ -969,7 +960,7 @@ export default function Home() {
                           Containerized distributed microservices with <strong className="text-[var(--ink)]">Docker</strong> and configured orchestration manifests for deployment onto <strong className="text-[var(--ink)]">Kubernetes</strong> clusters.
                         </li>
                       </ul>
-                      <div className="flex flex-wrap gap-1.5 pt-2 font-mono text-[11px]">
+                      <div className="flex flex-wrap gap-1.5 pt-2 font-mono text-xs">
                         <span className="px-2 py-0.5 bg-[var(--paper)] border border-[var(--rule-strong)] font-semibold">Java Spring Boot</span>
                         <span className="px-2 py-0.5 bg-[var(--paper)] border border-[var(--rule-strong)] font-semibold">Apache Kafka</span>
                         <span className="px-2 py-0.5 bg-[var(--paper)] border border-[var(--rule-strong)] font-semibold">Liquibase</span>
@@ -985,10 +976,10 @@ export default function Home() {
                       <div className="font-bold text-sm text-[var(--cobalt)]">TMA SOLUTIONS</div>
                       <div className="text-xs text-[var(--ink-muted)] mt-1">Ho Chi Minh City, Vietnam</div>
                       <div className="text-xs font-semibold text-[var(--ink)] mt-2">Oct 2023 – Jan 2024</div>
-                      <div className="text-[11px] text-[var(--ink-muted)] font-bold mt-1">SOFTWARE DEV INTERN</div>
+                      <div className="text-xs text-[var(--ink-muted)] font-bold mt-1">SOFTWARE DEV INTERN</div>
                     </td>
                     <td className="p-5 md:p-6 md:w-3/4 space-y-3 align-top">
-                      <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+                      <h3 className="font-display font-bold text-lg text-[var(--ink)] text-balance">
                         Backend RESTful Services &amp; Agile Enterprise Development
                       </h3>
                       <ul className="space-y-2 text-sm text-[var(--ink-muted)] leading-relaxed list-disc list-inside">
@@ -999,7 +990,7 @@ export default function Home() {
                           Collaborated in an Agile (Scrum) sprint lifecycle, participating in daily standups, code reviews, and cross-functional integration testing.
                         </li>
                       </ul>
-                      <div className="flex flex-wrap gap-1.5 pt-2 font-mono text-[11px]">
+                      <div className="flex flex-wrap gap-1.5 pt-2 font-mono text-xs">
                         <span className="px-2 py-0.5 bg-[var(--paper)] border border-[var(--rule-strong)] font-semibold">Java Spring Boot</span>
                         <span className="px-2 py-0.5 bg-[var(--paper)] border border-[var(--rule-strong)] font-semibold">PHP</span>
                         <span className="px-2 py-0.5 bg-[var(--paper)] border border-[var(--rule-strong)] font-semibold">RESTful APIs</span>
@@ -1015,7 +1006,7 @@ export default function Home() {
           {/* SECTION [C3]: EMPIRICAL SE RESEARCH & EDUCATION */}
           <section id="research" className="scroll-mt-8 space-y-8">
             <div className="flex flex-col md:flex-row md:items-baseline md:justify-between border-b-2 border-[var(--ink)] pb-3">
-              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[var(--ink)]">
+              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[var(--ink)] text-balance">
                 Empirical Software Engineering &amp; Research
               </h2>
               <span className="font-mono text-xs font-bold text-[var(--cobalt)] tracking-wider mt-1 md:mt-0">
@@ -1027,15 +1018,15 @@ export default function Home() {
               {/* Research 01: Slicer4J Dynamic APR */}
               <div className="border border-[var(--ink)] bg-white p-6 space-y-4">
                 <div className="border-b border-[var(--rule-strong)] pb-3 flex justify-between items-baseline">
-                  <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+                  <h3 className="font-display font-bold text-lg text-[var(--ink)] text-balance">
                     Program Slicing in Automated Program Repair (APR)
                   </h3>
                   <span className="font-mono text-xs font-bold text-[var(--cobalt)]">R&amp;D PROJECT</span>
                 </div>
-                <p className="text-sm text-[var(--ink-muted)] leading-relaxed">
+                <p className="text-sm text-[var(--ink-muted)] leading-relaxed max-w-[70ch] text-pretty">
                   Orchestrated an empirical evaluation pipeline combining <strong className="text-[var(--ink)]">Slicer4J</strong>, <strong className="text-[var(--ink)]">Soot</strong>, and <strong className="text-[var(--ink)]">JUnit</strong> to extract minimal, fault-relevant execution traces from legacy Java codebases.
                 </p>
-                <p className="text-sm text-[var(--ink-muted)] leading-relaxed">
+                <p className="text-sm text-[var(--ink-muted)] leading-relaxed max-w-[70ch] text-pretty">
                   Designed a token-optimization methodology feeding dynamic program slices into Large Language Models (LLMs), reducing prompt context consumption by 68.4% and eliminating hallucinated edits in automated patch generation.
                 </p>
                 <div className="font-mono text-xs text-[var(--cobalt)] pt-2 border-t border-[var(--rule)]">
@@ -1046,15 +1037,15 @@ export default function Home() {
               {/* Research 02: LLMs in Requirements Elicitation */}
               <div className="border border-[var(--ink)] bg-white p-6 space-y-4">
                 <div className="border-b border-[var(--rule-strong)] pb-3 flex justify-between items-baseline">
-                  <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+                  <h3 className="font-display font-bold text-lg text-[var(--ink)] text-balance">
                     LLMs in Software Requirements Elicitation
                   </h3>
                   <span className="font-mono text-xs font-bold text-[var(--cobalt)]">SEMINAR PAPER</span>
                 </div>
-                <p className="text-sm text-[var(--ink-muted)] leading-relaxed">
+                <p className="text-sm text-[var(--ink-muted)] leading-relaxed max-w-[70ch] text-pretty">
                   Conducted a rigorous empirical assessment analyzing the reasoning boundaries and hallucination modes of Large Language Models when applied to natural-language software requirements engineering.
                 </p>
-                <p className="text-sm text-[var(--ink-muted)] leading-relaxed">
+                <p className="text-sm text-[var(--ink-muted)] leading-relaxed max-w-[70ch] text-pretty">
                   Established criteria for validating machine-generated software specifications against ISO/IEC/IEEE 29148 standards, proposing deterministic prompt constraints for ambiguity reduction.
                 </p>
                 <div className="font-mono text-xs text-[var(--cobalt)] pt-2 border-t border-[var(--rule)]">
@@ -1088,7 +1079,7 @@ export default function Home() {
           {/* SECTION [D4]: ASYMMETRIC AI-ORCHESTRATED ARCHITECTURE */}
           <section id="architecture" className="scroll-mt-8 space-y-8">
             <div className="flex flex-col md:flex-row md:items-baseline md:justify-between border-b-2 border-[var(--ink)] pb-3">
-              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[var(--ink)]">
+              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[var(--ink)] text-balance">
                 AI-Orchestrated Engineering Pipeline
               </h2>
               <span className="font-mono text-xs font-bold text-[var(--cobalt)] tracking-wider mt-1 md:mt-0">
@@ -1096,8 +1087,8 @@ export default function Home() {
               </span>
             </div>
 
-            <div className="border border-[var(--ink)] bg-white p-6 md:p-8 shadow-xs space-y-6">
-              <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed max-w-3xl">
+            <div className="border border-[var(--ink)] bg-white p-6 md:p-8 space-y-6">
+              <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed max-w-prose text-pretty">
                 Modern software engineering with AI requires moving beyond prompt chat into deterministic, multi-tier autonomous pipelines. As the Lead Architect, Son Thien Nguyen operates a 4-stage contract-driven methodology:
               </p>
 
@@ -1108,7 +1099,7 @@ export default function Home() {
                     [1] CONTRACT GATE
                   </div>
                   <div className="font-bold text-[var(--ink)]">Tech Lead Architecture</div>
-                  <div className="text-[11px] text-[var(--ink-muted)]">
+                  <div className="text-xs text-[var(--ink-muted)]">
                     Establishes strict API contracts, data models, and failing RED unit tests before implementation.
                   </div>
                 </div>
@@ -1119,7 +1110,7 @@ export default function Home() {
                     [2] WORKER ROUTING
                   </div>
                   <div className="font-bold text-[var(--ink)]">Multi-Tier Subagents</div>
-                  <div className="text-[11px] text-[var(--ink-muted)]">
+                  <div className="text-xs text-[var(--ink-muted)]">
                     Dispatches headless worker engines (Flash, OpenCode, DeepSeek) for TDD code generation.
                   </div>
                 </div>
@@ -1130,7 +1121,7 @@ export default function Home() {
                     [3] ANTI-CHEAT QA
                   </div>
                   <div className="font-bold text-[var(--ink)]">Concurrency &amp; Invariants</div>
-                  <div className="text-[11px] text-[var(--ink-muted)]">
+                  <div className="text-xs text-[var(--ink-muted)]">
                     Audits diffs for weakened assertions, mocked SUTs, and executes 50x race condition stress tests.
                   </div>
                 </div>
@@ -1141,7 +1132,7 @@ export default function Home() {
                     [4] DOD SIGN-OFF
                   </div>
                   <div className="font-bold text-[var(--ink)]">Clean Release PR</div>
-                  <div className="text-[11px] text-[var(--ink-muted)]">
+                  <div className="text-xs text-[var(--ink-muted)]">
                     Runs static typecheck, visual craft detector, unit tests, and packages surgical local commits.
                   </div>
                 </div>
@@ -1239,7 +1230,7 @@ export default function Home() {
                 <div className="font-bold text-[var(--vermilion)]">
                   CONCURRENCY SPECIFICATION AUDIT
                 </div>
-                <div className="grid grid-cols-2 gap-2 text-[11px]">
+                <div className="grid grid-cols-2 gap-2 text-xs">
                   <div>
                     <span className="text-[var(--ink-muted)]">Lock Strategy:</span>
                     <div className="font-bold text-[var(--ink)]">{drawerSheet.concurrencySpecs.lockModel}</div>

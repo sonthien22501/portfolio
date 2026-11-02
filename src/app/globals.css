@@ -7,7 +7,7 @@
   --ink: #111317;
   --ink-muted: #3F4652;
   --cobalt: #0F4C81;
-  --vermilion: #D9381E;
+  --vermilion: #C82810;
   --rule: rgba(17, 19, 23, 0.16);
   --rule-strong: #111317;
 
@@ -96,8 +96,8 @@ body {
 .hatch-vermilion {
   background-image: repeating-linear-gradient(
     -45deg,
-    rgba(217, 56, 30, 0.12),
-    rgba(217, 56, 30, 0.12) 2px,
+    rgba(200, 40, 16, 0.12),
+    rgba(200, 40, 16, 0.12) 2px,
     transparent 2px,
     transparent 8px
   );

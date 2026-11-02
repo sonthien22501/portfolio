@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-02T21:49:00Z",
+  "title": "Design System: Son Thien Nguyen — Systems Engineering Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "vellum": {
+        "role": "primary",
+        "displayName": "Drafting Vellum Ground",
+        "canonical": "#f4f2ec",
+        "tonalRamp": ["#36342e", "#5a574f", "#807c72", "#a8a499", "#d0ccc2", "#f4f2ec", "#faf8f3", "#fdfcf9"]
+      },
+      "paper-elevated": {
+        "role": "neutral",
+        "displayName": "Elevated Paper Surface",
+        "canonical": "#faf8f3",
+        "tonalRamp": ["#3a3832", "#605c54", "#888379", "#b2ada3", "#dcd6cc", "#f4f0e7", "#faf8f3", "#ffffff"]
+      },
+      "carbon-ink": {
+        "role": "neutral",
+        "displayName": "Carbon Drafting Ink",
+        "canonical": "#111317",
+        "tonalRamp": ["#08090a", "#111317", "#252932", "#3e4453", "#5c657a", "#8590a8", "#b6bed0", "#e4e8f0"]
+      },
+      "carbon-muted": {
+        "role": "neutral",
+        "displayName": "Muted Technical Ink",
+        "canonical": "#3f4652",
+        "tonalRamp": ["#16181d", "#282c34", "#3f4652", "#5c6575", "#7e899c", "#a4aec0", "#cdd4e1", "#f0f2f6"]
+      },
+      "blueprint-cobalt": {
+        "role": "secondary",
+        "displayName": "Structural Blueprint Cobalt",
+        "canonical": "#0f4c81",
+        "tonalRamp": ["#061e33", "#0b355a", "#0f4c81", "#1b6bb3", "#378ee0", "#6cb0f2", "#a8d3fb", "#e3f1fe"]
+      },
+      "contention-vermilion": {
+        "role": "secondary",
+        "displayName": "Signal Vermilion",
+        "canonical": "#c82810",
+        "tonalRamp": ["#4f0f06", "#7e190a", "#a9220d", "#c82810", "#e64127", "#f07460", "#f8ada0", "#fde9e5"]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Technical Drawing Rule",
+        "canonical": "rgba(17, 19, 23, 0.16)",
+        "tonalRamp": ["#111317", "#282c34", "#3f4652", "#666e80", "#9098aa", "#bdc3cf", "#e2e5eb", "#f4f2ec"]
+      },
+      "rule-strong": {
+        "role": "neutral",
+        "displayName": "Strong Structural Rule",
+        "canonical": "#111317",
+        "tonalRamp": ["#08090a", "#111317", "#252932", "#3e4453", "#5c657a", "#8590a8", "#b6bed0", "#e4e8f0"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Architect title and major DIN drawing headers."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles and technical case studies."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "System implementation narrative and problem statements."
+      },
+      "label": {
+        "displayName": "Label / Monospace",
+        "purpose": "Coordinate indices [A1]..[D4], telemetry, and state stamps."
+      }
+    },
+    "shadows": [
+      {
+        "name": "drawer-elevation",
+        "value": "0 16px 40px -8px rgba(17, 19, 23, 0.18)",
+        "purpose": "Translucent slide-over specification sheet drawer elevation."
+      },
+      {
+        "name": "flat-default",
+        "value": "none",
+        "purpose": "Default flat blueprint panel rendering without drop shadow."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "purpose": "Smooth drawer slide-over and interactive tab transition."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Vermilion CTA Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary conversion button (Download CV.pdf) with high-contrast signal vermilion.",
+      "html": "<button class=\"ds-btn-primary\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"></path><polyline points=\"7 10 12 15 17 10\"></polyline><line x1=\"12\" y1=\"15\" x2=\"12\" y2=\"3\"></line></svg><span>DOWNLOAD CV.PDF ↗</span></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #c82810; color: #ffffff; padding: 12px 16px; font-family: monospace; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid #111317; border-radius: 0; cursor: pointer; transition: background 0.15s ease; } .ds-btn-primary:hover { background: #b82e18; } .ds-btn-primary:focus-visible { outline: 2px solid #0f4c81; outline-offset: 3px; }"
+    },
+    {
+      "name": "Coordinate Navigation Tab",
+      "kind": "nav",
+      "refersTo": "tab-active",
+      "description": "Exposed coordinate switchers for architecture sheets and coordinates.",
+      "html": "<div class=\"ds-tab-group\"><button class=\"ds-tab-item ds-tab-active\">[01] TICKET BOOKING (GO)</button><button class=\"ds-tab-item\">[02] JABREF JDK 25 PR</button></div>",
+      "css": ".ds-tab-group { display: flex; gap: 8px; } .ds-tab-item { padding: 6px 12px; font-family: monospace; font-size: 12px; font-weight: 600; border: 1px solid rgba(17, 19, 23, 0.2); background: #ffffff; color: #3f4652; border-radius: 0; cursor: pointer; transition: all 0.15s ease; } .ds-tab-item:hover { border-color: #111317; color: #111317; } .ds-tab-active { background: #0f4c81; color: #ffffff; border-color: #111317; }"
+    },
+    {
+      "name": "Telemetry Metric Card",
+      "kind": "card",
+      "refersTo": "card-telemetry",
+      "description": "Engineering proof block featuring monospaced tabular telemetry and invariant ratios.",
+      "html": "<div class=\"ds-telemetry-card\"><div class=\"ds-telemetry-label\">CONCURRENCY INVARIANT</div><div class=\"ds-telemetry-value\">1 / 50</div><div class=\"ds-telemetry-desc\">Row-level lock resolution under simultaneous contention.</div></div>",
+      "css": ".ds-telemetry-card { padding: 16px; border: 1px solid #111317; background: transparent; border-radius: 0; font-family: monospace; } .ds-telemetry-label { font-size: 12px; font-weight: 700; color: #0f4c81; letter-spacing: 0.05em; } .ds-telemetry-value { font-size: 36px; font-weight: 900; color: #0f4c81; font-variant-numeric: tabular-nums; margin: 4px 0; } .ds-telemetry-desc { font-size: 12px; color: #3f4652; font-family: sans-serif; line-height: 1.5; }"
+    },
+    {
+      "name": "Cross-Hatch Contention Zone",
+      "kind": "custom",
+      "refersTo": "hatch-zone",
+      "description": "Technical drawing load zone with 45-degree cross-hatching for stress callouts.",
+      "html": "<div class=\"ds-hatch-zone\"><div class=\"ds-hatch-title\">LOAD TEST RESOLUTION: 50 SIMULTANEOUS REQUESTS</div><div class=\"ds-hatch-body\">Under 50 concurrent seat requests: 1 committed (200 OK), 49 conflict rejections (HTTP 409).</div></div>",
+      "css": ".ds-hatch-zone { padding: 16px; border: 1px solid #111317; background-image: repeating-linear-gradient(-45deg, rgba(17,19,23,0.08), rgba(17,19,23,0.08) 2px, transparent 2px, transparent 8px); font-family: monospace; font-size: 12px; } .ds-hatch-title { font-weight: 700; color: #c82810; margin-bottom: 4px; } .ds-hatch-body { color: #111317; font-family: sans-serif; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The DIN 6771 / ISO 5457 Engineering Drawing Sheet",
+    "overview": "Every backend system, concurrency invariant, and empirical research pipeline built by Son Thien Nguyen is presented as an authentic, stamped mechanical/systems engineering specification sheet. Instead of conforming to generic modern portfolio conventions—floating rounded glass cards, soft diffuse gradients, and decorative stats—this visual system draws from the discipline of industrial blueprints and technical drawings. The aesthetic philosophy is grounded in physical drafting materiality: warm drafting vellum paper, carbon drafting ink, structural blueprint cobalt for structural routing, and signal vermilion for high-contention failure boundaries.",
+    "keyCharacteristics": [
+      "Authentic Drafting Materiality: Physical vellum ground with ink coordinate rules and exposed drafting dimensions (--cell).",
+      "Telemetry as Structure: Live concurrency traces, ACID row-lock state machines, and empirical benchmark reductions replace decorative fluff.",
+      "Strict Visual Restraint: Zero arbitrary gradients, zero soft floating box shadows, zero decorative pulse animations, and zero kickers or eyebrows.",
+      "High-Density Technical Scannability: Monospaced tabular data aligned to technical drawing ledgers for instant inspection by engineering hiring managers."
+    ],
+    "rules": [
+      {
+        "name": "The Verification Invariant Rule",
+        "body": "Signal vermilion (#C82810) is reserved strictly for high-contention signals, conflict indicators, and the singular primary conversion action. It never appears as a decorative accent or ambient glow.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular Telemetry Rule",
+        "body": "All numerical readouts, coordinate identifiers, and concurrency ratios must use monospaced fonts (Fira Code) with font-variant-numeric: tabular-nums to ensure exact column alignment across variable data states.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Elevation is communicated through ink weight, border contrast, and cross-hatch texture. Drop shadows are strictly prohibited on in-page content containers.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do maintain strict square geometry (rounded-none, 0px) on all interactive and structural elements.",
+      "Do format all telemetry readouts, ratios, and benchmark numbers in font-mono with tabular-nums.",
+      "Do ensure all text color combinations maintain WCAG AA contrast ratios (>= 4.5:1).",
+      "Do constrain long paragraphs to max-w-prose with text-pretty to prevent reading fatigue.",
+      "Do use authentic cross-hatch shading (.hatch-zone) to indicate concurrency load and contention zones."
+    ],
+    "donts": [
+      "Don't add rounded corners (rounded-lg, rounded-full) to containers or buttons.",
+      "Don't use soft diffuse drop shadows or glassmorphism gradients on page content cards.",
+      "Don't add decorative pulsing animations (animate-pulse) to static status badges.",
+      "Don't place eyebrow labels or decorative kickers above major section headings.",
+      "Don't nest bordered cards inside other bordered cards with drop shadows."
+    ]
+  }
+}
