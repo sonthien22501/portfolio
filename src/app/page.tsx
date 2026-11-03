@@ -435,23 +435,35 @@ export default function Home() {
                     </button>
                   </div>
 
-                  {/* Stage Headline */}
-                  <div>
-                    <h2 className="font-display text-xl sm:text-2xl font-bold text-[var(--ink)] tracking-tight text-balance">
-                      {activeSheet.headline}
-                    </h2>
-                    <div className="font-mono text-xs text-[var(--cobalt)] font-semibold mt-1">
-                      {activeSheet.sheetCode}
-                    </div>
+                  {/* Stage Headline (all sheets stacked so wrapping never shifts the layout) */}
+                  <div className="grid">
+                    {Object.values(SHEETS).map((sheet) => (
+                      <div
+                        key={sheet.id}
+                        className={`col-start-1 row-start-1 min-w-0 ${
+                          sheet.id === activeSheetKey ? '' : 'hidden sm:block sm:invisible'
+                        }`}
+                      >
+                        <h2 className="font-display text-xl sm:text-2xl font-bold text-[var(--ink)] tracking-tight text-balance">
+                          {sheet.headline}
+                        </h2>
+                        <div className="font-mono text-xs text-[var(--cobalt)] font-semibold mt-1">
+                          {sheet.sheetCode}
+                        </div>
+                      </div>
+                    ))}
                   </div>
 
                   {/* Interactive Architecture Stage Visualizations */}
-                  <div className="relative border-1.5 border-[var(--ink)] bg-white p-4 sm:p-6 overflow-hidden">
+                  <div className="relative grid border-1.5 border-[var(--ink)] bg-white p-4 sm:p-6 overflow-hidden">
                     {/* Background grid watermark */}
                     <div className="absolute inset-0 pointer-events-none opacity-20 blueprint-grid" />
 
-                    {activeSheetKey === 'ticket-booking' && (
-                      <div className="space-y-4">
+                    <div
+                      className={`col-start-1 row-start-1 min-w-0 space-y-4 ${
+                        activeSheetKey === 'ticket-booking' ? '' : 'hidden sm:block sm:invisible'
+                      }`}
+                    >
                         {/* Interactive SVG Diagram */}
                         <div className="w-full overflow-x-auto">
                           <svg
@@ -605,10 +617,12 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-                    )}
 
-                    {activeSheetKey === 'researcher-cockpit' && (
-                      <div className="space-y-4">
+                    <div
+                      className={`col-start-1 row-start-1 min-w-0 space-y-4 ${
+                        activeSheetKey === 'researcher-cockpit' ? '' : 'hidden sm:block sm:invisible'
+                      }`}
+                    >
                         <div className="p-4 bg-[var(--paper)] border border-[var(--rule-strong)] space-y-3 font-sans text-xs sm:text-sm">
                           <div className="flex items-center justify-between border-b border-[var(--rule)] pb-2 font-mono">
                             <span className="font-bold text-[var(--cobalt)]">CROSS-ORIGIN CLIENT/SERVER ARCHITECTURE</span>
@@ -642,10 +656,12 @@ export default function Home() {
                           <span>Factual Proof: Contributed directly to JabRef upstream open-source codebase (JDK 25 WebExtension API).</span>
                         </div>
                       </div>
-                    )}
 
-                    {activeSheetKey === 'usagi-buddy' && (
-                      <div className="space-y-4">
+                    <div
+                      className={`col-start-1 row-start-1 min-w-0 space-y-4 ${
+                        activeSheetKey === 'usagi-buddy' ? '' : 'hidden sm:block sm:invisible'
+                      }`}
+                    >
                         {/* Interactive Multi-Window IPC Topology Diagram */}
                         <div className="p-4 bg-[var(--paper)] border border-[var(--rule-strong)] space-y-3 font-sans">
                           <div className="flex items-center justify-between border-b border-[var(--rule)] pb-2 font-mono text-xs">
@@ -702,10 +718,12 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-                    )}
 
-                    {activeSheetKey === 'awd-project' && (
-                      <div className="space-y-4">
+                    <div
+                      className={`col-start-1 row-start-1 min-w-0 space-y-4 ${
+                        activeSheetKey === 'awd-project' ? '' : 'hidden sm:block sm:invisible'
+                      }`}
+                    >
                         <div className="p-4 bg-[var(--paper)] border border-[var(--rule-strong)] space-y-3 font-sans">
                           <div className="flex items-center justify-between border-b border-[var(--rule)] pb-2 font-mono text-xs">
                             <span className="font-bold text-[var(--cobalt)]">DECOUPLED 3-TIER FULL-STACK ARCHITECTURE</span>
@@ -737,10 +755,12 @@ export default function Home() {
                           <span>Agile Engineering: Delivered in a 3-member team with Avnish Raut via structured GitHub PR reviews and sprint milestones.</span>
                         </div>
                       </div>
-                    )}
 
-                    {activeSheetKey === 'slicer4j-research' && (
-                      <div className="space-y-4">
+                    <div
+                      className={`col-start-1 row-start-1 min-w-0 space-y-4 ${
+                        activeSheetKey === 'slicer4j-research' ? '' : 'hidden sm:block sm:invisible'
+                      }`}
+                    >
                         <div className="p-4 bg-[var(--paper)] border border-[var(--rule-strong)] space-y-3 font-sans">
                           <div className="flex items-center justify-between border-b border-[var(--rule)] pb-2 font-mono text-xs">
                             <span className="font-bold text-[var(--cobalt)]">DYNAMIC PROGRAM SLICING FOR APR PIPELINE</span>
@@ -772,7 +792,6 @@ export default function Home() {
                           <span>Evaluated on Defects4J Java benchmark suite under rigorous empirical SE methodology.</span>
                         </div>
                       </div>
-                    )}
                   </div>
                 </div>
 
@@ -794,49 +813,61 @@ export default function Home() {
                     <span className="font-mono text-xs text-[var(--cobalt)] font-semibold">KEY METRICS</span>
                   </div>
 
-                  {/* Metric Card 1 */}
-                  <div className="p-4 bg-transparent border border-[var(--ink)] space-y-1">
-                    <div className="font-mono text-xs font-bold text-[var(--cobalt)] tracking-wider">
-                      {activeSheet.primaryMetric.label}
-                    </div>
-                    <div className="font-mono text-4xl font-black text-[var(--cobalt)] tabular-nums">
-                      {activeSheet.primaryMetric.value}
-                    </div>
-                    <div className="text-sm text-[var(--ink-muted)] leading-relaxed pt-1">
-                      {activeSheet.primaryMetric.desc}
-                    </div>
-                  </div>
+                  {/* Metric cards stacked across all sheets so wrapping never shifts the layout */}
+                  <div className="grid">
+                    {Object.values(SHEETS).map((sheet) => (
+                      <div
+                        key={sheet.id}
+                        className={`col-start-1 row-start-1 min-w-0 space-y-4 ${
+                          sheet.id === activeSheetKey ? '' : 'hidden sm:block sm:invisible'
+                        }`}
+                      >
+                        {/* Metric Card 1 */}
+                        <div className="p-4 bg-transparent border border-[var(--ink)] space-y-1">
+                          <div className="font-mono text-xs font-bold text-[var(--cobalt)] tracking-wider">
+                            {sheet.primaryMetric.label}
+                          </div>
+                          <div className="font-mono text-4xl font-black text-[var(--cobalt)] tabular-nums">
+                            {sheet.primaryMetric.value}
+                          </div>
+                          <div className="text-sm text-[var(--ink-muted)] leading-relaxed pt-1">
+                            {sheet.primaryMetric.desc}
+                          </div>
+                        </div>
 
-                  {/* Metric Card 2 */}
-                  <div className="p-4 bg-transparent border border-[var(--ink)] space-y-1">
-                    <div className="font-mono text-xs font-bold text-[var(--ink)] tracking-wider">
-                      {activeSheet.secondaryMetric.label}
-                    </div>
-                    <div className="font-mono text-4xl font-black text-[var(--ink)] tabular-nums">
-                      {activeSheet.secondaryMetric.value}
-                    </div>
-                    <div className="text-sm text-[var(--ink-muted)] leading-relaxed pt-1">
-                      {activeSheet.secondaryMetric.desc}
-                    </div>
-                  </div>
+                        {/* Metric Card 2 */}
+                        <div className="p-4 bg-transparent border border-[var(--ink)] space-y-1">
+                          <div className="font-mono text-xs font-bold text-[var(--ink)] tracking-wider">
+                            {sheet.secondaryMetric.label}
+                          </div>
+                          <div className="font-mono text-4xl font-black text-[var(--ink)] tabular-nums">
+                            {sheet.secondaryMetric.value}
+                          </div>
+                          <div className="text-sm text-[var(--ink-muted)] leading-relaxed pt-1">
+                            {sheet.secondaryMetric.desc}
+                          </div>
+                        </div>
 
-                  {/* Metric Card 3: Architecture Spec Parameters */}
-                  <div className="p-4 bg-[var(--paper)] border border-[var(--rule-strong)] space-y-1.5 text-xs">
-                    <div className="font-mono font-bold text-[var(--ink)] pb-1 border-b border-[var(--rule)]">
-                      SPECIFICATION AUDIT // PARAMETERS
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-[var(--ink-muted)]">Protocol:</span>
-                      <span className="font-mono font-bold text-[var(--ink)] truncate max-w-[190px]">{activeSheet.concurrencySpecs.protocol}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-[var(--ink-muted)]">Lock Model:</span>
-                      <span className="font-mono font-bold text-[var(--cobalt)] truncate max-w-[190px]">{activeSheet.concurrencySpecs.lockModel}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-[var(--ink-muted)]">Latency:</span>
-                      <span className="font-mono font-bold text-[var(--vermilion)]">{activeSheet.concurrencySpecs.latency}</span>
-                    </div>
+                        {/* Metric Card 3: Architecture Spec Parameters */}
+                        <div className="p-4 bg-[var(--paper)] border border-[var(--rule-strong)] space-y-1.5 text-xs">
+                          <div className="font-mono font-bold text-[var(--ink)] pb-1 border-b border-[var(--rule)]">
+                            SPECIFICATION AUDIT // PARAMETERS
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-[var(--ink-muted)]">Protocol:</span>
+                            <span className="font-mono font-bold text-[var(--ink)] truncate max-w-[190px]">{sheet.concurrencySpecs.protocol}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-[var(--ink-muted)]">Lock Model:</span>
+                            <span className="font-mono font-bold text-[var(--cobalt)] truncate max-w-[190px]">{sheet.concurrencySpecs.lockModel}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-[var(--ink-muted)]">Latency:</span>
+                            <span className="font-mono font-bold text-[var(--vermilion)]">{sheet.concurrencySpecs.latency}</span>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
